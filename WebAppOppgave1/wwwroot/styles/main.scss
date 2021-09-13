@@ -1,0 +1,175 @@
+﻿
+// Variables
+
+$theme-color: #0081a7; // Endrer hele farge tema av hele nettsiden
+$theme-color-secondary: transparentize($theme-color, .9); // endrer seg dynamisk basert på theme-color
+
+
+
+
+
+
+
+
+
+
+// Global
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+html, header {
+  min-width: 320px !important;
+}
+
+:target::before {
+  content: "";
+  display: block;
+  height: 53px; /* fixed header height*/
+  margin: -53px 0 0; /* negative fixed header height */
+}
+
+a.a-link {
+  color: $theme-color;
+  display: block;
+  text-decoration: none;
+  padding: 5px 0;
+  border-bottom: 1px solid transparent;
+  width: fit-content;
+}
+
+a.a-link:hover {
+  border-bottom: 1px solid $theme-color;
+}
+
+.btn-theme {
+  background: $theme-color !important;
+  color: white !important;
+  border: 1px solid transparent !important;
+  transition: ease .3s;
+}
+
+.btn-theme:hover {
+  background: $theme-color-secondary !important;
+  color: $theme-color !important;
+  border: 1px solid $theme-color !important;
+}
+
+.bg-theme {
+  background: $theme-color;
+}
+
+.bg-theme-secondary {
+  background: $theme-color-secondary;
+}
+
+.text-theme {
+  color: $theme-color;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Header > menu toggle
+
+#btn-toggle {
+  border: none !important;
+
+  .bi {
+    font-size: 30px;
+    color: $theme-color;
+  }
+}
+
+#btn-toggle:focus {
+  box-shadow: none !important;
+}
+
+.bi-x {
+  display: none;
+}
+
+.on .bi-x {
+  display: block;
+}
+
+.on .bi-list {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// cover section
+
+.cover-section {
+  min-height: 77vh;
+  position: relative;
+
+  .cover-entry {
+    max-width: 500px;
+  }
+}
+
+.cover-section::before {
+  content: "";
+  height: 77vh;
+  width: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+
+  background-image: url("../assets/cover.png");
+  background-size: cover;
+  background-position: bottom;
+}
+
+.cover-section::after {
+  content: "";
+  height: 77vh;
+  width: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  background-image: linear-gradient(transparent, white);
+  background-size: cover;
+  background-position: bottom;
+}
+
+
+
+
+
+
+
+
+
+.bestill-section {
+  min-height: calc(100vh - (53px + 56px)); // min-height - (header height + footer height)
+}
