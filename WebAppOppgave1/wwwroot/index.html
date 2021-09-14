@@ -79,52 +79,57 @@
 
                 <div class="col-lg">
                     <div class="form-floating">
-                        <select class="form-select" id="reise-type">
+                        <select class="form-select" id="reise-type" aria-describedby="reise-type-feil-melding">
                             <option value="">Type</option>
                             <option value="en-vei">Èn vei</option>
                             <option value="tur-retur">Tur/Retur</option>
                         </select>
                         <label for="reise-type">Reise Type</label>
+                        <div class="invalid-feedback d-none" id="reise-type-feil-melding">Velg reise type.</div>
                     </div>
                 </div>
 
                 <div class="col-lg col-md-6">
                     <div class="form-floating">
-                        <select class="form-select" id="fra-sted">
+                        <select class="form-select" id="fra-sted" aria-describedby="fra-sted-feil-melding">
                             <option value="" selected>Velg rute...</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                         </select>
                         <label for="fra-sted">Fra</label>
+                        <div class="invalid-feedback d-none" id="fra-sted-feil-melding">Hvor reiser du fra?</div>
                     </div>
                 </div>
 
                 <div class="col-lg col-md-6">
                     <div class="form-floating">
-                        <select class="form-select" id="til-sted">
+                        <select class="form-select" id="til-sted" aria-describedby="til-sted-feil-melding">
                             <option value="" selected>Velg rute...</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                         </select>
-                        <label for="til-sted">Fra</label>
+                        <label for="til-sted">Til</label>
+                        <div class="invalid-feedback d-none" id="til-sted-feil-melding">Hvor reiser du til?</div>
                     </div>
                 </div>
 
                 <div class="col-md col-sm-12">
                     <div class="form-floating">
                         <input type="text" class="form-control" placeholder="_" id="fra-dato"
-                               data-date-open-on-focus="true">
+                               data-date-open-on-focus="true" aria-describedby="fra-dato-feil-melding">
                         <label for="fra-dato">Avreise</label>
+                        <div class="invalid-feedback d-none" id="fra-dato-feil-melding"></div>
                     </div>
                 </div>
 
                 <div class="col-md col-sm-12">
                     <div class="form-floating">
                         <input type="text" class="form-control" placeholder="_" id="til-dato"
-                               data-date-open-on-focus="true">
+                               data-date-open-on-focus="true" aria-describedby="til-dato-feil-melding">
                         <label for="til-dato">Retur</label>
+                        <div class="invalid-feedback d-none" id="til-dato-feil-melding"></div>
                     </div>
                 </div>
             </div>
