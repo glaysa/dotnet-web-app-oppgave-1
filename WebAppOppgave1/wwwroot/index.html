@@ -79,7 +79,8 @@
 
                 <div class="col-lg">
                     <div class="form-floating">
-                        <select class="form-select" id="reise-type" aria-describedby="reise-type-feil-melding">
+                        <select class="form-select" id="reise-type" aria-describedby="reise-type-feil-melding"
+                                onchange="validerReiseType()">
                             <option value="">Type</option>
                             <option value="en-vei">Èn vei</option>
                             <option value="tur-retur">Tur/Retur</option>
@@ -91,7 +92,8 @@
 
                 <div class="col-lg col-md-6">
                     <div class="form-floating">
-                        <select class="form-select" id="fra-sted" aria-describedby="fra-sted-feil-melding">
+                        <select class="form-select" id="fra-sted" aria-describedby="fra-sted-feil-melding"
+                                onchange="validerFraSted()">
                             <option value="" selected>Velg rute...</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -104,7 +106,8 @@
 
                 <div class="col-lg col-md-6">
                     <div class="form-floating">
-                        <select class="form-select" id="til-sted" aria-describedby="til-sted-feil-melding">
+                        <select class="form-select" id="til-sted" aria-describedby="til-sted-feil-melding"
+                                onchange="validerTilSted()">
                             <option value="" selected>Velg rute...</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -117,7 +120,7 @@
 
                 <div class="col-md col-sm-12">
                     <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="_" id="fra-dato"
+                        <input type="text" class="form-control" placeholder="_" id="fra-dato" onchange="validerFraDato()"
                                data-date-open-on-focus="true" aria-describedby="fra-dato-feil-melding">
                         <label for="fra-dato">Avreise</label>
                         <div class="invalid-feedback d-none" id="fra-dato-feil-melding"></div>
@@ -126,19 +129,19 @@
 
                 <div class="col-md col-sm-12">
                     <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="_" id="til-dato"
+                        <input type="text" class="form-control" placeholder="_" id="til-dato" onchange="validerTilDato()"
                                data-date-open-on-focus="true" aria-describedby="til-dato-feil-melding">
                         <label for="til-dato">Retur</label>
                         <div class="invalid-feedback d-none" id="til-dato-feil-melding"></div>
                     </div>
                 </div>
             </div>
-            <div class="row mt-5 justify-content-center">
-                <div class="col-lg-3 col-md">
-                    <button class="btn btn-theme w-100">Søk og Bestill</button>
-                </div>
-            </div>
         </form>
+        <div class="row mt-5 justify-content-center">
+            <div class="col-lg-3 col-md">
+                <button class="btn btn-theme w-100" onclick="validerTrinn1()">Søk og Bestill</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -155,8 +158,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
+<!-- moment script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- my scripts -->
 <script src="js/ui.js"></script>
+<script src="js/validering.js"></script>
 
 </body>
 </html>
