@@ -41,6 +41,25 @@ a.a-link:hover {
   border: 1px solid #0081a7 !important;
 }
 
+.btn-icon {
+  background: rgba(0, 129, 167, 0.1) !important;
+  color: #0081a7 !important;
+  border: 1px solid transparent !important;
+  transition: ease 0.3s;
+  font-size: 22px !important;
+  border-radius: 50% !important;
+  padding: 2.5px 7px !important;
+}
+
+.btn-icon:hover {
+  background: rgba(0, 129, 167, 0.1) !important;
+  border: 1px solid #0081a7 !important;
+}
+
+.border-theme {
+  border-color: #0081a7 !important;
+}
+
 .bg-theme {
   background: #0081a7;
 }
@@ -112,7 +131,7 @@ a.a-link:hover {
 }
 
 .bestill-section {
-  min-height: calc(100vh - (53px + 56px));
+  min-height: calc(100vh - 53px);
 }
 
 /*# sourceMappingURL=main.css.map */

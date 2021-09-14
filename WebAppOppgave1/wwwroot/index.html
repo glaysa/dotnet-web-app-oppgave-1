@@ -70,7 +70,7 @@
 <div class="bestill-section container-fluid my-5" id="bestill">
 
     <!-- Trinn 1 -->
-    <div class="container my-5">
+    <div class="container d-none my-5">
         <form class="form" autocomplete="off">
             <div class="row g-2">
                 <div class="col-12 mb-5">
@@ -140,6 +140,175 @@
         <div class="row mt-5 justify-content-center">
             <div class="col-lg-3 col-md">
                 <button class="btn btn-theme w-100" onclick="validerTrinn1()">Søk og Bestill</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container my-5">
+        <div class="row">
+            
+            <!-- Progress info -->
+            <div class="col-xl-3 col-lg-4 order-last order-lg-first my-5 m-lg-0">
+                <div class="py-3">
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="text-group text-end">
+                                <p class="m-0 fs-5">Reise</p>
+                                <small class="m-0 text-black-50">Avreise og retur</small>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex align-items-center border-start">
+                            <i class="bi bi-check-circle fs-4" style="color: lightseagreen"></i>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="text-group text-end">
+                                <p class="m-0 fs-5">Reisefølge</p>
+                                <small class="m-0 text-black-50">Antall personer</small>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex align-items-center border-start">
+                            <i class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="text-group text-end">
+                                <p class="m-0 fs-5">Lugar</p>
+                                <small class="m-0 text-black-50">Velg cabin/rom/sete</small>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex align-items-center border-start">
+                            <i class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="text-group text-end">
+                                <p class="m-0 fs-5">Måltider</p>
+                                <small class="m-0 text-black-50">Velg måltid</small>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex align-items-center border-start">
+                            <i class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="text-group text-end">
+                                <p class="m-0 fs-5">Annet</p>
+                                <small class="m-0 text-black-50">Produkter om bord</small>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex align-items-center border-start">
+                            <i class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="text-group text-end">
+                                <p class="m-0 fs-5">Bekreft</p>
+                                <small class="m-0 text-black-50">Se over bestillingen</small>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex align-items-center border-start">
+                            <i class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <div class="text-group text-end">
+                                <p class="m-0 fs-5">Betal</p>
+                                <small class="m-0 text-black-50"></small>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex align-items-center border-start">
+                            <i class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            
+            <!-- Resten av trinn på bestillingen -->
+            <div class="col-xl-9 col-lg-8 order-first order-lg-last">
+                <!-- Trinn 2 -->
+                <div id="trinn-2">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="fw-light m-0 text-center text-lg-start text-theme">Hvem og hva reiser?</h3>
+                            <hr class="w-100 bg-theme">
+                        </div>
+                    </div>
+                    <div class="row g-3 text-center mb-3">
+                        <div class="col-md" id="avreise-info-col">
+                            <div class="py-3 bg-light">
+                                <p class="fs-5 m-0 text-theme">
+                                    <span class="fra-sted-tekst">Oslo</span>
+                                    <i class="bi bi-arrow-right-short"></i>
+                                    <span class="til-sted-tekst">Keil</span>
+                                </p>
+                                <small class="text-black-50 d-block">Fr. 15. Okt 2021</small>
+                                <small class="text-black-50 d-block">Kl. 14:30</small>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md" id="retur-info-col">
+                            <div class="py-3 bg-light">
+                                <p class="fs-5 m-0 text-theme">
+                                    <span class="fra-sted-tekst">Keil</span>
+                                    <i class="bi bi-arrow-right-short"></i>
+                                    <span class="til-sted-tekst">Oslo</span>
+                                </p>
+                                <small class="text-black-50 d-block">Fr. 15. Okt 2021</small>
+                                <small class="text-black-50 d-block">Kl. 16:30</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="d-flex align-items-center border-bottom pb-2">
+                                <p class="m-0 fs-5 m-lg-0 flex-fill">Voksne</p>
+                                <i class="bi bi-dash btn btn-icon"></i>
+                                <span class="mx-3">0</span>
+                                <i class="bi bi-plus btn btn-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="d-flex align-items-center border-bottom pb-2">
+                                <p class="m-0 fs-5 m-lg-0 flex-fill">Barn</p>
+                                <i class="bi bi-dash btn btn-icon"></i>
+                                <span class="mx-3">0</span>
+                                <i class="bi bi-plus btn btn-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="d-flex align-items-center border-bottom pb-2">
+                                <p class="m-0 fs-5 m-lg-0 flex-fill">Kjæledyr</p>
+                                <i class="bi bi-dash btn btn-icon"></i>
+                                <span class="mx-3">0</span>
+                                <i class="bi bi-plus btn btn-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="d-flex align-items-center border-bottom pb-2">
+                                <p class="m-0 fs-5 m-lg-0 flex-fill">Sykkel</p>
+                                <i class="bi bi-dash btn btn-icon"></i>
+                                <span class="mx-3">0</span>
+                                <i class="bi bi-plus btn btn-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center justify-content-md-end">
+            <div class="col-lg-3 text-center text-lg-end">
+                <button class="btn btn-outline-secondary">Tilbake</button>
+                <button class="btn btn-theme ms-3">Gå videre</button>
             </div>
         </div>
     </div>
