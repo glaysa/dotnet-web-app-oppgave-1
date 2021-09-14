@@ -34,11 +34,13 @@ function validerReiseType(){
     } else if(valgt === "en-vei"){
         reiseTypeInput.removeClass('is-invalid');
         reiseTypeFeilMelding.addClass('d-none');
+        aktiverInput(fraStedInput);
         // Skjul retur elementer
         // Skjul tilDatoInput
     } else {
         reiseTypeInput.removeClass('is-invalid');
         reiseTypeFeilMelding.addClass('d-none');
+        aktiverInput(fraStedInput);
         // Vis retur elementer
         // Vis tilDatoInput
     }
@@ -53,6 +55,7 @@ function validerFraSted(){
     } else {
         fraStedInput.removeClass('is-invalid');
         fraStedFeilMelding.addClass('d-none');
+        aktiverInput(tilStedInput);
         // Fjern fraStedInput verdi fra tilStedInput options
         return true;
     }
@@ -66,6 +69,7 @@ function validerTilSted(){
     } else {
         tilStedInput.removeClass('is-invalid');
         tilStedFeilMelding.addClass('d-none');
+        aktiverInput(fraDatoInput);
         // Fjern tilStedInput verdi fra fraStedInput options
         return true;
     }
@@ -82,6 +86,7 @@ function validerFraDato(){
             visDatoFeilMelding(fraDatoInput, fraDatoFeilMelding, "Ugyldig avreise dato.");
         } else {
             fjernDatoFeilMelding(fraDatoInput, fraDatoFeilMelding);
+            aktiverInput(tilDatoInput);
             ok = true;
         }
     }

@@ -9,7 +9,19 @@
 // Ready funksjon
 $(document).ready(function () {
     visKalender();
+    deaktiverInputs(fraStedInput, tilStedInput, fraDatoInput, tilDatoInput);
 });
+
+// Noen input felter må først velges før de andre
+
+function deaktiverInputs(...params){
+    for(let input of params) {
+        input.attr('disabled', true);
+    }
+}
+function aktiverInput(input){
+    input.attr('disabled', false);
+}
 
 // Endrer meny ikonen på små enheter fra burger til X og omvendt.
 $("#btn-toggle").click(function () {
