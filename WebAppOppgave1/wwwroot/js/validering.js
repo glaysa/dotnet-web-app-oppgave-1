@@ -135,5 +135,5 @@ function fjernDatoFeilMelding(datoInput, feilMeldingBox){
 
 function validerTrinn1(){
     let ok = validerReiseType() && validerFraSted() && validerTilSted() && validerFraDato() && validerTilDato();
-    if(ok) alert("Ok!");
+    if(ok) skjulVis('#trinn-1','#neste-trinn','','');
 }

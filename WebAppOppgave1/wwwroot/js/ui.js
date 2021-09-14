@@ -49,3 +49,34 @@ function customRange(input) {
         return { minDate: minDate };
     }
 }
+
+// Skjuler og viser de forskjellige trinnene for bestillingen
+
+function tilbake(toHide, toShow, toHideBtns, toShowBtns){
+    skjulVis(toHide, toShow, toHideBtns, toShowBtns);
+    fjernMerke(toHide);
+}
+
+function gaaVidere(toHide, toShow, toHideBtns, toShowBtns){
+    skjulVis(toHide, toShow, toHideBtns, toShowBtns)
+    merkerFerdig(toShow);
+}
+
+function skjulVis(toHide, toShow, toHideBtns, toShowBtns){
+    $(toHide).addClass('d-none');
+    $(toShow).removeClass('d-none');
+    $(toHideBtns).addClass('d-none');
+    $(toShowBtns).removeClass('d-none');
+}
+
+function merkerFerdig(ikon_id){
+    $(ikon_id + '-ikon').removeClass('bi-dash-circle');
+    $(ikon_id + '-ikon').addClass('bi-check-circle');
+    $(ikon_id + '-ikon').css('color','lightseagreen');
+}
+
+function fjernMerke(ikon_id){
+    $(ikon_id + '-ikon').addClass('bi-dash-circle');
+    $(ikon_id + '-ikon').removeClass('bi-check-circle');
+    $(ikon_id + '-ikon').css('color','lightgrey');
+}
