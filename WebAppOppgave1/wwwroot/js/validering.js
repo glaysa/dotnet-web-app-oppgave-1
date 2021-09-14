@@ -34,15 +34,15 @@ function validerReiseType(){
     } else if(valgt === "en-vei"){
         reiseTypeInput.removeClass('is-invalid');
         reiseTypeFeilMelding.addClass('d-none');
+        $("#til-dato-col").addClass('d-none');
         aktiverInput(fraStedInput);
         // Skjul retur elementer
-        // Skjul tilDatoInput
     } else {
         reiseTypeInput.removeClass('is-invalid');
         reiseTypeFeilMelding.addClass('d-none');
+        $("#til-dato-col").removeClass('d-none');
         aktiverInput(fraStedInput);
         // Vis retur elementer
-        // Vis tilDatoInput
     }
     return ok;
 }
