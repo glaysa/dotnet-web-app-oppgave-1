@@ -1,0 +1,137 @@
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+html, header {
+  min-width: 320px !important;
+}
+
+:target::before {
+  content: "";
+  display: block;
+  height: 53px;
+  /* fixed header height*/
+  margin: -53px 0 0;
+  /* negative fixed header height */
+}
+
+a.a-link {
+  color: #0081a7;
+  display: block;
+  text-decoration: none;
+  padding: 5px 0;
+  border-bottom: 1px solid transparent;
+  width: fit-content;
+}
+
+a.a-link:hover {
+  border-bottom: 1px solid #0081a7;
+}
+
+.btn-theme {
+  background: #0081a7 !important;
+  color: white !important;
+  border: 1px solid transparent !important;
+  transition: ease 0.3s;
+}
+
+.btn-theme:hover {
+  background: rgba(0, 129, 167, 0.1) !important;
+  color: #0081a7 !important;
+  border: 1px solid #0081a7 !important;
+}
+
+.btn-icon {
+  background: rgba(0, 129, 167, 0.1) !important;
+  color: #0081a7 !important;
+  border: 1px solid transparent !important;
+  transition: ease 0.3s;
+  font-size: 22px !important;
+  border-radius: 50% !important;
+  padding: 2.5px 7px !important;
+}
+
+.btn-icon:hover {
+  background: rgba(0, 129, 167, 0.1) !important;
+  border: 1px solid #0081a7 !important;
+}
+
+.border-theme {
+  border-color: #0081a7 !important;
+}
+
+.bg-theme {
+  background: #0081a7;
+}
+
+.bg-theme-secondary {
+  background: rgba(0, 129, 167, 0.1);
+}
+
+.text-theme {
+  color: #0081a7;
+}
+
+#btn-toggle {
+  border: none !important;
+}
+#btn-toggle .bi {
+  font-size: 30px;
+  color: #0081a7;
+}
+
+#btn-toggle:focus {
+  box-shadow: none !important;
+}
+
+.bi-x {
+  display: none;
+}
+
+.on .bi-x {
+  display: block;
+}
+
+.on .bi-list {
+  display: none;
+}
+
+.cover-section {
+  min-height: 77vh;
+  position: relative;
+}
+.cover-section .cover-entry {
+  max-width: 500px;
+}
+
+.cover-section::before {
+  content: "";
+  height: 77vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  background-image: url("../assets/cover.png");
+  background-size: cover;
+  background-position: bottom;
+}
+
+.cover-section::after {
+  content: "";
+  height: 77vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: linear-gradient(transparent, white);
+  background-size: cover;
+  background-position: bottom;
+}
+
+.bestill-section {
+  min-height: calc(100vh - 53px);
+}
+
+/*# sourceMappingURL=main.css.map */
