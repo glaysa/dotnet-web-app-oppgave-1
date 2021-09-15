@@ -7,13 +7,13 @@ namespace WebAppOppgave1.Models
 {
     public class Kunde
     {
-        public int kundeID { set; get; }
-        public string fornavn { set; get; }
-        public string etternavn { set; get; }
-        public string tlfnummer { set; get; }
-        public string epost { set; get; }
-        public string adresse { set; get; }
-        public string postnummer { set; get; }
-        public string poststed { set; get; }
+        public int KundeID { set; get; }
+        public string Fornavn { set; get; }
+        public string Etternavn { set; get; }
+        public string Tlfnummer { set; get; }
+        public string Epost { set; get; }
+        public string Adresse { set; get; }
+        public string Postnummer { set; get; }
+        public string Poststed { set; get; }
     }
 }
