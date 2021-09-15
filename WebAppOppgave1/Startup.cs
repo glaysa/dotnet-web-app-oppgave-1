@@ -27,11 +27,12 @@ namespace WebAppOppgave1
             }
 
             app.UseRouting();
-
+            app.UseStaticFiles();
+            /*
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Hello World!"); });
-            });
+                endpoints.MapControllers();
+            });*/
         }
     }
 }
