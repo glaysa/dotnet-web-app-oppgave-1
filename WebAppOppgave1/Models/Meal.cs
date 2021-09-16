@@ -7,5 +7,8 @@ namespace WebAppOppgave1.Models
 {
     public class Meal
     {
+        public int MealsNummer { set; get; }
+        public string Maaltid { set; get; }
+        public double pris { set; get; }
     }
 }
