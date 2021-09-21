@@ -139,7 +139,7 @@
         </form>
         <div class="row mt-5 justify-content-center">
             <div class="col-lg-3 col-md">
-                <button class="btn btn-theme w-100" onclick="validerTrinn1()">Søk og Bestill</button>
+                <button class="btn btn-theme w-100" onclick="lagreRute()">Søk og Bestill</button>
             </div>
         </div>
     </div>
@@ -168,7 +168,7 @@
                             </div>
                         </div>
                         <div class="col-6 d-flex align-items-center border-start">
-                            <i id="trinn-3-ikon" class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
+                            <i id="neste-trinn-ikon" class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -179,7 +179,7 @@
                             </div>
                         </div>
                         <div class="col-6 d-flex align-items-center border-start">
-                            <i id="trinn-4-ikon" class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
+                            <i id="trinn-3-ikon" class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -190,7 +190,7 @@
                             </div>
                         </div>
                         <div class="col-6 d-flex align-items-center border-start">
-                            <i id="trinn-5-ikon" class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
+                            <i id="trinn-4-ikon" class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -201,7 +201,7 @@
                             </div>
                         </div>
                         <div class="col-6 d-flex align-items-center border-start">
-                            <i id="trinn-6-ikon" class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
+                            <i id="trinn-5-ikon" class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -212,7 +212,7 @@
                             </div>
                         </div>
                         <div class="col-6 d-flex align-items-center border-start">
-                            <i id="trinn-7-ikon" class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
+                            <i id="trinn-6-ikon" class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -223,7 +223,7 @@
                             </div>
                         </div>
                         <div class="col-6 d-flex align-items-center border-start">
-                            <i class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
+                            <i id="trinn-7-ikon" class="bi bi-dash-circle fs-4" style="color: lightgrey"></i>
                         </div>
                     </div>
                  </div>
@@ -354,7 +354,7 @@
                 <button class="btn btn-outline-secondary" 
                         onclick="tilbake('#neste-trinn','#trinn-1','','')">Tilbake</button>
                 <button class="btn btn-theme ms-3" 
-                        onclick="gaaVidere('#trinn-2','#trinn-3','#trinn-2-btns','#trinn-3-btns')">Gå videre</button>
+                        onclick="lagrePassasjerer()">Gå videre</button>
             </div>
         </div>
 
@@ -363,7 +363,7 @@
                 <button class="btn btn-outline-secondary"
                         onclick="tilbake('#trinn-3','#trinn-2','#trinn-3-btns','#trinn-2-btns')">Tilbake</button>
                 <button class="btn btn-theme ms-3"
-                        onclick="gaaVidere('#trinn-3','#trinn-4','#trinn-3-btns','#trinn-4-btns')">Gå videre</button>
+                        onclick="lagreLugar()">Gå videre</button>
             </div>
         </div>
 
@@ -372,7 +372,7 @@
                 <button class="btn btn-outline-secondary"
                         onclick="tilbake('#trinn-4','#trinn-3','#trinn-4-btns','#trinn-3-btns')">Tilbake</button>
                 <button class="btn btn-theme ms-3"
-                        onclick="gaaVidere('#trinn-4','#trinn-5','#trinn-4-btns','#trinn-5-btns')">Gå videre</button>
+                        onclick="lagreMaaltider()">Gå videre</button>
             </div>
         </div>
 
@@ -381,7 +381,7 @@
                 <button class="btn btn-outline-secondary"
                         onclick="tilbake('#trinn-5','#trinn-4','#trinn-5-btns','#trinn-4-btns')">Tilbake</button>
                 <button class="btn btn-theme ms-3"
-                        onclick="gaaVidere('#trinn-5','#trinn-6','#trinn-5-btns','#trinn-6-btns')">Gå videre</button>
+                        onclick="lagreOmbordProdukter()">Gå videre</button>
             </div>
         </div>
 
@@ -390,7 +390,7 @@
                 <button class="btn btn-outline-secondary"
                         onclick="tilbake('#trinn-6','#trinn-5','#trinn-6-btns','#trinn-5-btns')">Tilbake</button>
                 <button class="btn btn-theme ms-3"
-                        onclick="gaaVidere('#trinn-6','#trinn-7','#trinn-6-btns','#trinn-7-btns')">Gå videre</button>
+                        onclick="lagreKunde()">Gå videre</button>
             </div>
         </div>
 
@@ -398,7 +398,7 @@
             <div class="col-lg-3 text-center text-lg-end">
                 <button class="btn btn-outline-secondary"
                         onclick="tilbake('#trinn-7','#trinn-6','#trinn-7-btns', '#trinn-6-btns')">Tilbake</button>
-                <button class="btn btn-theme ms-3">Betal</button>
+                <button class="btn btn-theme ms-3" onclick="lagreBestilling()">Betal</button>
             </div>
         </div>
     </div>
@@ -424,6 +424,7 @@
 <!-- my scripts -->
 <script src="js/ui.js"></script>
 <script src="js/validering.js"></script>
+<script src="js/index.js"></script>
 
 </body>
 </html>

@@ -53,16 +53,11 @@ function customRange(input) {
 // Skjuler og viser de forskjellige trinnene for bestillingen
 
 function tilbake(toHide, toShow, toHideBtns, toShowBtns){
-    skjulVis(toHide, toShow, toHideBtns, toShowBtns);
+    skjulOgVisTrinn(toHide, toShow, toHideBtns, toShowBtns);
     fjernMerke(toHide);
 }
 
-function gaaVidere(toHide, toShow, toHideBtns, toShowBtns){
-    skjulVis(toHide, toShow, toHideBtns, toShowBtns)
-    merkerFerdig(toShow);
-}
-
-function skjulVis(toHide, toShow, toHideBtns, toShowBtns){
+function skjulOgVisTrinn(toHide, toShow, toHideBtns, toShowBtns){
     $(toHide).addClass('d-none');
     $(toShow).removeClass('d-none');
     $(toHideBtns).addClass('d-none');

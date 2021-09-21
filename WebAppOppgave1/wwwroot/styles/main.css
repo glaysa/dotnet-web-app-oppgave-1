@@ -29,6 +29,7 @@ a.a-link:hover {
 }
 
 .btn-theme {
+  min-width: 100px !important;
   background: #0081a7 !important;
   color: white !important;
   border: 1px solid transparent !important;

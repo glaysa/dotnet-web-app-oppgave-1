@@ -135,5 +135,29 @@ function fjernDatoFeilMelding(datoInput, feilMeldingBox){
 
 function validerTrinn1(){
     let ok = validerReiseType() && validerFraSted() && validerTilSted() && validerFraDato() && validerTilDato();
-    if(ok) skjulVis('#trinn-1','#neste-trinn','','');
+    if(ok) merkerFerdig('#trinn-1');
+}
+
+function validerTrinn2() {
+    merkerFerdig('#neste-trinn');
+}
+
+function validerTrinn3() {
+    merkerFerdig('#trinn-3');
+}
+
+function validerTrinn4() {
+    merkerFerdig('#trinn-4');
+}
+
+function validerTrinn5() {
+    merkerFerdig('#trinn-5');
+}
+
+function validerTrinn6() {
+    merkerFerdig('#trinn-6');
+}
+
+function validerTrinn7() {
+    merkerFerdig('#trinn-7');
 }
