@@ -10,6 +10,6 @@ namespace WebAppOppgave1.Models
         public int PID { set; get; }
         public string Fornavn { set; get; }
         public string Etternavn { set; get; }
-        public DateTime fodselsdato { set; get; }
+        public DateTime Fodselsdato { set; get; }
     }
 }
