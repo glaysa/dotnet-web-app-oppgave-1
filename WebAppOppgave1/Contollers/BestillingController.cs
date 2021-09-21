@@ -8,5 +8,6 @@ namespace WebAppOppgave1.Contollers
 {
     public class BestillingController : ControllerBase
     {
+
     }
 }
