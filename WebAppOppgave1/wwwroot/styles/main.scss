@@ -43,6 +43,23 @@ a.a-link:hover {
   border-bottom: 1px solid $theme-color;
 }
 
+a.a-link-block div {
+  background-color: $theme-color !important;
+  border: 1px solid transparent;
+  transition: ease .3s;
+  
+  p {
+    transition: ease .3s;
+  }
+}
+
+a.a-link-block:hover div {
+  background-color: white !important;
+  color: $theme-color;
+  border: 1px solid $theme-color;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
 .btn-theme {
   min-width: 100px !important;
   background: $theme-color !important;
@@ -54,6 +71,20 @@ a.a-link:hover {
 .btn-theme:hover {
   background: $theme-color-secondary !important;
   color: $theme-color !important;
+  border: 1px solid $theme-color !important;
+}
+
+.btn-theme-secondary {
+  background: $theme-color-secondary !important;
+  color: $theme-color !important;
+  border: 1px solid transparent !important;
+  transition: ease .3s;
+  padding: 2.5px 7px !important;
+  min-width: 100px;
+}
+
+.btn-theme-secondary:hover {
+  background: $theme-color-secondary !important;
   border: 1px solid $theme-color !important;
 }
 
@@ -193,3 +224,73 @@ a.a-link:hover {
 .bestill-section {
   min-height: calc(100vh - 53px); // min-height - header height
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// rom section
+
+$card-height: 200px;
+
+.a-link-block .rom {
+  position: relative;
+  min-height: $card-height;
+  background-color: unset !important;
+}
+
+.a-link-block:hover .rom {
+  background-color: $theme-color !important;
+  color: white;
+  border: 1px solid $theme-color;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
+.a-link-block:hover .rom p {
+  font-size: 30px !important;
+}
+
+.a-link-block .rom::after {
+  content: "";
+  height: $card-height;
+  width: 100%;
+  transition: ease .3s !important;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  background-image: linear-gradient(to bottom right, $theme-color, transparent);
+  background-size: cover;
+  background-position: bottom;
+}
+
+@mixin replace-rom-img($rom, $rom-img) {
+  .a-link-block #{$rom}::before {
+    content: "";
+    height: $card-height;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+
+    background-image: url($rom-img);
+    background-size: cover;
+    background-position: bottom;
+  }
+}
+
+@include replace-rom-img("#sete-1", "../assets/cover.png");

@@ -28,6 +28,22 @@ a.a-link:hover {
   border-bottom: 1px solid #0081a7;
 }
 
+a.a-link-block div {
+  background-color: #0081a7 !important;
+  border: 1px solid transparent;
+  transition: ease 0.3s;
+}
+a.a-link-block div p {
+  transition: ease 0.3s;
+}
+
+a.a-link-block:hover div {
+  background-color: white !important;
+  color: #0081a7;
+  border: 1px solid #0081a7;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
 .btn-theme {
   min-width: 100px !important;
   background: #0081a7 !important;
@@ -39,6 +55,20 @@ a.a-link:hover {
 .btn-theme:hover {
   background: rgba(0, 129, 167, 0.1) !important;
   color: #0081a7 !important;
+  border: 1px solid #0081a7 !important;
+}
+
+.btn-theme-secondary {
+  background: rgba(0, 129, 167, 0.1) !important;
+  color: #0081a7 !important;
+  border: 1px solid transparent !important;
+  transition: ease 0.3s;
+  padding: 2.5px 7px !important;
+  min-width: 100px;
+}
+
+.btn-theme-secondary:hover {
+  background: rgba(0, 129, 167, 0.1) !important;
   border: 1px solid #0081a7 !important;
 }
 
@@ -133,6 +163,50 @@ a.a-link:hover {
 
 .bestill-section {
   min-height: calc(100vh - 53px);
+}
+
+.a-link-block .rom {
+  position: relative;
+  min-height: 200px;
+  background-color: unset !important;
+}
+
+.a-link-block:hover .rom {
+  background-color: #0081a7 !important;
+  color: white;
+  border: 1px solid #0081a7;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.a-link-block:hover .rom p {
+  font-size: 30px !important;
+}
+
+.a-link-block .rom::after {
+  content: "";
+  height: 200px;
+  width: 100%;
+  transition: ease 0.3s !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: linear-gradient(to bottom right, #0081a7, transparent);
+  background-size: cover;
+  background-position: bottom;
+}
+
+.a-link-block #sete-1::before {
+  content: "";
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  background-image: url("../assets/cover.png");
+  background-size: cover;
+  background-position: bottom;
 }
 
 /*# sourceMappingURL=main.css.map */
