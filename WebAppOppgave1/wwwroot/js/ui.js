@@ -62,6 +62,7 @@ function skjulOgVisTrinn(toHide, toShow, toHideBtns, toShowBtns){
     $(toShow).removeClass('d-none');
     $(toHideBtns).addClass('d-none');
     $(toShowBtns).removeClass('d-none');
+    skrollTilTopp();
 }
 
 function merkerFerdig(ikon_id){
@@ -74,4 +75,9 @@ function fjernMerke(ikon_id){
     $(ikon_id + '-ikon').addClass('bi-dash-circle');
     $(ikon_id + '-ikon').removeClass('bi-check-circle');
     $(ikon_id + '-ikon').css('color','lightgrey');
+}
+
+// På småe enheter skal det alltid skrolles til 'toppen' (div#bestill) for bedre erfaring
+function skrollTilTopp(){
+    location.href = "#bestill";
 }
