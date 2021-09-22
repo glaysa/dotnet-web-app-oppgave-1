@@ -135,27 +135,35 @@ function fjernDatoFeilMelding(datoInput, feilMeldingBox){
 
 function validerTrinn1(){
     let ok = validerReiseType() && validerFraSted() && validerTilSted() && validerFraDato() && validerTilDato();
-    if(ok) merkerFerdig('#trinn-1');
+    if(ok) {
+        merkerFerdig('#trinn-1');
+        skjulOgVisTrinn('#trinn-1','#neste-trinn','','');
+    }
 }
 
 function validerTrinn2() {
     merkerFerdig('#neste-trinn');
+    skjulOgVisTrinn('#trinn-2','#trinn-3','#trinn-2-btns','#trinn-3-btns');
 }
 
 function validerTrinn3() {
     merkerFerdig('#trinn-3');
+    skjulOgVisTrinn('#trinn-3','#trinn-4','#trinn-3-btns','#trinn-4-btns');
 }
 
 function validerTrinn4() {
     merkerFerdig('#trinn-4');
+    skjulOgVisTrinn('#trinn-4','#trinn-5','#trinn-4-btns','#trinn-5-btns');
 }
 
 function validerTrinn5() {
     merkerFerdig('#trinn-5');
+    skjulOgVisTrinn('#trinn-5','#trinn-6','#trinn-5-btns','#trinn-6-btns');
 }
 
 function validerTrinn6() {
     merkerFerdig('#trinn-6');
+    skjulOgVisTrinn('#trinn-6','#trinn-7','#trinn-6-btns','#trinn-7-btns');
 }
 
 function validerTrinn7() {
