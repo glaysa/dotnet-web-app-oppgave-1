@@ -212,7 +212,6 @@ a.a-link-block:hover div {
 .maaltid-row:hover {
   cursor: pointer !important;
 }
-
 .maaltid-row .maaltid-info.on {
   background: rgba(0, 129, 167, 0.1);
 }
