@@ -10,6 +10,8 @@
 $(document).ready(function () {
     visKalender();
     deaktiverInputs(fraStedInput, tilStedInput, fraDatoInput, tilDatoInput);
+    sjekkValgtMaaltid('#frokost');
+    sjekkValgtMaaltid('#lunsj');
 });
 
 // Noen input felter må først velges før de andre
@@ -80,4 +82,23 @@ function fjernMerke(ikon_id){
 // På småe enheter skal det alltid skrolles til 'toppen' (div#bestill) for bedre erfaring
 function skrollTilTopp(){
     location.href = "#bestill";
+}
+
+// Manipulerer css når maaltid sjekkboks verdier er endret
+function sjekkValgtMaaltid(maaltid){
+    $(maaltid +"-row").on('click', function(){
+        
+        // virker som en toggle
+        $(maaltid).attr("checked", !$(maaltid).attr("checked"));
+        
+        // endrer backgrunnsfarge når maaltiden er valgt
+        $(maaltid + '-info').toggleClass('on');
+        
+        // viser sjekk ikonen
+        if($(maaltid).is(':checked')) {
+            $(maaltid + "-ikon").removeClass('d-none');
+        } else {
+            $(maaltid + "-ikon").addClass('d-none');
+        }
+    });
 }

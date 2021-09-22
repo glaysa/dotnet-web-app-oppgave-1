@@ -209,4 +209,26 @@ a.a-link-block:hover div {
   background-position: bottom;
 }
 
+.maaltid-row:hover {
+  cursor: pointer !important;
+}
+
+.maaltid-row .maaltid-info.on {
+  background: rgba(0, 129, 167, 0.1);
+}
+
+.cb-group {
+  position: relative;
+}
+.cb-group .cb-icon {
+  text-align: center;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 25px;
+  border-radius: 50%;
+  background: yellowgreen;
+  padding: 0 5px;
+}
+
 /*# sourceMappingURL=main.css.map */
