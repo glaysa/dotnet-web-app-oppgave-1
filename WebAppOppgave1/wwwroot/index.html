@@ -320,6 +320,80 @@
                             </a>
                         </div>
                     </div>
+                    <div class="modal fade" id="rom-info-modal" data-bs-keyboard="false" tabindex="-1"
+                         aria-labelledby="rom-info-label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
+                            <div class="modal-content">
+                                <div class="modal-header text-lg-center text-start">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6">
+                                            <div class="row g-3">
+                                                <div class="col-lg-12">
+                                                    <h2 class="fw-light modal-title text-theme" id="rom-tittel">
+                                                        Title</h2>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <img id="rom-bilde" src="assets/cover.png" alt="single room image"
+                                                         class="img-fluid">
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <p id="rom-beskrivelse" class="m-0">Beskrivelse</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-lg-end justify-content-start">
+                                                <div class="col-lg-6">
+                                                    <p id="rom-pris" class="m-0 fs-5 text-theme text-lg-end text-start">
+                                                        +500 kr</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <hr class="w-100 bg-theme">
+                                            
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <p class="d-flex justify-content-between p-3 bg-light border">
+                                                        <span class="text-theme fw-bold">
+                                                             <i class="bi bi-people-fill me-2"></i>Personer
+                                                        </span>
+                                                        <span id="rom-kapasitet">2</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <p class="d-flex justify-content-between p-3 bg-light border">
+                                                        <span class="text-theme fw-bold">
+                                                            <i class="bi bi-grid me-2"></i>Vindu
+                                                        </span>
+                                                        <span id="rom-vindu">Ja</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <div class="row g-3 flex-fill justify-content-center">
+                                        <div class="col-lg-3">
+                                            <button type="button" class="btn btn-outline-secondary w-100" 
+                                                    data-bs-dismiss="modal" aria-label="Close">Lukk</button>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <input type="hidden" id="valgt-rom">
+                                            <button type="button" class="btn btn-theme w-100" id="velg-rom-btn">Velg</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="trinn-4" class="d-none">
@@ -344,7 +418,7 @@
                             <h4 class="text-theme">Frokost Buffet</h4>
                             <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
                                 doloremque, iusto natus quam quis tempore unde vero. Maxime, neque, sed.</p>
-                            <p class="pt-3 fs-5 text-theme text-start">+125 kr</p>
+                            <p class="pt-3 fs-5 text-theme">+125 kr</p>
                         </div>
                     </div>
                     
@@ -362,7 +436,7 @@
                             <h4 class="text-theme">Lunsj Buffet</h4>
                             <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
                                 doloremque, iusto natus quam quis tempore unde vero. Maxime, neque, sed.</p>
-                            <p class="pt-3 fs-5 text-theme text-start">+125 kr</p>
+                            <p class="pt-3 fs-5 text-theme">+125 kr</p>
                         </div>
                     </div>
                 </div>
