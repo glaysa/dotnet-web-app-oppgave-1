@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Volumes/StorEDGE/WebApplication/WebAppOppgave1/WebAppOppgave1.csproj": {}
+    "C:\\Users\\nimab\\Desktop\\Desktop\\OsloMet\\5.semester\\ITPE3200\\web-app-oppgave-1\\WebAppOppgave1\\WebAppOppgave1.csproj": {}
   },
   "projects": {
-    "/Volumes/StorEDGE/WebApplication/WebAppOppgave1/WebAppOppgave1.csproj": {
+    "C:\\Users\\nimab\\Desktop\\Desktop\\OsloMet\\5.semester\\ITPE3200\\web-app-oppgave-1\\WebAppOppgave1\\WebAppOppgave1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Volumes/StorEDGE/WebApplication/WebAppOppgave1/WebAppOppgave1.csproj",
+        "projectUniqueName": "C:\\Users\\nimab\\Desktop\\Desktop\\OsloMet\\5.semester\\ITPE3200\\web-app-oppgave-1\\WebAppOppgave1\\WebAppOppgave1.csproj",
         "projectName": "WebAppOppgave1",
-        "projectPath": "/Volumes/StorEDGE/WebApplication/WebAppOppgave1/WebAppOppgave1.csproj",
-        "packagesPath": "/Users/alireza/.nuget/packages/",
-        "outputPath": "/Volumes/StorEDGE/WebApplication/WebAppOppgave1/obj/",
+        "projectPath": "C:\\Users\\nimab\\Desktop\\Desktop\\OsloMet\\5.semester\\ITPE3200\\web-app-oppgave-1\\WebAppOppgave1\\WebAppOppgave1.csproj",
+        "packagesPath": "C:\\Users\\nimab\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nimab\\Desktop\\Desktop\\OsloMet\\5.semester\\ITPE3200\\web-app-oppgave-1\\WebAppOppgave1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/alireza/.config/NuGet/NuGet.Config"
+          "C:\\Users\\nimab\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,6 +39,20 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -55,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

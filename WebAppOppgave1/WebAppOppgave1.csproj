@@ -7,7 +7,10 @@
     <ItemGroup>
       <None Remove="Contollers\" />
     </ItemGroup>
+
     <ItemGroup>
-      <Folder Include="Contollers\" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.10" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.10" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.10" />
     </ItemGroup>
 </Project>
