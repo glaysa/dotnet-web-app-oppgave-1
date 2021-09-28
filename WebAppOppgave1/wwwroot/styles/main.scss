@@ -152,11 +152,11 @@ a.a-link-block:hover div {
   box-shadow: none !important;
 }
 
-.bi-x {
+.bi-x.close-icon {
   display: none;
 }
 
-.on .bi-x {
+.on .bi-x.close-icon {
   display: block;
 }
 
@@ -333,8 +333,12 @@ $card-height: 200px;
   &:hover {
     cursor: pointer !important;
   }
-  
-  .maaltid-info.on {
+
+  .maaltid-info:hover {
+    background: whitesmoke;
+  }
+
+    .maaltid-info.on {
     background: $theme-color-secondary;
   }
 }

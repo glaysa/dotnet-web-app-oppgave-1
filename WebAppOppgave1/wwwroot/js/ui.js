@@ -81,7 +81,6 @@ function fjernMerke(ikon_id){
 }
 
 // Manipulerer css når maaltid sjekkboks verdier er endret
-
 function sjekkValgtMaaltid(maaltid){
     $(maaltid +"-row").on('click', function(){
         
@@ -92,7 +91,7 @@ function sjekkValgtMaaltid(maaltid){
         if($(maaltid).is(':checked')) {
             $(maaltid + "-ikon").removeClass('d-none');
             $(maaltid + '-info').addClass('on');
-            maaltidOnHover(maaltid);
+            maaltidCheckedOnHover(maaltid);
         } else {
             $(maaltid + "-ikon").addClass('d-none');
             $(maaltid + '-info').removeClass('on');
@@ -100,18 +99,18 @@ function sjekkValgtMaaltid(maaltid){
     });
 }
 
-function maaltidOnHover(maaltid){
-    // on hover gjelder kun store enheter
+// maaltid on hover gjelder kun store enheter
+function maaltidCheckedOnHover(maaltid){
     if(window.screen.width > 991){
         // viser rød dash ikon
         $(maaltid + "-row").hover(
             function (){
                 $(maaltid + "-ikon i").removeClass('bi-check');
-                $(maaltid + "-ikon i").addClass('bi-dash text-danger');
+                $(maaltid + "-ikon i").addClass('bi-x text-danger');
                 $(maaltid + "-ikon").css('background-color','#ffebeb');
             },
             function () {
-                $(maaltid + "-ikon i").removeClass('bi-dash text-danger');
+                $(maaltid + "-ikon i").removeClass('bi-x text-danger');
                 $(maaltid + "-ikon i").addClass('bi-check');
                 $(maaltid + "-ikon").css('background-color','#ebffed');
             }

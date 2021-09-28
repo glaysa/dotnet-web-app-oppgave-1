@@ -119,11 +119,11 @@ a.a-link-block:hover div {
   box-shadow: none !important;
 }
 
-.bi-x {
+.bi-x.close-icon {
   display: none;
 }
 
-.on .bi-x {
+.on .bi-x.close-icon {
   display: block;
 }
 
@@ -215,6 +215,9 @@ a.a-link-block:hover div {
 
 .maaltid-row:hover {
   cursor: pointer !important;
+}
+.maaltid-row .maaltid-info:hover {
+  background: whitesmoke;
 }
 .maaltid-row .maaltid-info.on {
   background: rgba(0, 129, 167, 0.1);
