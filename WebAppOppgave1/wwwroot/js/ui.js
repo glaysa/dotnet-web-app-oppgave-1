@@ -9,9 +9,10 @@
 // Ready funksjon
 $(document).ready(function () {
     visKalender();
-    deaktiverInputs(fraStedInput, tilStedInput, fraDatoInput, tilDatoInput);
-    sjekkValgtMaaltid('#frokost');
-    sjekkValgtMaaltid('#lunsj');
+    deaktiverInputs(reiseTypeInput ,fraDatoInput, tilDatoInput);
+    merkerValgtMaaltid('#frokost');
+    merkerValgtMaaltid('#lunsj');
+    merkerValgtRute();
 });
 
 // Noen input felter må først velges før de andre
@@ -80,8 +81,26 @@ function fjernMerke(ikon_id){
     $(ikon_id + '-ikon').css('color','lightgrey');
 }
 
+// Manipulerer css når rute radioboks verdier er endret
+function merkerValgtRute() {
+    let valgtRute = "";
+    $("input[name=ruter]").on('change', function () {
+        // Viser sjekk ikon
+        valgtRute = $("input[name=ruter]:checked").val();
+        $('#' + valgtRute + "-ikon").removeClass('d-none');
+        $('#' + valgtRute + "-col").css('background-color','#ebf9ff');
+        
+        // Fjerner sjekk ikon
+        let ikkeValgtRuter = $('input[type="radio"]:not(:checked)');
+        ikkeValgtRuter.each((index, value) => {
+            $('#' + value.id + "-ikon").addClass('d-none');
+            $('#' + value.id + "-col").css('background-color', 'transparent');
+        });
+    });
+}
+
 // Manipulerer css når maaltid sjekkboks verdier er endret
-function sjekkValgtMaaltid(maaltid){
+function merkerValgtMaaltid(maaltid){
     $(maaltid +"-row").on('click', function(){
         
         // virker som en checked/unchecked toggle

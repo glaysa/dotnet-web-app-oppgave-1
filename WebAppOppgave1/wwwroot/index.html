@@ -12,6 +12,10 @@
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <!-- bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- flag icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.1/css/flag-icon.min.css" 
+          integrity="sha512-RYqXH3Tn/sC/iuKrQ0idMEQFSU7HEuPpQDhd/kzsIkE/1WxG43RN2RGp9bx2sX/Gdh1G0Gn3zActuCHqE4t6rg==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Jquery Ui css -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- my styles -->
@@ -71,12 +75,64 @@
 
     <!-- Trinn 1 -->
     <div id="trinn-1" class="container my-5">
-        <form class="form" autocomplete="off">
-            <div class="row g-2">
-                <div class="col-12 mb-5">
-                    <h1 class="fw-light text-center text-theme">Hvor vil du reise?</h1>
+        <div class="row g-3 mb-3">
+            <div class="col-12 mb-5">
+                <h1 class="fw-light text-center text-theme">Hvor vil du reise?</h1>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 p-2" id="no-de-col">
+                <div class="rb-group">
+                    <div class="p-3 d-flex justify-content-center">
+                        <p class="m-0"><span class="flag-icon flag-icon-no me-3"></span>Oslo</p>
+                        <span class="bi bi-arrow-right mx-3"></span>
+                        <p class="m-0"><span class="flag-icon flag-icon-de me-3"></span>Keil</p>
+                    </div>
+                    <input type="radio" name="ruter" id="no-de" class="d-none" value="no-de" onchange="validerRute()">
+                    <label for="no-de"></label>
+                    <div class="rb-icon d-none bg-theme" id="no-de-ikon">
+                        <i class="bi bi-check"></i>
+                    </div>
                 </div>
+            </div>
 
+            <div class="col-lg-4 col-md-6 p-2" id="no-se-col">
+                <div class="rb-group">
+                    <div class="p-3 d-flex justify-content-center">
+                        <p class="m-0"><span class="flag-icon flag-icon-no me-3"></span>Oslo</p>
+                        <span class="bi bi-arrow-right mx-3"></span>
+                        <p class="m-0"><span class="flag-icon flag-icon-se me-3"></span>Strømstad</p>
+                    </div>
+                    <input type="radio" name="ruter" id="no-se" class="d-none" value="no-se" onchange="validerRute()">
+                    <label for="no-se"></label>
+                    <div class="rb-icon d-none" id="no-se-ikon">
+                        <i class="bi bi-check"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 p-2" id="no-dk-col">
+                <div class="rb-group">
+                    <div class="p-3 d-flex justify-content-center">
+                        <p class="m-0"><span class="flag-icon flag-icon-no me-3"></span>Larvik</p>
+                        <span class="bi bi-arrow-right mx-3"></span>
+                        <p class="m-0"><span class="flag-icon flag-icon-dk me-3"></span>Hirtshals</p>
+                    </div>
+                    <input type="radio" name="ruter" id="no-dk" class="d-none" value="no-dk" onchange="validerRute()">
+                    <label for="no-dk"></label>
+                    <div class="rb-icon d-none" id="no-dk-ikon">
+                        <i class="bi bi-check"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <input type="hidden" id="rute-input-placeholder" aria-describedby="rute-feil-melding">
+                <div class="invalid-feedback d-none text-center" id="rute-feil-melding">Velg en rute.</div>
+            </div>
+        </div>
+
+        <form class="form" autocomplete="off">
+            <div class="row g-3">
                 <div class="col-lg">
                     <div class="form-floating">
                         <select class="form-select" id="reise-type" aria-describedby="reise-type-feil-melding"
@@ -87,34 +143,6 @@
                         </select>
                         <label for="reise-type">Reise Type</label>
                         <div class="invalid-feedback d-none" id="reise-type-feil-melding">Velg reise type.</div>
-                    </div>
-                </div>
-
-                <div class="col-lg col-md-6">
-                    <div class="form-floating">
-                        <select class="form-select" id="fra-sted" aria-describedby="fra-sted-feil-melding"
-                                onchange="validerFraSted()">
-                            <option value="" selected>Velg rute...</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                        <label for="fra-sted">Fra</label>
-                        <div class="invalid-feedback d-none" id="fra-sted-feil-melding">Hvor reiser du fra?</div>
-                    </div>
-                </div>
-
-                <div class="col-lg col-md-6">
-                    <div class="form-floating">
-                        <select class="form-select" id="til-sted" aria-describedby="til-sted-feil-melding"
-                                onchange="validerTilSted()">
-                            <option value="" selected>Velg rute...</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                        <label for="til-sted">Til</label>
-                        <div class="invalid-feedback d-none" id="til-sted-feil-melding">Hvor reiser du til?</div>
                     </div>
                 </div>
 
@@ -137,6 +165,7 @@
                 </div>
             </div>
         </form>
+        
         <div class="row mt-5 justify-content-center">
             <div class="col-lg-3 col-md">
                 <button class="btn btn-theme w-100" onclick="lagreRute()">Søk og Bestill</button>

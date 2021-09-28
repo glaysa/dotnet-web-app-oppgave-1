@@ -10,18 +10,37 @@
 // Input variabler
 
 let reiseTypeInput = $("#reise-type");
-let fraStedInput = $("#fra-sted");
-let tilStedInput = $("#til-sted");
 let fraDatoInput = $("#fra-dato");
 let tilDatoInput = $("#til-dato");
 
 // Feil meldinger
 
+let ruteInputFeilMelding = $("#rute-feil-melding");
 let reiseTypeFeilMelding = $("#reise-type-feil-melding");
-let fraStedFeilMelding = $("#fra-sted-feil-melding");
-let tilStedFeilMelding = $("#til-sted-feil-melding");
 let fraDatoFeilMelding = $("#fra-dato-feil-melding");
 let tilDatoFeilMelding = $("#til-dato-feil-melding");
+
+// Data verdier
+
+let valgtRute = "";
+let valgtReiseType = "";
+let valgtAvreiseDato = "";
+let valgtReturDato = "";
+
+function validerRute(){
+    valgtRute = $("input[name=ruter]:checked").val()
+    
+    if (valgtRute === undefined) {
+        $("#rute-input-placeholder").addClass('is-invalid');
+        ruteInputFeilMelding.removeClass('d-none');
+        return false;
+    } else {
+        $("#rute-input-placeholder").removeClass('is-invalid');
+        ruteInputFeilMelding.addClass('d-none');
+        aktiverInput(reiseTypeInput);
+        return true;
+    }
+}
 
 function validerReiseType(){
     let valgt = reiseTypeInput.val();
@@ -35,44 +54,16 @@ function validerReiseType(){
         reiseTypeInput.removeClass('is-invalid');
         reiseTypeFeilMelding.addClass('d-none');
         $("#til-dato-col").addClass('d-none');
-        aktiverInput(fraStedInput);
+        aktiverInput(fraDatoInput);
         // Skjul retur elementer
     } else {
         reiseTypeInput.removeClass('is-invalid');
         reiseTypeFeilMelding.addClass('d-none');
         $("#til-dato-col").removeClass('d-none');
-        aktiverInput(fraStedInput);
+        aktiverInput(fraDatoInput);
         // Vis retur elementer
     }
     return ok;
-}
-
-function validerFraSted(){
-    if (fraStedInput.val() === "") {
-        fraStedInput.addClass('is-invalid');
-        fraStedFeilMelding.removeClass('d-none');
-        return false;
-    } else {
-        fraStedInput.removeClass('is-invalid');
-        fraStedFeilMelding.addClass('d-none');
-        aktiverInput(tilStedInput);
-        // Fjern fraStedInput verdi fra tilStedInput options
-        return true;
-    }
-}
-
-function validerTilSted(){
-    if (tilStedInput.val() === "") {
-        tilStedInput.addClass('is-invalid');
-        tilStedFeilMelding.removeClass('d-none');
-        return false;
-    } else {
-        tilStedInput.removeClass('is-invalid');
-        tilStedFeilMelding.addClass('d-none');
-        aktiverInput(fraDatoInput);
-        // Fjern tilStedInput verdi fra fraStedInput options
-        return true;
-    }
 }
 
 function validerFraDato(){
@@ -134,7 +125,7 @@ function fjernDatoFeilMelding(datoInput, feilMeldingBox){
 // Validerer trinn
 
 function validerTrinn1(){
-    let ok = validerReiseType() && validerFraSted() && validerTilSted() && validerFraDato() && validerTilDato();
+    let ok = validerRute() && validerReiseType() && validerFraDato() && validerTilDato();
     if(ok) {
         merkerFerdig('#trinn-1');
         skjulOgVisTrinn('#trinn-1','#neste-trinn','','');

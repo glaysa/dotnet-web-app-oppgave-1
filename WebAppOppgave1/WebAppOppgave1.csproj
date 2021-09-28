@@ -5,7 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\assets" />
+      <Folder Include="wwwroot\assets\ruter" />
     </ItemGroup>
 
 </Project>

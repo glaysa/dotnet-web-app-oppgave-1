@@ -328,7 +328,8 @@ $card-height: 200px;
 
 
 
-// måltid section
+// måltid og rute section
+
 .maaltid-row {
   &:hover {
     cursor: pointer !important;
@@ -343,7 +344,34 @@ $card-height: 200px;
   }
 }
 
-.cb-group {
+#no-de-col .rb-group label{
+  display: block;
+  height: 200px;
+  background-image: url("../assets/ruter/kiel.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#no-se-col .rb-group label{
+  display: block;
+  height: 200px;
+  background-image: url("../assets/ruter/stromstad.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#no-dk-col .rb-group label{
+  display: block;
+  height: 200px;
+  background-image: url("../assets/ruter/hirtshals.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cb-group, .rb-group {
   position: relative;
   
   .cb-icon {
@@ -355,6 +383,18 @@ $card-height: 200px;
     border-radius: 50%;
     color: darkgreen;
     background: #ebffed;
+    padding: 0 5px;
+  }
+
+  .rb-icon {
+    text-align: center;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    font-size: 20px;
+    border-radius: 50%;
+    color: white;
+    background: $theme-color;
     padding: 0 5px;
   }
 }
