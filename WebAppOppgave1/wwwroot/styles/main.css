@@ -103,6 +103,10 @@ a.a-link-block:hover div {
   color: #0081a7;
 }
 
+.text-danger {
+  color: darkred !important;
+}
+
 #btn-toggle {
   border: none !important;
 }
@@ -226,7 +230,8 @@ a.a-link-block:hover div {
   right: 15px;
   font-size: 25px;
   border-radius: 50%;
-  background: yellowgreen;
+  color: darkgreen;
+  background: #ebffed;
   padding: 0 5px;
 }
 

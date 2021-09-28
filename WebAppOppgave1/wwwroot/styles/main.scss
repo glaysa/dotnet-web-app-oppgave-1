@@ -119,6 +119,10 @@ a.a-link-block:hover div {
   color: $theme-color;
 }
 
+.text-danger {
+  color: darkred !important;
+}
+
 
 
 
@@ -345,7 +349,8 @@ $card-height: 200px;
     right: 15px;
     font-size: 25px;
     border-radius: 50%;
-    background: yellowgreen;
+    color: darkgreen;
+    background: #ebffed;
     padding: 0 5px;
   }
 }

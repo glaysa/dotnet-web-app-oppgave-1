@@ -64,7 +64,8 @@ function skjulOgVisTrinn(toHide, toShow, toHideBtns, toShowBtns){
     $(toShow).removeClass('d-none');
     $(toHideBtns).addClass('d-none');
     $(toShowBtns).removeClass('d-none');
-    skrollTilTopp();
+    // skroller til 'top': bedre ux for små enheter
+    location.href = "#bestill";
 }
 
 function merkerFerdig(ikon_id){
@@ -79,26 +80,41 @@ function fjernMerke(ikon_id){
     $(ikon_id + '-ikon').css('color','lightgrey');
 }
 
-// På småe enheter skal det alltid skrolles til 'toppen' (div#bestill) for bedre erfaring
-function skrollTilTopp(){
-    location.href = "#bestill";
-}
-
 // Manipulerer css når maaltid sjekkboks verdier er endret
+
 function sjekkValgtMaaltid(maaltid){
     $(maaltid +"-row").on('click', function(){
         
-        // virker som en toggle
+        // virker som en checked/unchecked toggle
         $(maaltid).attr("checked", !$(maaltid).attr("checked"));
         
-        // endrer backgrunnsfarge når maaltiden er valgt
-        $(maaltid + '-info').toggleClass('on');
-        
-        // viser sjekk ikonen
+        // if checked: viser sjekk ikonen
         if($(maaltid).is(':checked')) {
             $(maaltid + "-ikon").removeClass('d-none');
+            $(maaltid + '-info').addClass('on');
+            maaltidOnHover(maaltid);
         } else {
             $(maaltid + "-ikon").addClass('d-none');
+            $(maaltid + '-info').removeClass('on');
         }
     });
+}
+
+function maaltidOnHover(maaltid){
+    // on hover gjelder kun store enheter
+    if(window.screen.width > 991){
+        // viser rød dash ikon
+        $(maaltid + "-row").hover(
+            function (){
+                $(maaltid + "-ikon i").removeClass('bi-check');
+                $(maaltid + "-ikon i").addClass('bi-dash text-danger');
+                $(maaltid + "-ikon").css('background-color','#ffebeb');
+            },
+            function () {
+                $(maaltid + "-ikon i").removeClass('bi-dash text-danger');
+                $(maaltid + "-ikon i").addClass('bi-check');
+                $(maaltid + "-ikon").css('background-color','#ebffed');
+            }
+        )
+    }
 }
