@@ -7,8 +7,9 @@ namespace WebAppOppgave1.Models
 {
     public class Lugar
     {
-        public int LugarNummer { set; get; }
-        public string Type { set; get; }
-        public double Pris { set; get; }
+        public int LugarNummer { get; set; }
+        public string Type { get; set; }
+        public double Pris { get; set; }
+        public virtual Bestilling Bestiling { get; set; }
     }
 }

@@ -8,6 +8,5 @@ namespace WebAppOppgave1.Contollers
 {
     public class KundeController : ControllerBase
     {
-    {
     }
 }

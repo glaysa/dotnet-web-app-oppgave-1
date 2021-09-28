@@ -11,5 +11,6 @@ namespace WebAppOppgave1.Models
         public string Fornavn { set; get; }
         public string Etternavn { set; get; }
         public DateTime Fodselsdato { set; get; }
+        public virtual Billett Billett { get; set; }
     }
 }
