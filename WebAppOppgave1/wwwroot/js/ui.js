@@ -8,7 +8,7 @@
 
 // Ready funksjon
 $(document).ready(function () {
-    visKalender();
+    enableRuteDatePicker();
     deaktiverInputs(reiseTypeInput ,fraDatoInput, tilDatoInput);
     merkerValgtMaaltid('#frokost');
     merkerValgtMaaltid('#lunsj');
@@ -32,7 +32,7 @@ $("#btn-toggle").click(function () {
 });
 
 // Viser kalender når dato input er klikket
-function visKalender(){
+function enableRuteDatePicker(){
     $('#fra-dato, #til-dato').datepicker({
         beforeShow: customRange,
         dateFormat: "D dd. M yy",
@@ -40,6 +40,19 @@ function visKalender(){
         dayNamesMin: ['Ma','Ti','On','To','Fr','Lø','Sø'],
         monthNamesShort: ['Jan','Feb','Mar','Apr','Mai','Jun', 'Jul','Aug','Sept','Okt','Nov','Des'],
         monthNames: ['Januar','Februar','Mars','April','Mai','Juni', 'Juli','August','September','Oktober','November','Desember'],
+    });
+}
+
+function enableBirthDatePicker(){
+    $('.fodselsdato').datepicker({
+        changeYear: true,
+        changeMonth: true,
+        dateFormat: "D dd. M yy",
+        dayNamesShort: ['Man','Tir','Ons','Tor','Fre','Lør','Søn'],
+        dayNamesMin: ['Ma','Ti','On','To','Fr','Lø','Sø'],
+        monthNamesShort: ['Jan','Feb','Mar','Apr','Mai','Jun', 'Jul','Aug','Sept','Okt','Nov','Des'],
+        monthNames: ['Januar','Februar','Mars','April','Mai','Juni', 'Juli','August','September','Oktober','November','Desember'],
+        yearRange: '1940:'
     });
 }
 
@@ -139,4 +152,35 @@ function maaltidCheckedOnHover(maaltid){
             }
         )
     }
+}
+
+// template renders
+
+// form hvor alle passasjerer må gi navnet og fødselsdato
+
+let passasjerFormTemplate = document.getElementById('template-passasjer-form');
+let passasjerForm = $('#passasjerer-form');
+
+function renderTemplateAntallPassasjerer(antallVoksen, antallBarn){
+    let antallPassasjerer = antallVoksen + antallBarn;
+    passasjerForm.empty();
+    
+    for(let i = 0; i < antallPassasjerer; i++) {
+        let clone = passasjerFormTemplate.content.cloneNode(true);
+        
+        let passasjerType = clone.querySelector('.passasjer-type');
+        let passasjerFornavnInput = clone.querySelector('input[name=fornavn]');
+        let passasjerEtterNavnInput = clone.querySelector('input[name=etternavn]');
+        let passasjerFodselsDatoInput = clone.querySelector('input[name=fodsels-dato]');
+        let passasjerInputFeilMelding = clone.querySelector('.passasjer-feil-melding');
+        
+        passasjerType.innerText = 'Person ' + (i + 1);
+        passasjerFornavnInput.setAttribute('id','fornavn-' + i);
+        passasjerEtterNavnInput.setAttribute('id','etternavn-' + i);
+        passasjerFodselsDatoInput.setAttribute('id', 'fodselsdato-' + i);
+        passasjerInputFeilMelding.setAttribute('id', 'person-' + i + '-feil-melding');
+
+        passasjerForm.append(clone);
+    }
+    enableBirthDatePicker();
 }

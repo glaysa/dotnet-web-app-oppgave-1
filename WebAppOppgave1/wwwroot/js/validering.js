@@ -178,10 +178,8 @@ function validerTrinn2() {
     antallDyr = Number($(".antall-dyr").text());
     antallSykler = Number($(".antall-sykkel").text());
     
-    console.log('voksen:', antallVoksen);
-    console.log('barn:', antallBarn);
-    console.log('kjæledyr:', antallDyr);
-    console.log('sykler:', antallSykler);
+    // antall passasjer form er avhengig av antall passasjerer
+    renderTemplateAntallPassasjerer(antallVoksen, antallBarn);
     
     merkerFerdig('#neste-trinn');
     skjulOgVisTrinn('#trinn-2','#trinn-3','#trinn-2-btns','#trinn-3-btns');
