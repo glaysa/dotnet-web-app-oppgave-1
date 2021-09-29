@@ -20,13 +20,6 @@ let reiseTypeFeilMelding = $("#reise-type-feil-melding");
 let fraDatoFeilMelding = $("#fra-dato-feil-melding");
 let tilDatoFeilMelding = $("#til-dato-feil-melding");
 
-// Data verdier
-
-let valgtRute = []; // array av dict med lengde 2: inneholder ruteFra og ruteTil keys
-let valgtReiseType = ""; // string
-let valgtAvreiseDato = ""; // string
-let valgtReturDato = ""; // string
-
 function validerRute(){
     // Tømmer arrayet, unngår duplikater i listen fordi funksjonen er kalt på onchange event
     valgtRute.length = 0;

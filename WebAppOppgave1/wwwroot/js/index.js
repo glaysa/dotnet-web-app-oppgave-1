@@ -5,6 +5,13 @@
 /////                                                          /////
 ////////////////////////////////////////////////////////////////////
 
+// Data verdier: definert i validering.js
+
+let valgtRute = []; // array av dict med lengde 2: inneholder ruteFra og ruteTil keys
+let valgtReiseType = ""; // string
+let valgtAvreiseDato = ""; // string
+let valgtReturDato = ""; // string
+
 function lagreRute(){
     validerTrinn1();
 }
