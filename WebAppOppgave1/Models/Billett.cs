@@ -18,5 +18,6 @@ namespace WebAppOppgave1.Models
         public int AntallSykler { get; set; }
         public int Kjæledyr { get; set; }
         public virtual Passasjer Passasjer { get; set; }
+        public virtual Bestilling Bestilling { get; set; }
     }
 }

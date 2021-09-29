@@ -12,5 +12,6 @@ namespace WebAppOppgave1.Models
         public int MealsNummer { get; set; }
         public string Maaltid { get; set; }
         public double Pris { get; set; }
+        public virtual Bestilling Bestilling { get; set; }
     }
 }

@@ -13,5 +13,6 @@ namespace WebAppOppgave1.Models
         public int LugarNummer { get; set; }
         public string Type { get; set; }
         public double Pris { get; set; }
+        public virtual Bestilling Bestilling { get; set; }
     }
 }
