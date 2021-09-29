@@ -22,19 +22,27 @@ let tilDatoFeilMelding = $("#til-dato-feil-melding");
 
 // Data verdier
 
-let valgtRute = ""; // string
+let valgtRute = []; // array av dict med lengde 2: inneholder ruteFra og ruteTil keys
 let valgtReiseType = ""; // string
 let valgtAvreiseDato = ""; // string
 let valgtReturDato = ""; // string
 
 function validerRute(){
-    valgtRute = $("input[name=ruter]:checked").val()
+    // Tømmer arrayet, unngår duplikater i listen fordi funksjonen er kalt på onchange event
+    valgtRute.length = 0;
+    // Sjekket rute
+    let checkedRute = $("input[name=ruter]:checked").val()
     
-    if (valgtRute === undefined) {
+    if (checkedRute === undefined || checkedRute === "") {
         $("#rute-input-placeholder").addClass('is-invalid');
         ruteInputFeilMelding.removeClass('d-none');
         return false;
     } else {
+        // Slik at navn til steder kan aksesseres
+        let ruteFra = $('#' + checkedRute + '-col .rute-fra').text();
+        let ruteTil = $('#' + checkedRute + '-col .rute-til').text();
+        valgtRute.push({'ruteFra': ruteFra});
+        valgtRute.push({'ruteTil': ruteTil});
         $("#rute-input-placeholder").removeClass('is-invalid');
         ruteInputFeilMelding.addClass('d-none');
         aktiverInput(reiseTypeInput);
