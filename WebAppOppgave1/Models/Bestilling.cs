@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,11 +8,30 @@ namespace WebAppOppgave1.Models
 {
     public class Bestilling
     {
-        public int BestillingNummer { set; get; }
-        public virtual Kunde Kunde { set; get; }
-        public virtual List<Billett> Billetter { set; get; }
-        public virtual List<Lugar> LugarNummer { set; get; }
-        public virtual List<Meal> Meals { set; get; }
-        public double TotalPris { set; get; }
+        [Key]
+        public int BestillingNummer { get; set; }
+        public virtual Kunde Kunde { get; set; }
+        public virtual List<Billett> Billetter { get; set; }
+        public virtual List<Lugar> Lugars { get; set; }
+        public virtual List<Meal> Meals { get; set; }
+        public double TotalPris { get; set;  }
+
+        public void SetTotalPris()
+        {
+            double total = 0;
+            foreach (Billett b in Billetter)
+            {
+                total += b.Pris;
+            }
+            foreach (Lugar l in Lugars)
+            {
+                total += l.Pris;
+            }
+            foreach (Meal m in Meals)
+            {
+                total += m.Pris;
+            }
+            this.TotalPris = total; 
+        }
     }
 }

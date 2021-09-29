@@ -11,7 +11,7 @@ namespace WebAppOppgave1.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string postnr { get; set; }
+        public string Postnr { get; set; }
         public string Poststed { get; set; }
     }
 }
