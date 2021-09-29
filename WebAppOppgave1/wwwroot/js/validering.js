@@ -128,6 +128,40 @@ function fjernDatoFeilMelding(datoInput, feilMeldingBox){
     feilMeldingBox.addClass('d-none');
 }
 
+// Validerer antall passasjerer
+
+function pluss(type, max) {
+    let plussBtn = $("#" + type + " .pluss");
+    let minusBtn = $("#" + type + " .minus");
+    let label = $(".antall-" + type);
+    let value = Number(label.text());
+    
+    if(value < max) {
+        value++;
+        label.text(value);
+        plussBtn.removeClass('disabled');
+        minusBtn.removeClass('disabled');
+    } else {
+        plussBtn.addClass('disabled');
+    }
+}
+
+function minus(type, min) {
+    let plussBtn = $("#" + type + " .pluss");
+    let minusBtn = $("#" + type + " .minus");
+    let label = $(".antall-" + type);
+    let value = Number(label.text());
+    
+    if(value > min) {
+        value--;
+        label.text(value);
+        plussBtn.removeClass('disabled');
+        minusBtn.removeClass('disabled');
+    } else {
+        minusBtn.addClass('disabled');
+    }
+}
+
 // Validerer trinn
 
 function validerTrinn1(){
@@ -139,6 +173,12 @@ function validerTrinn1(){
 }
 
 function validerTrinn2() {
+    antallVoksen = Number($(".antall-voksen").text());
+    antallBarn = Number($(".antall-barn").text());
+    
+    console.log('voksen:', antallVoksen);
+    console.log('barn:', antallBarn);
+    
     merkerFerdig('#neste-trinn');
     skjulOgVisTrinn('#trinn-2','#trinn-3','#trinn-2-btns','#trinn-3-btns');
 }

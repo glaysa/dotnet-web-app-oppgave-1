@@ -294,20 +294,20 @@
                     </div>
                     <div class="row g-3">
                         <div class="col-12">
-                            <div class="d-flex align-items-center border-bottom pb-2">
+                            <div class="d-flex align-items-center border-bottom pb-2" id="voksen">
                                 <p class="m-0 fs-5 m-lg-0 flex-fill">Voksne</p>
-                                <i class="bi bi-dash btn btn-icon"></i>
-                                <span class="mx-3">0</span>
-                                <i class="bi bi-plus btn btn-icon"></i>
+                                <i class="bi bi-dash btn btn-icon minus" onclick="minus('voksen', 1)"></i>
+                                <span class="mx-3 antall-voksen">1</span>
+                                <i class="bi bi-plus btn btn-icon pluss" onclick="pluss('voksen', 6)"></i>
                             </div>
                         </div>
 
                         <div class="col-12">
-                            <div class="d-flex align-items-center border-bottom pb-2">
+                            <div class="d-flex align-items-center border-bottom pb-2" id="barn">
                                 <p class="m-0 fs-5 m-lg-0 flex-fill">Barn</p>
-                                <i class="bi bi-dash btn btn-icon"></i>
-                                <span class="mx-3">0</span>
-                                <i class="bi bi-plus btn btn-icon"></i>
+                                <i class="bi bi-dash btn btn-icon minus" onclick="minus('barn', 0)"></i>
+                                <span class="mx-3 antall-barn">0</span>
+                                <i class="bi bi-plus btn btn-icon pluss" onclick="pluss('barn', 6)"></i>
                             </div>
                         </div>
                     </div>

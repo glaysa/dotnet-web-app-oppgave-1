@@ -11,6 +11,8 @@ let valgtRute = []; // array av dict med lengde 2: inneholder ruteFra og ruteTil
 let valgtReiseType = ""; // string
 let valgtAvreiseDato = ""; // string
 let valgtReturDato = ""; // string
+let antallVoksen = 1; // minst 1 voksen må være tilstedet
+let antallBarn = 0;
 
 function lagreRute(){
     validerTrinn1();
