@@ -22,10 +22,10 @@ let tilDatoFeilMelding = $("#til-dato-feil-melding");
 
 // Data verdier
 
-let valgtRute = "";
-let valgtReiseType = "";
-let valgtAvreiseDato = "";
-let valgtReturDato = "";
+let valgtRute = ""; // string
+let valgtReiseType = ""; // string
+let valgtAvreiseDato = ""; // string
+let valgtReturDato = ""; // string
 
 function validerRute(){
     valgtRute = $("input[name=ruter]:checked").val()
@@ -43,14 +43,14 @@ function validerRute(){
 }
 
 function validerReiseType(){
-    let valgt = reiseTypeInput.val();
+    valgtReiseType = reiseTypeInput.val();
     let ok = true;
 
-    if (valgt === "") {
+    if (valgtReiseType === "") {
         reiseTypeInput.addClass('is-invalid');
         reiseTypeFeilMelding.removeClass('d-none');
         ok = false;
-    } else if(valgt === "en-vei"){
+    } else if(valgtReiseType === "en-vei"){
         reiseTypeInput.removeClass('is-invalid');
         reiseTypeFeilMelding.addClass('d-none');
         $("#til-dato-col").addClass('d-none');
@@ -67,15 +67,17 @@ function validerReiseType(){
 }
 
 function validerFraDato(){
-    let idag = moment(new Date()).format("DD. MMM YYYY");
+    let idag = moment(new Date());
+    let fra = moment(new Date(fraDatoInput.val()));
     let ok = false;
-
+    
     if(!datoErTom(fraDatoInput, fraDatoFeilMelding, "Velg en avreise dato.")) {
-        if(fraDatoInput.val() === idag){
+        if(fra.isSameOrBefore(idag)){
             visDatoFeilMelding(fraDatoInput, fraDatoFeilMelding, "Ingen billetter finnes for denne dato.");
-        } else if(fraDatoInput.val() < idag){
+        } else if(fra.isBefore(idag)){
             visDatoFeilMelding(fraDatoInput, fraDatoFeilMelding, "Ugyldig avreise dato.");
         } else {
+            valgtAvreiseDato = fra.format('DD/MM/YYYY');
             fjernDatoFeilMelding(fraDatoInput, fraDatoFeilMelding);
             aktiverInput(tilDatoInput);
             ok = true;
@@ -86,14 +88,17 @@ function validerFraDato(){
 
 function validerTilDato(){
     if(reiseTypeInput.val() === "en-vei") return true;
+    let fra = moment(new Date(fraDatoInput.val()));
+    let til = moment(new Date(tilDatoInput.val()));
     let ok = false;
 
     if(!datoErTom(tilDatoInput, tilDatoFeilMelding, "Velg en retur dato.")) {
-        if(tilDatoInput.val() === fraDatoInput.val()) {
+        if(til.isSame(fra)) {
             visDatoFeilMelding(tilDatoInput, tilDatoFeilMelding, "Avreise og retur dato kan ikke være samme dag.");
-        } else if(tilDatoInput.val() < fraDatoInput.val()){
+        } else if(til.isBefore(fra)){
             visDatoFeilMelding(tilDatoInput, tilDatoFeilMelding, "Ugyldig retur dato.");
         } else {
+            valgtReturDato = til.format('DD/MM/YYYY'); 
             fjernDatoFeilMelding(tilDatoInput, tilDatoFeilMelding);
             ok = true;
         }

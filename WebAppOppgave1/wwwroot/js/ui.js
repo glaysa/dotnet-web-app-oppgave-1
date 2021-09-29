@@ -35,7 +35,11 @@ $("#btn-toggle").click(function () {
 function visKalender(){
     $('#fra-dato, #til-dato').datepicker({
         beforeShow: customRange,
-        dateFormat: "dd. M yy",
+        dateFormat: "D dd. M yy",
+        dayNamesShort: ['Man','Tir','Ons','Tor','Fre','Lør','Søn'],
+        dayNamesMin: ['Ma','Ti','On','To','Fr','Lø','Sø'],
+        monthNamesShort: ['Jan','Feb','Mar','Apr','Mai','Jun', 'Jul','Aug','Sept','Okt','Nov','Des'],
+        monthNames: ['Januar','Februar','Mars','April','Mai','Juni', 'Juli','August','September','Oktober','November','Desember'],
     });
 }
 
