@@ -175,9 +175,13 @@ function validerTrinn1(){
 function validerTrinn2() {
     antallVoksen = Number($(".antall-voksen").text());
     antallBarn = Number($(".antall-barn").text());
+    antallDyr = Number($(".antall-dyr").text());
+    antallSykler = Number($(".antall-sykkel").text());
     
     console.log('voksen:', antallVoksen);
     console.log('barn:', antallBarn);
+    console.log('kjæledyr:', antallDyr);
+    console.log('sykler:', antallSykler);
     
     merkerFerdig('#neste-trinn');
     skjulOgVisTrinn('#trinn-2','#trinn-3','#trinn-2-btns','#trinn-3-btns');
