@@ -7,19 +7,22 @@
 
 // Data verdier: definert i validering.js
 
-// Trinn 1: variabler
+// Trinn 1: Rute
 
 let valgtRute = []; // array av dict med lengde 2: inneholder ruteFra og ruteTil keys
 let valgtReiseType = ""; // string
 let valgtAvreiseDato = ""; // string
 let valgtReturDato = ""; // string
 
-// Trinn 2: variabler
+// Trinn 2: Antall reisefølger
 
 let antallVoksen = 1; // minst 1 voksen må være tilstedet
 let antallBarn = 0;
 let antallDyr = 0;
 let antallSykler = 0;
+
+// Trinn 5: Passasjerer
+let passasjerer = []; // array av passasjer objekter: har fornavn, etternavn og fødselsdato keys
 
 function lagreRute(){
     validerTrinn1();
@@ -49,5 +52,14 @@ function lagreKunde(){
 
 function lagreBestilling(){
     validerTrinn7()
-    alert('Bestilling lagret!');
+    
+    console.log('Rute:', valgtRute);
+    console.log('Reisetype:', valgtReiseType);
+    console.log('Avreise dato:', valgtAvreiseDato);
+    console.log('Retur dato:', valgtReturDato);
+    console.log('voksen:', antallVoksen);
+    console.log('Barn:', antallBarn);
+    console.log('Kjæledyr:', antallDyr);
+    console.log('Sykkel:', antallSykler);
+    console.log('Passasjerer:', passasjerer);
 }

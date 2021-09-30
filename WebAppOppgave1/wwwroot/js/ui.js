@@ -8,6 +8,7 @@
 
 // Ready funksjon
 $(document).ready(function () {
+    $.datepicker.setDefaults($.datepicker.regional['no']); // endrer dato språk
     enableRuteDatePicker();
     deaktiverInputs(reiseTypeInput ,fraDatoInput, tilDatoInput);
     merkerValgtMaaltid('#frokost');
@@ -36,10 +37,6 @@ function enableRuteDatePicker(){
     $('#fra-dato, #til-dato').datepicker({
         beforeShow: customRange,
         dateFormat: "D dd. M yy",
-        dayNamesShort: ['Man','Tir','Ons','Tor','Fre','Lør','Søn'],
-        dayNamesMin: ['Ma','Ti','On','To','Fr','Lø','Sø'],
-        monthNamesShort: ['Jan','Feb','Mar','Apr','Mai','Jun', 'Jul','Aug','Sept','Okt','Nov','Des'],
-        monthNames: ['Januar','Februar','Mars','April','Mai','Juni', 'Juli','August','September','Oktober','November','Desember'],
     });
 }
 
@@ -48,10 +45,6 @@ function enableBirthDatePicker(){
         changeYear: true,
         changeMonth: true,
         dateFormat: "D dd. M yy",
-        dayNamesShort: ['Man','Tir','Ons','Tor','Fre','Lør','Søn'],
-        dayNamesMin: ['Ma','Ti','On','To','Fr','Lø','Sø'],
-        monthNamesShort: ['Jan','Feb','Mar','Apr','Mai','Jun', 'Jul','Aug','Sept','Okt','Nov','Des'],
-        monthNames: ['Januar','Februar','Mars','April','Mai','Juni', 'Juli','August','September','Oktober','November','Desember'],
         yearRange: '1940:'
     });
 }
@@ -168,17 +161,32 @@ function renderTemplateAntallPassasjerer(antallVoksen, antallBarn){
     for(let i = 0; i < antallPassasjerer; i++) {
         let clone = passasjerFormTemplate.content.cloneNode(true);
         
-        let passasjerType = clone.querySelector('.passasjer-type');
+        // Inputs
+        let passasjerTittel = clone.querySelector('.passasjer-tittel');
         let passasjerFornavnInput = clone.querySelector('input[name=fornavn]');
         let passasjerEtterNavnInput = clone.querySelector('input[name=etternavn]');
-        let passasjerFodselsDatoInput = clone.querySelector('input[name=fodsels-dato]');
-        let passasjerInputFeilMelding = clone.querySelector('.passasjer-feil-melding');
+        let passasjerFodselsDatoInput = clone.querySelector('input[name=fodselsdato]');
         
-        passasjerType.innerText = 'Person ' + (i + 1);
+        // feil meldinger
+        let fornavnInputFeilMelding = clone.querySelector('.fornavn-feil-melding');
+        let etternavnInputFeilMelding = clone.querySelector('.etternavn-feil-melding');
+        let fodselsdatoInputFeilMelding = clone.querySelector('.fodselsdato-feil-melding');
+
+        // assign ids to input
+        passasjerTittel.innerText = 'Person ' + (i + 1);
         passasjerFornavnInput.setAttribute('id','fornavn-' + i);
         passasjerEtterNavnInput.setAttribute('id','etternavn-' + i);
         passasjerFodselsDatoInput.setAttribute('id', 'fodselsdato-' + i);
-        passasjerInputFeilMelding.setAttribute('id', 'person-' + i + '-feil-melding');
+        
+        // assign ids to feil meldinger
+        fornavnInputFeilMelding.setAttribute('id', 'fornavn-' + i + '-feil-melding');
+        etternavnInputFeilMelding.setAttribute('id', 'etternavn-' + i + '-feil-melding');
+        fodselsdatoInputFeilMelding.setAttribute('id', 'fodselsdato-' + i + '-feil-melding');
+
+        // kobler input til feil melding elementer slik at den viser på riktig input
+        passasjerFornavnInput.setAttribute('aria-describedby', 'fornavn-' + i + '-feil-melding');
+        passasjerEtterNavnInput.setAttribute('aria-describedby', 'etternavn-' + i + '-feil-melding');
+        passasjerFodselsDatoInput.setAttribute('aria-describedby', 'fodselsdato-' + i + '-feil-melding');
 
         passasjerForm.append(clone);
     }

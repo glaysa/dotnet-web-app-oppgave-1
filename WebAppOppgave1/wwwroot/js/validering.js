@@ -128,7 +128,7 @@ function fjernDatoFeilMelding(datoInput, feilMeldingBox){
     feilMeldingBox.addClass('d-none');
 }
 
-// Validerer antall passasjerer
+// Validerer antall reisefølger
 
 function pluss(type, max) {
     let plussBtn = $("#" + type + " .pluss");
@@ -162,6 +162,90 @@ function minus(type, min) {
     }
 }
 
+// Validerer passasjer inputs
+
+function validerFornavn(id){
+    let input = $('#' + id);
+    
+    if(input.val() === '' || input.val() === undefined) {
+        visPassasjerInputFeilMelding(id, 'Fornavn er tomt.');
+        return false;
+    } else {
+        skjulPassasjerInputFeilMelding(id);
+        return true;
+    }
+}
+
+function validerEtternavn(id){
+    let input = $('#' + id);
+
+    if(input.val() === '' || input.val() === undefined) {
+        visPassasjerInputFeilMelding(id, 'Etternavn er tomt.');
+        return false;
+    } else {
+        skjulPassasjerInputFeilMelding(id);
+        return true;
+    }
+}
+
+function validerFodselsDato(id){
+    let input = $('#' + id);
+
+    if(input.val() === '' || input.val() === undefined) {
+        visPassasjerInputFeilMelding(id, 'Fødselsdato er tomt.');
+        return false;
+    } else {
+        skjulPassasjerInputFeilMelding(id);
+        return true;
+    }
+}
+
+function validerPassajerForm(fornavnListe, etternavnListe, fodselsDatoListe) {
+    let valid = false;
+    for(let i = 0; i < fornavnListe.length; i++){
+        let ok = validerFornavn(fornavnListe[i].id)
+            && validerEtternavn(etternavnListe[i].id)
+            && validerFodselsDato(fodselsDatoListe[i].id);
+
+        if(ok) {
+            valid = true;
+        } else {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
+}
+
+function visPassasjerInputFeilMelding(id, melding) {
+    let input = $('#' + id);
+    let feilMelding = $('#' + id + '-feil-melding');
+    input.addClass('is-invalid');
+    feilMelding.removeClass('d-none');
+    feilMelding.text(melding);
+}
+
+function skjulPassasjerInputFeilMelding(id){
+    let input = $('#' + id);
+    let feilMelding = $('#' + id + '-feil-melding');
+    input.removeClass('is-invalid');
+    feilMelding.addClass('d-none');
+}
+
+function lagePassasjerObjekt(fornavnListe, etternavnListe, datoListe){
+    passasjerer.length = 0;
+    for(let index = 0; index < fornavnListe.length; index++) {
+        let fornavn = fornavnListe[index].value;
+        let etternavn = etternavnListe[index].value;
+        let fodselsDato = datoListe[index].value;
+        fodselsDato = moment(new Date(fodselsDato)).format('DD/MM/YYYY');
+        
+        let objekt = {'fornavn': fornavn, 'etternavn':etternavn, 'fodselsDato': fodselsDato };
+        passasjerer.push(objekt);
+    }
+    console.log(passasjerer);
+}
+
 // Validerer trinn
 
 function validerTrinn1(){
@@ -180,7 +264,6 @@ function validerTrinn2() {
     
     // antall passasjer form er avhengig av antall passasjerer
     renderTemplateAntallPassasjerer(antallVoksen, antallBarn);
-    
     merkerFerdig('#neste-trinn');
     skjulOgVisTrinn('#trinn-2','#trinn-3','#trinn-2-btns','#trinn-3-btns');
 }
@@ -196,8 +279,14 @@ function validerTrinn4() {
 }
 
 function validerTrinn5() {
-    merkerFerdig('#trinn-5');
-    skjulOgVisTrinn('#trinn-5','#trinn-6','#trinn-5-btns','#trinn-6-btns');
+    let fornavnListe = $('input[name=fornavn]');
+    let etternavnListe = $('input[name=etternavn]');
+    let fodselsDatoListe = $('input[name=fodselsdato]');
+    if(validerPassajerForm(fornavnListe, etternavnListe, fodselsDatoListe)) {
+        lagePassasjerObjekt(fornavnListe, etternavnListe, fodselsDatoListe);
+        merkerFerdig('#trinn-5');
+        skjulOgVisTrinn('#trinn-5','#trinn-6','#trinn-5-btns','#trinn-6-btns');
+    }
 }
 
 function validerTrinn6() {
