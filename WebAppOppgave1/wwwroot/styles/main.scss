@@ -389,12 +389,13 @@ $card-height: 200px;
   .rb-icon {
     text-align: center;
     position: absolute;
-    top: 7px;
-    right: 7px;
-    font-size: 20px;
+    bottom: 15px;
+    right: 15px;
+    font-size: 25px;
+    border: 2px solid $theme-color;
     border-radius: 50%;
-    color: white;
-    background: $theme-color;
+    color: $theme-color;
+    background: white;
     padding: 0 5px;
   }
 }

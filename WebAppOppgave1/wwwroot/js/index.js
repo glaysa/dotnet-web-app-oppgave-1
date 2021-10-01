@@ -9,7 +9,7 @@
 
 // Trinn 1: Rute
 
-let valgtRute = []; // array av dict med lengde 2: inneholder ruteFra og ruteTil keys
+let valgtRute = {}; // aksessere rutene med ruteFra og ruteTil keys
 let valgtReiseType = ""; // kun 2 verdier: enVei og turRetur
 let valgtAvreiseDato = ""; // string: DD/MM/YYYY
 let valgtReturDato = ""; // string: DD/MM/YYYY
@@ -59,8 +59,9 @@ function lagreKunde(){
 
 function lagreBestilling(){
     validerTrinn7()
-    
-    console.log('Rute:', valgtRute);
+
+    console.log('Rute fra:', valgtRute.ruteFra);
+    console.log('Rute til:', valgtRute.ruteTil);
     console.log('Reisetype:', valgtReiseType);
     console.log('Avreise dato:', valgtAvreiseDato);
     console.log('Retur dato:', valgtReturDato);

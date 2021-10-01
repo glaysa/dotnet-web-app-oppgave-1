@@ -32,10 +32,8 @@ function validerRute(){
         return false;
     } else {
         // Slik at navn til steder kan aksesseres
-        let ruteFra = $('#' + checkedRute + '-col .rute-fra').text();
-        let ruteTil = $('#' + checkedRute + '-col .rute-til').text();
-        valgtRute.push({'ruteFra': ruteFra});
-        valgtRute.push({'ruteTil': ruteTil});
+        valgtRute['ruteFra'] = $('#' + checkedRute + '-col .rute-fra').text();
+        valgtRute['ruteTil'] = $('#' + checkedRute + '-col .rute-til').text();
         $("#rute-input-placeholder").removeClass('is-invalid');
         ruteInputFeilMelding.addClass('d-none');
         aktiverInput(reiseTypeInput);
@@ -130,6 +128,12 @@ function fjernDatoFeilMelding(datoInput, feilMeldingBox){
     feilMeldingBox.addClass('d-none');
 }
 
+function formatterDato(id) {
+    let datoInput = $("#" + id);
+    let datoVerdi = moment(new Date(datoInput.datepicker('getDate')));
+    return  datoVerdi.format('DD/MM/YYYY');
+}
+
 // Validerer antall reisefølger
 
 function pluss(type, max) {
@@ -212,6 +216,7 @@ function validerPassajerForm(fornavnListe, etternavnListe, fodselsDatoListe) {
         if(ok) {
             valid = true;
         } else {
+            location.href = '#bestill';
             valid = false;
             break;
         }
@@ -236,16 +241,14 @@ function skjulPassasjerInputFeilMelding(id){
 
 function lagePassasjerObjekt(fornavnListe, etternavnListe, datoListe){
     passasjerer.length = 0;
-    for(let index = 0; index < fornavnListe.length; index++) {
-        let fornavn = fornavnListe[index].value;
-        let etternavn = etternavnListe[index].value;
-        let fodselsDato = datoListe[index].value;
-        fodselsDato = moment(new Date(fodselsDato)).format('DD/MM/YYYY');
+    for(let i = 0; i < fornavnListe.length; i++) {
+        let fornavn = fornavnListe[i].value;
+        let etternavn = etternavnListe[i].value;
+        let formattedDate = formatterDato(datoListe[i].id);
         
-        let objekt = {'fornavn': fornavn, 'etternavn':etternavn, 'fodselsDato': fodselsDato };
+        let objekt = {'fornavn': fornavn, 'etternavn':etternavn, 'fodselsDato': formattedDate };
         passasjerer.push(objekt);
     }
-    console.log(passasjerer);
 }
 
 // Validerer trinn
