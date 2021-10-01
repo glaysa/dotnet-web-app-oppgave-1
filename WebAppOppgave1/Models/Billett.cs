@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,17 +8,16 @@ namespace WebAppOppgave1.Models
 {
     public class Billett
     {
-        public int BillettID { set; get; }
-        public int KundeID { get; }
-        //usikker om vi lagrer idene eller hele objektet.
-        public Lugar [] Lugarer { set; get; }
-        public int [] Meals { set; get; }
-        public int [] SPA { set; get; }
-        public string Rute { set; get; }
-        public DateTime UtreiseDato { set; get; }
-        public DateTime UtreiseTid { set; get; }
-        public DateTime AnkomstDato { set; get; }
-        public DateTime AnkomstTid { set; get; }
-        public double Pris { set; get; }
+        [Key]
+        public int BillettID { get; set; }
+        public string Rute { get; set; }
+        public string Type { get; set; }
+        public DateTime Utreise { get; set; }
+        public DateTime Ankomst{ get; set; }
+        public double Pris { get; set; }
+        public int AntallSykler { get; set; }
+        public int Kjæledyr { get; set; }
+        public virtual Passasjer Passasjer { get; set; }
+        public virtual Bestilling Bestilling { get; set; }
     }
 }

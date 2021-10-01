@@ -5,7 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\assets\ruter" />
+      <None Remove="Contollers\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.10" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.10" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.10" />
+    </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,13 +8,14 @@ namespace WebAppOppgave1.Models
 {
     public class Kunde
     {
-        public int KundeID { set; get; }
-        public string Fornavn { set; get; }
-        public string Etternavn { set; get; }
-        public string Tlfnummer { set; get; }
-        public string Epost { set; get; }
-        public string Adresse { set; get; }
-        public string Postnummer { set; get; }
-        public string Poststed { set; get; }
+        [Key]
+        public int KundeID { get; set; }
+        public string Fornavn { get; set; }
+        public string Etternavn { get; set; }
+        public string Tlfnummer { get; set; }
+        public string Epost { get; set; }
+        public string Adresse { get; set; }
+        public virtual Postnummer Postnummer{ get; set; }
+        public virtual List<Bestilling> Bestillinger{ get; set; }
     }
 }
