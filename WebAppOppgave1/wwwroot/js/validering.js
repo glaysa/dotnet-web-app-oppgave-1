@@ -44,23 +44,25 @@ function validerRute(){
 }
 
 function validerReiseType(){
-    valgtReiseType = reiseTypeInput.val();
+    let reiseType = reiseTypeInput.val();
     let ok = true;
 
-    if (valgtReiseType === "") {
+    if (reiseType === "") {
         reiseTypeInput.addClass('is-invalid');
         reiseTypeFeilMelding.removeClass('d-none');
         ok = false;
-    } else if(valgtReiseType === "en-vei"){
+    } else if(reiseType === "en-vei"){
         reiseTypeInput.removeClass('is-invalid');
         reiseTypeFeilMelding.addClass('d-none');
         $("#til-dato-col").addClass('d-none');
+        valgtReiseType = 'enVei';
         aktiverInput(fraDatoInput);
         // Skjul retur elementer
     } else {
         reiseTypeInput.removeClass('is-invalid');
         reiseTypeFeilMelding.addClass('d-none');
         $("#til-dato-col").removeClass('d-none');
+        valgtReiseType = 'turRetur';
         aktiverInput(fraDatoInput);
         // Vis retur elementer
     }
@@ -69,7 +71,7 @@ function validerReiseType(){
 
 function validerFraDato(){
     let idag = moment(new Date());
-    let fra = moment(new Date(fraDatoInput.val()));
+    let fra = moment(new Date(fraDatoInput.datepicker('getDate')));
     let ok = false;
     
     if(!datoErTom(fraDatoInput, fraDatoFeilMelding, "Velg en avreise dato.")) {
@@ -89,8 +91,8 @@ function validerFraDato(){
 
 function validerTilDato(){
     if(reiseTypeInput.val() === "en-vei") return true;
-    let fra = moment(new Date(fraDatoInput.val()));
-    let til = moment(new Date(tilDatoInput.val()));
+    let fra = moment(new Date(fraDatoInput.datepicker('getDate')));
+    let til = moment(new Date(tilDatoInput.datepicker('getDate')));
     let ok = false;
 
     if(!datoErTom(tilDatoInput, tilDatoFeilMelding, "Velg en retur dato.")) {

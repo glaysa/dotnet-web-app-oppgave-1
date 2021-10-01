@@ -10,9 +10,9 @@
 // Trinn 1: Rute
 
 let valgtRute = []; // array av dict med lengde 2: inneholder ruteFra og ruteTil keys
-let valgtReiseType = ""; // string
-let valgtAvreiseDato = ""; // string
-let valgtReturDato = ""; // string
+let valgtReiseType = ""; // kun 2 verdier: enVei og turRetur
+let valgtAvreiseDato = ""; // string: DD/MM/YYYY
+let valgtReturDato = ""; // string: DD/MM/YYYY
 
 // Trinn 2: Antall reisefølger
 

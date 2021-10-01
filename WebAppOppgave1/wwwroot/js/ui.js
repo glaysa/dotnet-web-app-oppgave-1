@@ -57,7 +57,7 @@ function customRange(input) {
         return { minDate: minDate };
     }
     if (input.id === 'til-dato') {
-        let minDate = new Date($('#fra-dato').val());
+        let minDate = new Date($('#fra-dato').datepicker('getDate'));
         minDate.setDate(minDate.getDate() + 1)
         return { minDate: minDate };
     }
