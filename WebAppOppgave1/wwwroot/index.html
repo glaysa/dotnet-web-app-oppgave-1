@@ -295,7 +295,7 @@
                     <div class="row g-3">
                         <div class="col-12">
                             <div class="d-flex align-items-center border-bottom pb-2" id="voksen">
-                                <p class="m-0 fs-5 m-lg-0 flex-fill">Voksne</p>
+                                <p class="m-0 fs-5 m-lg-0 flex-fill">Voksen</p>
                                 <i class="bi bi-dash btn btn-icon minus" onclick="minus('voksen', 1)"></i>
                                 <span class="mx-3 antall-voksen">1</span>
                                 <i class="bi bi-plus btn btn-icon pluss" onclick="pluss('voksen', 6)"></i>
@@ -305,6 +305,7 @@
                         <div class="col-12">
                             <div class="d-flex align-items-center border-bottom pb-2" id="barn">
                                 <p class="m-0 fs-5 m-lg-0 flex-fill">Barn</p>
+                                <small class="text-black-50 me-3">0 - 16 år</small>
                                 <i class="bi bi-dash btn btn-icon minus" onclick="minus('barn', 0)"></i>
                                 <span class="mx-3 antall-barn">0</span>
                                 <i class="bi bi-plus btn btn-icon pluss" onclick="pluss('barn', 6)"></i>
@@ -347,80 +348,6 @@
                                     <small class="d-block fw-bold">1 Person</small>
                                 </div>
                             </a>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="rom-info-modal" data-bs-keyboard="false" tabindex="-1"
-                         aria-labelledby="rom-info-label" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
-                            <div class="modal-content">
-                                <div class="modal-header text-lg-center text-start">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-
-                                <div class="modal-body">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-6">
-                                            <div class="row g-3">
-                                                <div class="col-lg-12">
-                                                    <h2 class="fw-light modal-title text-theme" id="rom-tittel">
-                                                        Title</h2>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <img id="rom-bilde" src="assets/cover.png" alt="single room image"
-                                                         class="img-fluid">
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <p id="rom-beskrivelse" class="m-0">Beskrivelse</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row justify-content-lg-end justify-content-start">
-                                                <div class="col-lg-6">
-                                                    <p id="rom-pris" class="m-0 fs-5 text-theme text-lg-end text-start">
-                                                        +500 kr</p>
-                                                </div>
-                                            </div>
-                                            
-                                            <hr class="w-100 bg-theme">
-                                            
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <p class="d-flex justify-content-between p-3 bg-light border">
-                                                        <span class="text-theme fw-bold">
-                                                             <i class="bi bi-people-fill me-2"></i>Personer
-                                                        </span>
-                                                        <span id="rom-kapasitet">2</span>
-                                                    </p>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <p class="d-flex justify-content-between p-3 bg-light border">
-                                                        <span class="text-theme fw-bold">
-                                                            <i class="bi bi-grid me-2"></i>Vindu
-                                                        </span>
-                                                        <span id="rom-vindu">Ja</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <div class="row g-3 flex-fill justify-content-center">
-                                        <div class="col-lg-3">
-                                            <button type="button" class="btn btn-outline-secondary w-100" 
-                                                    data-bs-dismiss="modal" aria-label="Close">Lukk</button>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <input type="hidden" id="valgt-rom">
-                                            <button type="button" class="btn btn-theme w-100" id="velg-rom-btn">Velg</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -540,7 +467,7 @@
             </div>
         </div>  
         
-        <div class="row justify-content-center justify-content-md-end" id="trinn-2-btns">
+        <div class="row justify-content-center justify-content-md-end mt-4" id="trinn-2-btns">
             <div class="col-lg-3 text-center text-lg-end">
                 <button class="btn btn-outline-secondary" 
                         onclick="tilbake('#neste-trinn','#trinn-1','','')">Tilbake</button>
@@ -549,7 +476,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center justify-content-md-end d-none" id="trinn-3-btns">
+        <div class="row justify-content-center justify-content-md-end mt-4 d-none" id="trinn-3-btns">
             <div class="col-lg-3 text-center text-lg-end">
                 <button class="btn btn-outline-secondary"
                         onclick="tilbake('#trinn-3','#trinn-2','#trinn-3-btns','#trinn-2-btns')">Tilbake</button>
@@ -558,7 +485,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center justify-content-md-end d-none" id="trinn-4-btns">
+        <div class="row justify-content-center justify-content-md-end mt-4 d-none" id="trinn-4-btns">
             <div class="col-lg-3 text-center text-lg-end">
                 <button class="btn btn-outline-secondary"
                         onclick="tilbake('#trinn-4','#trinn-3','#trinn-4-btns','#trinn-3-btns')">Tilbake</button>
@@ -567,7 +494,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center justify-content-md-end d-none" id="trinn-5-btns">
+        <div class="row justify-content-center justify-content-md-end mt-4 d-none" id="trinn-5-btns">
             <div class="col-lg-3 text-center text-lg-end">
                 <button class="btn btn-outline-secondary"
                         onclick="tilbake('#trinn-5','#trinn-4','#trinn-5-btns','#trinn-4-btns')">Tilbake</button>
@@ -576,7 +503,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center justify-content-md-end d-none" id="trinn-6-btns">
+        <div class="row justify-content-center justify-content-md-end mt-4 d-none" id="trinn-6-btns">
             <div class="col-lg-3 text-center text-lg-end">
                 <button class="btn btn-outline-secondary"
                         onclick="tilbake('#trinn-6','#trinn-5','#trinn-6-btns','#trinn-5-btns')">Tilbake</button>
@@ -585,7 +512,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center justify-content-md-end d-none" id="trinn-7-btns">
+        <div class="row justify-content-center justify-content-md-end mt-4 d-none" id="trinn-7-btns">
             <div class="col-lg-3 text-center text-lg-end">
                 <button class="btn btn-outline-secondary"
                         onclick="tilbake('#trinn-7','#trinn-6','#trinn-7-btns', '#trinn-6-btns')">Tilbake</button>
@@ -599,6 +526,97 @@
 <div class="container-fluid p-3 bg-theme text-white">
     <p class="text-center m-0">Copyright &copy; Webapplikasjoner - Gruppe 3</p>
 </div>
+
+<!-- Modals -->
+<div class="modal fade" id="rom-info-modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rom-info-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header text-lg-center text-start">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="row g-3">
+                            <div class="col-lg-12">
+                                <h2 class="fw-light modal-title text-theme" id="rom-tittel">
+                                    Title</h2>
+                            </div>
+                            <div class="col-lg-6">
+                                <img id="rom-bilde" src="assets/cover.png" alt="single room image"
+                                     class="img-fluid">
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p id="rom-beskrivelse" class="m-0">Beskrivelse</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-lg-end justify-content-start">
+                            <div class="col-lg-6">
+                                <p id="rom-pris" class="m-0 fs-5 text-theme text-lg-end text-start">
+                                    +500 kr</p>
+                            </div>
+                        </div>
+
+                        <hr class="w-100 bg-theme">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row mb-4">
+                                    <div class="col-lg-6">
+                                        <p class="m-0 fs-5 m-lg-0 flex-fill">Hvor mange vil du reservere?</p>
+                                    </div>
+                                    <div class="col-lg-6 d-lg-flex d-block align-items-center justify-content-lg-end">
+                                        <small class="text-black-50 me-3">Reservere opp til 30 seter</small>
+                                        <div class="d-flex align-items-center mt-lg-0 mt-3">
+                                            <i class="bi bi-dash btn btn-icon minus" onclick="minus('air-seat', 0)"></i>
+                                            <span class="mx-3 antall-air-seat">1</span>
+                                            <i class="bi bi-plus btn btn-icon pluss" onclick="pluss('air-seat', 30)"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <p class="d-flex justify-content-between p-3 bg-light border">
+                                    <span class="text-theme fw-bold">
+                                         <i class="bi bi-people-fill me-2"></i>Personer
+                                    </span>
+                                    <span id="rom-kapasitet">2</span>
+                                </p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p class="d-flex justify-content-between p-3 bg-light border">
+                                    <span class="text-theme fw-bold">
+                                        <i class="bi bi-grid me-2"></i>Vindu
+                                    </span>
+                                    <span id="rom-vindu">Ja</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row g-3 flex-fill justify-content-center">
+                    <div class="col-lg-3">
+                        <button type="button" class="btn btn-outline-secondary w-100"
+                                data-bs-dismiss="modal" aria-label="Close">Lukk</button>
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="hidden" id="valgt-rom">
+                        <button type="button" class="btn btn-theme w-100" id="velg-rom-btn">Velg</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- jquery script -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
