@@ -11,8 +11,8 @@ $(document).ready(function () {
     $.datepicker.setDefaults($.datepicker.regional['no']); // endrer dato språk
     enableRuteDatePicker();
     deaktiverInputs(reiseTypeInput ,fraDatoInput, tilDatoInput);
-    merkerValgtMaaltid('#frokost');
-    merkerValgtMaaltid('#lunsj');
+    merkerValgtMaaltid('frokost');
+    merkerValgtMaaltid('lunsj');
     merkerValgtRute();
 });
 
@@ -111,19 +111,22 @@ function merkerValgtRute() {
 
 // Manipulerer css når maaltid sjekkboks verdier er endret
 function merkerValgtMaaltid(maaltid){
-    $(maaltid +"-row").on('click', function(){
+    let m = '#' + maaltid;
+    $(m +"-row").on('click', function(){
         
         // virker som en checked/unchecked toggle
-        $(maaltid).attr("checked", !$(maaltid).attr("checked"));
+        $(m).attr("checked", !$(m).attr("checked"));
         
         // if checked: viser sjekk ikonen
-        if($(maaltid).is(':checked')) {
-            $(maaltid + "-ikon").removeClass('d-none');
-            $(maaltid + '-info').addClass('on');
-            maaltidCheckedOnHover(maaltid);
+        if($(m).is(':checked')) {
+            valgtMaaltid[maaltid] = true;
+            $(m + "-ikon").removeClass('d-none');
+            $(m + '-info').addClass('on');
+            maaltidCheckedOnHover(m);
         } else {
-            $(maaltid + "-ikon").addClass('d-none');
-            $(maaltid + '-info').removeClass('on');
+            valgtMaaltid[maaltid] = false;
+            $(m + "-ikon").addClass('d-none');
+            $(m + '-info').removeClass('on');
         }
     });
 }

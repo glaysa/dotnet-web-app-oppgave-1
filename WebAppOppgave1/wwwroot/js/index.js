@@ -21,6 +21,13 @@ let antallBarn = 0;
 let antallDyr = 0;
 let antallSykler = 0;
 
+// Trinn 4: Måltid
+let valgtMaaltid = {
+    'frokost': false,
+    'lunsj': false,
+    'middag': false
+}
+
 // Trinn 5: Passasjerer
 let passasjerer = []; // array av passasjer objekter: har fornavn, etternavn og fødselsdato keys
 
@@ -61,5 +68,6 @@ function lagreBestilling(){
     console.log('Barn:', antallBarn);
     console.log('Kjæledyr:', antallDyr);
     console.log('Sykkel:', antallSykler);
+    console.log('Måltid:', valgtMaaltid);
     console.log('Passasjerer:', passasjerer);
 }
