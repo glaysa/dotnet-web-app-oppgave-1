@@ -5,8 +5,6 @@
 /////                                                          /////
 ////////////////////////////////////////////////////////////////////
 
-// Data verdier: definert i validering.js
-
 // Trinn 1: Rute
 
 let valgtRute = {}; // aksessere rutene med ruteFra og ruteTil keys
@@ -22,20 +20,16 @@ let antallDyr = 0;
 let antallSykler = 0;
 
 // Trinn 4: Måltid
-let valgtMaaltid = {
-    'frokost': false,
-    'lunsj': false,
-    'middag': false
-}
+let valgtMaaltid = {} // TODO: endrer til array hvis maaltid info kommer fra db 
 
 // Trinn 5: Passasjerer
-let passasjerer = []; // array av passasjer objekter: har fornavn, etternavn og fødselsdato keys
+let passasjerer = []; // array av passasjer objekter: har fornavn, etternavn og fodselsdato keys
 
 function lagreRute(){
     validerTrinn1();
 }
 
-function lagrePassasjerer(){
+function lagreAntallPassasjerer(){
     validerTrinn2()
 }
 
@@ -49,7 +43,7 @@ function lagreMaaltider(){
     // post metode: skal implementeres i oppgave 2 hvis det kreves
 }
 
-function lagreOmbordProdukter(){
+function lagrePassasjerInfo(){
     validerTrinn5()
 }
 

@@ -21,8 +21,6 @@ let fraDatoFeilMelding = $("#fra-dato-feil-melding");
 let tilDatoFeilMelding = $("#til-dato-feil-melding");
 
 function validerRute(){
-    // Tømmer arrayet, unngår duplikater i listen fordi funksjonen er kalt på onchange event
-    valgtRute.length = 0;
     // Sjekket rute
     let checkedRute = $("input[name=ruter]:checked").val()
     
@@ -240,7 +238,9 @@ function skjulPassasjerInputFeilMelding(id){
 }
 
 function lagePassasjerObjekt(fornavnListe, etternavnListe, datoListe){
+    // Tæmmer arrayet når bruker går tilbake og endrer antall passasjerer
     passasjerer.length = 0;
+    
     for(let i = 0; i < fornavnListe.length; i++) {
         let fornavn = fornavnListe[i].value;
         let etternavn = etternavnListe[i].value;
@@ -267,8 +267,8 @@ function validerTrinn2() {
     antallDyr = Number($(".antall-dyr").text());
     antallSykler = Number($(".antall-sykkel").text());
     
-    // antall passasjer form er avhengig av antall passasjerer
-    renderTemplateAntallPassasjerer(antallVoksen, antallBarn);
+    // antall passasjer form er avhengig på antall passasjerer
+    renderPassasjerInputsTemplate(antallVoksen, antallBarn);
     merkerFerdig('#neste-trinn');
     skjulOgVisTrinn('#trinn-2','#trinn-3','#trinn-2-btns','#trinn-3-btns');
 }

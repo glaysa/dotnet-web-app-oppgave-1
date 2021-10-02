@@ -33,6 +33,7 @@ $("#btn-toggle").click(function () {
 });
 
 // Viser kalender når dato input er klikket
+
 function enableRuteDatePicker(){
     $('#fra-dato, #til-dato').datepicker({
         beforeShow: customRange,
@@ -157,7 +158,7 @@ function maaltidCheckedOnHover(maaltid){
 let passasjerFormTemplate = document.getElementById('template-passasjer-form');
 let passasjerForm = $('#passasjerer-form');
 
-function renderTemplateAntallPassasjerer(antallVoksen, antallBarn){
+function renderPassasjerInputsTemplate(antallVoksen, antallBarn){
     let antallPassasjerer = antallVoksen + antallBarn;
     passasjerForm.empty();
     
