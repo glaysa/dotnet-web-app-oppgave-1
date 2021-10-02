@@ -27,27 +27,31 @@ let passasjerer = []; // array av passasjer objekter: har fornavn, etternavn og 
 
 function lagreRute(){
     validerTrinn1();
+    oppdaterUIForRute();
 }
 
 function lagreAntallPassasjerer(){
-    validerTrinn2()
+    validerTrinn2();
+    oppdaterUIForReisefolger();
 }
 
 function lagreLugar(){
-    validerTrinn3()
+    validerTrinn3();
     // post metode: skal implementeres i oppgave 2 hvis det kreves
 }
 
 function lagreMaaltider(){
-    validerTrinn4()
+    validerTrinn4();
+    oppdaterUIForMaaltid();
     // post metode: skal implementeres i oppgave 2 hvis det kreves
 }
 
 function lagrePassasjerInfo(){
-    validerTrinn5()
+    validerTrinn5();
+    oppdaterUIForPassasjerer();
 }
 
-function lagreKunde(){
+function bekreft(){
     validerTrinn6()
 }
 

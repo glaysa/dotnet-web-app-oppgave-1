@@ -253,18 +253,7 @@ a.a-link-block:hover div {
 .cb-group, .rb-group {
   position: relative;
 }
-.cb-group .cb-icon, .rb-group .cb-icon {
-  text-align: center;
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  font-size: 25px;
-  border-radius: 50%;
-  color: #0081a7;
-  background: white;
-  padding: 0 5px;
-}
-.cb-group .rb-icon, .rb-group .rb-icon {
+.cb-group .cb-icon, .cb-group .rb-icon, .rb-group .cb-icon, .rb-group .rb-icon {
   text-align: center;
   position: absolute;
   bottom: 15px;

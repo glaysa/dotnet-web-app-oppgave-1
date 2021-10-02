@@ -45,7 +45,8 @@ function enableBirthDatePicker(){
         changeYear: true,
         changeMonth: true,
         dateFormat: "D dd. M yy",
-        yearRange: '1940:'
+        yearRange: '1940:',
+        defaultDate: 'man 01. Jan 1999'
     });
 }
 
@@ -109,16 +110,71 @@ function merkerValgtRute() {
     });
 }
 
+// Oppdater UI verdier basert på valgt verdier på de forskjellige trinnene
+
+function oppdaterUIForRute(){
+    let fraStedTekst = $('.fra-sted-tekst');
+    let tilStedTekst = $('.til-sted-tekst');
+    let fraDatoTekst = $('.fra-dato-tekst');
+    let tilDatoTekst = $('.til-dato-tekst');
+    
+    fraStedTekst.text(valgtRute.ruteFra);
+    tilStedTekst.text(valgtRute.ruteTil);
+    fraDatoTekst.text($('#fra-dato').val());
+    tilDatoTekst.text($('#til-dato').val())
+}
+
+function oppdaterUIForReisefolger(){
+    let antallVoksenTekst = $('.antall-voksen-tekst');
+    let antallBarnTekst = $('.antall-barn-tekst');
+    let antallDyrTekst = $('.antall-dyr-tekst');
+    let antallSykkelTekst = $('.antall-sykkel-tekst');
+    
+    antallVoksenTekst.text(antallVoksen);
+    antallBarnTekst.text(antallBarn);
+    antallDyrTekst.text(antallDyr);
+    antallSykkelTekst.text(antallSykler);
+}
+
+function oppdaterUIForMaaltid(){
+    let maaltidTekstTemplate = document.getElementById('valgt-maaltid-tekst-template');
+    let parent = $('#maaltid-tekst-template-tray');
+    if(valgtMaaltid.length > 0) {
+        parent.empty();
+        for(let i = 0; i < valgtMaaltid.length; i++) {
+            let clone = maaltidTekstTemplate.content.cloneNode(true);
+            let textElement = clone.querySelector('small');
+            textElement.textContent = valgtMaaltid[i].navn + ', ';
+            parent.append(clone);
+        }
+    } else {
+        let clone = maaltidTekstTemplate.content.cloneNode(true);
+        let textElement = clone.querySelector('small');
+        textElement.textContent = 'Ingen';
+        parent.append(clone);
+    }
+}
+
+function oppdaterUIForPassasjerer(){
+    let passasjerTekstTemplate = document.getElementById('passasjer-tekst-template');
+    let parent = $("#passasjer-tekst-template-tray");
+    parent.empty();
+    for(let i = 0; i < passasjerer.length; i++) {
+        let clone = passasjerTekstTemplate.content.cloneNode(true);
+        let textElement = clone.querySelector('small');
+        textElement.textContent = passasjerer[i].fornavn + ' ' + passasjerer[i].etternavn + ',';
+        parent.append(clone);
+    }
+}
+
 // template renders
 
 // form hvor alle passasjerer må gi navnet og fødselsdato
-
-let passasjerFormTemplate = document.getElementById('template-passasjer-form');
-let passasjerForm = $('#passasjerer-form');
-
 function renderPassasjerInputsTemplate(antallVoksen, antallBarn){
+    let passasjerFormTemplate = document.getElementById('template-passasjer-form');
+    let parent = $('#passasjerer-form-template-tray');
     let antallPassasjerer = antallVoksen + antallBarn;
-    passasjerForm.empty();
+    parent.empty();
     
     for(let i = 0; i < antallPassasjerer; i++) {
         let clone = passasjerFormTemplate.content.cloneNode(true);
@@ -150,7 +206,7 @@ function renderPassasjerInputsTemplate(antallVoksen, antallBarn){
         passasjerEtterNavnInput.setAttribute('aria-describedby', 'etternavn-' + i + '-feil-melding');
         passasjerFodselsDatoInput.setAttribute('aria-describedby', 'fodselsdato-' + i + '-feil-melding');
 
-        passasjerForm.append(clone);
+        parent.append(clone);
     }
     enableBirthDatePicker();
 }

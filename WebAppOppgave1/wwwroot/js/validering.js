@@ -53,14 +53,14 @@ function validerReiseType(){
         $("#til-dato-col").addClass('d-none');
         valgtReiseType = 'enVei';
         aktiverInput(fraDatoInput);
-        // Skjul retur elementer
+        $('.retur-element').addClass('d-none');
     } else {
         reiseTypeInput.removeClass('is-invalid');
         reiseTypeFeilMelding.addClass('d-none');
         $("#til-dato-col").removeClass('d-none');
         valgtReiseType = 'turRetur';
         aktiverInput(fraDatoInput);
-        // Vis retur elementer
+        $('.retur-element').removeClass('d-none');
     }
     return ok;
 }
@@ -173,8 +173,6 @@ function leggTilValgtMaaltid(){
         let maaltidPris = Number($('#' + this.id + ' span.pris').text());
         let maaltidNavn = $('#' + this.id + ' .tittel').text();
         let input = $(inputId);
-        
-        console.log(maaltidPris);
 
         // virker som en checked/unchecked toggle
         $(input).attr("checked", !$(input).attr("checked"));

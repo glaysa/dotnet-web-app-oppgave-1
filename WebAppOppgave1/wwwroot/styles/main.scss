@@ -374,19 +374,7 @@ $card-height: 200px;
 .cb-group, .rb-group {
   position: relative;
   
-  .cb-icon {
-    text-align: center;
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    font-size: 25px;
-    border-radius: 50%;
-    color: $theme-color;
-    background: white;
-    padding: 0 5px;
-  }
-
-  .rb-icon {
+  .cb-icon, .rb-icon {
     text-align: center;
     position: absolute;
     bottom: 15px;

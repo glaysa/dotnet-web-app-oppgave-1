@@ -85,7 +85,7 @@
                     <div class="p-3 d-flex justify-content-center">
                         <p class="m-0 rute-fra"><span class="flag-icon flag-icon-no me-3"></span>Oslo</p>
                         <span class="bi bi-arrow-right mx-3"></span>
-                        <p class="m-0 rute-til"><span class="flag-icon flag-icon-de me-3"></span>Keil</p>
+                        <p class="m-0 rute-til"><span class="flag-icon flag-icon-de me-3"></span>Kiel</p>
                     </div>
                     <input type="radio" name="ruter" id="no-de" class="d-none" value="no-de" onchange="validerRute()">
                     <label for="no-de"></label>
@@ -271,23 +271,23 @@
                         <div class="col-md" id="avreise-info-col">
                             <div class="py-3 bg-light">
                                 <p class="fs-5 m-0 text-theme">
-                                    <span class="fra-sted-tekst">Oslo</span>
+                                    <span class="fra-sted-tekst"></span>
                                     <i class="bi bi-arrow-right-short"></i>
-                                    <span class="til-sted-tekst">Keil</span>
+                                    <span class="til-sted-tekst"></span>
                                 </p>
-                                <small class="text-black-50 d-block">Fr. 15. Okt 2021</small>
+                                <small class="text-black-50 d-block fra-dato-tekst"></small>
                                 <small class="text-black-50 d-block">Kl. 14:30</small>
                             </div>
                         </div>
                         
-                        <div class="col-md" id="retur-info-col">
+                        <div class="col-md retur-element">
                             <div class="py-3 bg-light">
                                 <p class="fs-5 m-0 text-theme">
-                                    <span class="fra-sted-tekst">Keil</span>
+                                    <span class="til-sted-tekst"></span>
                                     <i class="bi bi-arrow-right-short"></i>
-                                    <span class="til-sted-tekst">Oslo</span>
+                                    <span class="fra-sted-tekst"></span>
                                 </p>
-                                <small class="text-black-50 d-block">Fr. 15. Okt 2021</small>
+                                <small class="text-black-50 d-block til-dato-tekst"></small>
                                 <small class="text-black-50 d-block">Kl. 16:30</small>
                             </div>
                         </div>
@@ -425,7 +425,7 @@
                     </div>
 
                     <div class="row">
-                        <form class="form" autocomplete="off" id="passasjerer-form"></form>
+                        <form class="form" autocomplete="off" id="passasjerer-form-template-tray"></form>
                         
                         <template id="template-passasjer-form">
                             <div class="row g-3 mb-4">
@@ -470,6 +470,87 @@
                         <div class="col-12">
                             <h3 class="fw-light m-0 text-center text-lg-start text-theme">Bekreft</h3>
                             <hr class="w-100 bg-theme">
+                        </div>
+                        <div class="col-12">
+                            <div class="row justify-content-md-start justify-content-center">
+                                <div class="col-md-6">
+                                    <div class="row"> 
+                                        <div class="col-12 text-center text-md-start">
+                                            <p class="fs-5 m-0">Avreise til
+                                                <span class="text-theme til-sted-tekst"></span>
+                                            </p>
+                                            <small class="text-black-50">fra <span class="fra-sted-tekst"></span></small>
+                                            <p class="d-flex text-lg-start text-center flex-md-row flex-column fs-6">
+                                                <small class="fra-dato-tekst me-2"></small>
+                                                <small>Kl 14:30</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 retur-element">
+                                    <div class="row">
+                                        <div class="col-12 text-center text-md-start">
+                                            <p class="fs-5 m-0">Retur til
+                                                <span class="text-theme fra-sted-tekst"></span>
+                                            </p>
+                                            <small class="text-black-50">fra <span class="til-sted-tekst"></span></small>
+                                            <p class="d-flex text-lg-start text-center flex-md-row flex-column">
+                                                <small class="til-dato-tekst me-2"></small>
+                                                <small>Kl 16:30</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p class="fs-5 m-0 text-center text-md-start text-theme">Reisefølger</p>
+                                        </div>
+                                        <div class="col-lg-12 d-flex flex-md-row flex-column text-lg-start text-center">
+                                            <small class="me-2"><span class="antall-voksen-tekst"></span> Voksen, </small>
+                                            <small class="me-2"><span class="antall-barn-tekst"></span> Barn, </small>
+                                            <small class="me-2"><span class="antall-dyr-tekst"></span> Kjæledyr, </small>
+                                            <small class="me-2"><span class="antall-sykkel-tekst"></span> Sykler </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p class="fs-5 m-0 text-center text-md-start text-theme">Lugar</p>
+                                        </div>
+                                        <div class="col-lg-12 d-flex flex-md-row flex-column text-lg-start text-center">
+                                            <small>Lugar navn</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3 maaltid-element">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p class="fs-5 m-0 text-center text-md-start text-theme">Måltid</p>
+                                        </div>
+                                        <div class="col-lg-12 d-flex flex-md-row flex-column text-lg-start text-center">
+                                            <div id="maaltid-tekst-template-tray"></div>
+                                            <template id="valgt-maaltid-tekst-template">
+                                                <small class="me-2"></small>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p class="fs-5 m-0 text-center text-md-start text-theme">Passasjerer</p>
+                                        </div>
+                                        <div class="col-lg-12 d-flex flex-md-row flex-column text-lg-start text-center">
+                                            <div id="passasjer-tekst-template-tray"></div>
+                                            <template id="passasjer-tekst-template">
+                                                <small class="me-2"></small>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -526,7 +607,7 @@
                 <button class="btn btn-outline-secondary"
                         onclick="tilbake('#trinn-6','#trinn-5','#trinn-6-btns','#trinn-5-btns')">Tilbake</button>
                 <button class="btn btn-theme ms-3"
-                        onclick="lagreKunde()">Gå videre</button>
+                        onclick="bekreft()">Bekreft</button>
             </div>
         </div>
 
