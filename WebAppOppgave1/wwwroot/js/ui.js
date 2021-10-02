@@ -11,8 +11,7 @@ $(document).ready(function () {
     $.datepicker.setDefaults($.datepicker.regional['no']); // endrer dato språk
     enableRuteDatePicker();
     deaktiverInputs(reiseTypeInput ,fraDatoInput, tilDatoInput);
-    merkerValgtMaaltid('frokost');
-    merkerValgtMaaltid('lunsj');
+    leggTilValgtMaaltid();
     merkerValgtRute();
 });
 
@@ -108,47 +107,6 @@ function merkerValgtRute() {
             $('#' + value.id + "-col").css('background-color', 'transparent');
         });
     });
-}
-
-// Manipulerer css når maaltid sjekkboks verdier er endret
-function merkerValgtMaaltid(maaltid){
-    let m = '#' + maaltid;
-    $(m +"-row").on('click', function(){
-        
-        // virker som en checked/unchecked toggle
-        $(m).attr("checked", !$(m).attr("checked"));
-        
-        // if checked: viser sjekk ikonen
-        if($(m).is(':checked')) {
-            valgtMaaltid[maaltid] = true;
-            $(m + "-ikon").removeClass('d-none');
-            $(m + '-info').addClass('on');
-            maaltidCheckedOnHover(m);
-        } else {
-            valgtMaaltid[maaltid] = false;
-            $(m + "-ikon").addClass('d-none');
-            $(m + '-info').removeClass('on');
-        }
-    });
-}
-
-// maaltid on hover gjelder kun store enheter
-function maaltidCheckedOnHover(maaltid){
-    if(window.screen.width > 991){
-        // viser rød dash ikon
-        $(maaltid + "-row").hover(
-            function (){
-                $(maaltid + "-ikon i").removeClass('bi-check');
-                $(maaltid + "-ikon i").addClass('bi-x text-danger');
-                $(maaltid + "-ikon").css('background-color','#ffebeb');
-            },
-            function () {
-                $(maaltid + "-ikon i").removeClass('bi-x text-danger');
-                $(maaltid + "-ikon i").addClass('bi-check');
-                $(maaltid + "-ikon").css('background-color','#ebffed');
-            }
-        )
-    }
 }
 
 // template renders

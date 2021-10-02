@@ -20,7 +20,7 @@ let antallDyr = 0;
 let antallSykler = 0;
 
 // Trinn 4: Måltid
-let valgtMaaltid = {} // TODO: endrer til array hvis maaltid info kommer fra db 
+let valgtMaaltid = [] // array av måltid objekter: har navn og pris keys
 
 // Trinn 5: Passasjerer
 let passasjerer = []; // array av passasjer objekter: har fornavn, etternavn og fodselsdato keys

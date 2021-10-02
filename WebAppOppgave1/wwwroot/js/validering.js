@@ -166,6 +166,34 @@ function minus(type, min) {
     }
 }
 
+// Legger måltid objekter til en liste
+function leggTilValgtMaaltid(){
+    $(".maaltid-row").on('click', function () {
+        let inputId = '#' + $('#' + this.id + ' input').attr('id')
+        let maaltidPris = Number($('#' + this.id + ' span.pris').text());
+        let maaltidNavn = $('#' + this.id + ' .tittel').text();
+        let input = $(inputId);
+        
+        console.log(maaltidPris);
+
+        // virker som en checked/unchecked toggle
+        $(input).attr("checked", !$(input).attr("checked"));
+
+        if($(input).is(':checked')) {
+            valgtMaaltid.push({'id': inputId, 'navn': maaltidNavn, 'pris': maaltidPris});
+            $(inputId + "-ikon").removeClass('d-none');
+            $(inputId + '-info').addClass('on');
+        } else {
+            // Fjern det fra valgt måltid array hvis unchecked
+            valgtMaaltid.forEach(function (item, index) {
+                if(item.id === inputId) valgtMaaltid.splice(index, 1);
+            });
+            $(inputId + "-ikon").addClass('d-none');
+            $(inputId + '-info').removeClass('on');
+        }
+    });
+}
+
 // Validerer passasjer inputs
 
 function validerFornavn(id){
