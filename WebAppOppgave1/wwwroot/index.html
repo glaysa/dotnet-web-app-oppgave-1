@@ -558,8 +558,134 @@
                 <div id="trinn-7" class="d-none">
                     <div class="row">
                         <div class="col-12">
-                            <h3 class="fw-light m-0 text-center text-lg-start text-theme">Betal</h3>
+                            <h3 class="fw-light m-0 text-center text-lg-start text-theme">Kontaktinformasjon</h3>
                             <hr class="w-100 bg-theme">
+                        </div>
+                    </div>
+                    <div class="row mb-3 g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="_"
+                                       oninput="validerFornavn(this.id)">
+                                <label>Fornavn</label>
+                                <div class="invalid-feedback d-none fornavn-feil-melding"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="_"
+                                       oninput="validerEtternavn(this.id)">
+                                <label>Etternavn</label>
+                                <div class="invalid-feedback d-none etternavn-feil-melding"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="number" class="form-control" placeholder="_"
+                                       oninput="validerEtternavn(this.id)">
+                                <label>Telefonnummer</label>
+                                <div class="invalid-feedback d-none tlf-feil-melding"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" placeholder="_"
+                                       oninput="validerEtternavn(this.id)">
+                                <label>E-post</label>
+                                <div class="invalid-feedback d-none epost-feil-melding"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="_"
+                                       oninput="validerEtternavn(this.id)">
+                                <label>Adresse</label>
+                                <div class="invalid-feedback d-none epost-feil-melding"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="number" class="form-control" placeholder="_"
+                                       oninput="validerEtternavn(this.id)">
+                                <label>Postnummer</label>
+                                <div class="invalid-feedback d-none epost-feil-melding"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="_"
+                                       oninput="validerEtternavn(this.id)">
+                                <label>Poststed</label>
+                                <div class="invalid-feedback d-none epost-feil-melding"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-12">
+                            <h3 class="fw-light m-0 text-center text-lg-start text-theme">Betalingsdetaljer</h3>
+                            <hr class="w-100 bg-theme">
+                        </div>
+                    </div>
+                    <div class="row g-3 bg">
+                        <div class="col-lg-6 order-lg-1 order-2">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" placeholder="_"
+                                               oninput="validerEtternavn(this.id)">
+                                        <label>Kortnummer</label>
+                                        <div class="invalid-feedback d-none tlf-feil-melding"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" placeholder="_"
+                                               oninput="validerEtternavn(this.id)">
+                                        <label>Kortinnehavers navn</label>
+                                        <div class="invalid-feedback d-none epost-feil-melding"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" placeholder="_"
+                                               oninput="validerEtternavn(this.id)">
+                                        <label>Utløpsdato</label>
+                                        <div class="invalid-feedback d-none epost-feil-melding"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" placeholder="_"
+                                               oninput="validerEtternavn(this.id)">
+                                        <label>Sikkerhets kode</label>
+                                        <div class="invalid-feedback d-none epost-feil-melding"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 order-lg-2 order-1 bg-light">
+                            <p class="px-3 py-2 m-0 fs-5">Ordresammendrag</p>
+                            <div class="d-flex flex-lg-row flex-column justify-content-between py-2 px-3">
+                                <p class="fs-6 m-0 text-theme">Betalingsreferanse:</p>
+                                <p class="fs-6 m-0">MKI736</p>
+                            </div>
+                            <div class="d-flex flex-lg-row flex-column justify-content-between py-2 px-3">
+                                <p class="fs-6 m-0 text-theme">Bekrivelse:</p>
+                                <p class="fs-6 m-0">Norway Cruise Booking Order</p>
+                            </div>
+                            <div class="d-flex flex-lg-row flex-column justify-content-between py-2 px-3">
+                                <p class="fs-6 m-0 text-theme">TotalPris:</p>
+                                <p class="fs-6 m-0"><span class="totalpris">5400</span> kr</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -735,6 +861,5 @@
 <script src="js/ui.js"></script>
 <script src="js/validering.js"></script>
 <script src="js/index.js"></script>
-
 </body>
 </html>

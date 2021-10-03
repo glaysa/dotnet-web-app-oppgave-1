@@ -57,6 +57,7 @@ function bekreft(){
 
 function lagreBestilling(){
     validerTrinn7()
+    location.href = 'kvittering.html';
 
     console.log('Rute fra:', valgtRute.ruteFra);
     console.log('Rute til:', valgtRute.ruteTil);
