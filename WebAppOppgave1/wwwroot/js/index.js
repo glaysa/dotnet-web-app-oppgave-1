@@ -6,7 +6,6 @@
 ////////////////////////////////////////////////////////////////////
 
 // Trinn 1: Rute
-
 let rute = {}; // aksessere rutene med ruteFra og ruteTil keys
 let reiseType = ""; // kun 2 verdier: enVei og turRetur
 let avreiseDato = ""; // string: DD/MM/YYYY

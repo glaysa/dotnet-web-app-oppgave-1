@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebAppOppgave1.DAL.BestillingServices;
 using WebAppOppgave1.Models;
 
 namespace WebAppOppgave1
@@ -25,7 +26,8 @@ namespace WebAppOppgave1
                      options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore 
             );
 
-            services.AddDbContext<DB>(options => options.UseSqlite("Data Source=Kunde.db"));
+            services.AddDbContext<DB>(options => options.UseSqlite("Data Source=Bestilling.db"));
+            services.AddScoped<IBestillingRepository, BestillingRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
