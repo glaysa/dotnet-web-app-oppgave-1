@@ -183,9 +183,9 @@ function generereRomDetaljer(id) {
             romTittel.text('Air Seat');
             romPris.text('299');
             romKapasitet.text('1');
-            romMaxReservasjon.text('30');
+            romMaxReservasjon.text('10');
             romAntallReservasjon.text('0');
-            romBilde.attr('src', 'assets/cover.png');
+            romBilde.attr('src', 'assets/lugar/air-seat.jpg');
             romVindu.text('Ja');
             romSpan.text('seter');
             romBeskrivelse.text("De komfortable liggestolene er vårt billigste alternativ, og du finner " +
@@ -194,14 +194,55 @@ function generereRomDetaljer(id) {
         case 'standard-rom':
             romTittel.text('Standard Rom');
             romPris.text('1200');
-            romKapasitet.text('1');
+            romKapasitet.text('1-4 med kjæledyr');
             romMaxReservasjon.text('5');
             romAntallReservasjon.text('0');
-            romBilde.attr('src', 'assets/cover.png');
+            romBilde.attr('src', 'assets/lugar/standard.jpg');
             romVindu.text('Ja');
             romSpan.text('rom');
             romBeskrivelse.text("Komfortabel lugar for 1 person. Lugarene er 8,5 m² og er utstyrt med seng og " +
                 "sovesofa, TV, bad med dusj og WC. Lugarene ligger på dekk 8 og 9");
+            break;
+        case 'familie-rom':
+            romTittel.text('Familie Rom');
+            romPris.text('1500');
+            romKapasitet.text('3-5');
+            romMaxReservasjon.text('2');
+            romAntallReservasjon.text('0');
+            romBilde.attr('src', 'assets/lugar/family.jpg');
+            romVindu.text('Ja');
+            romSpan.text('rom');
+            romBeskrivelse.text("Familie rom er familievennlige lugarer som rommer en familie på inntil 5 " +
+                "personer. Lugarene har dobbeltseng (120 cm bred), sovesofa og 2 køyesenger i taket, plass til 1 " +
+                "babyseng. Videre er det TV, samt eget bad med dusj og WC. Størrelsen på lugarene er mellom " +
+                "10,5 og 11,5 m² og de ligger midtskips på dekk 10.");
+            break;
+        case 'deluxe-rom':
+            romTittel.text("Captain's Deluxe");
+            romPris.text('2499');
+            romKapasitet.text('1-4');
+            romMaxReservasjon.text('1');
+            romAntallReservasjon.text('0');
+            romBilde.attr('src', 'assets/lugar/deluxe.jpg');
+            romVindu.text('Ja');
+            romSpan.text('rom');
+            romBeskrivelse.text("Våre største deluxe-lugarer med plass til 1–3 personer. De har dobbeltseng og " +
+                "sovesofa, plass til 2 babysenger, TV, samt eget bad med dusj og WC. Størrelsen på lugarene" +
+                " er på rundt 20 m² og de ligger akter på dekk 8.");
+            break;
+        case 'suite-rom':
+            romTittel.text("Captain's Suite");
+            romPris.text('1999');
+            romKapasitet.text('1-4');
+            romMaxReservasjon.text('1');
+            romAntallReservasjon.text('0');
+            romBilde.attr('src', 'assets/lugar/suite.jpg');
+            romVindu.text('Ja');
+            romSpan.text('rom');
+            romBeskrivelse.text("Flotte lugarer med plass til 1–4 personer. Her får du flott utsikt med vinduer " +
+                "som går fra gulv til tak. Lugarene har dobbeltseng og sovesofa (dobbel), plass til 2 babysenger, TV, " +
+                "minibar, bad med dusj og WC. Størrelsen på denne typen lugar er ca. 24 m² og de ligger " +
+                "midtskips/akter på dekk 9. ");
             break;
     }
 }

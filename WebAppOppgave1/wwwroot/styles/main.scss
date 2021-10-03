@@ -297,7 +297,11 @@ $card-height: 200px;
   }
 }
 
-@include replace-rom-img("#sete-1", "../assets/cover.png");
+@include replace-rom-img("#sete-1", "../assets/lugar/air-seat.jpg");
+@include replace-rom-img("#rom-1", "../assets/lugar/standard.jpg");
+@include replace-rom-img("#rom-2", "../assets/lugar/family.jpg");
+@include replace-rom-img("#rom-3", "../assets/lugar/deluxe.jpg");
+@include replace-rom-img("#rom-4", "../assets/lugar/suite.jpg");
 
 
 

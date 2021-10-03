@@ -208,7 +208,59 @@ a.a-link-block:hover div {
   top: 0;
   left: 0;
   z-index: -2;
-  background-image: url("../assets/cover.png");
+  background-image: url("../assets/lugar/air-seat.jpg");
+  background-size: cover;
+  background-position: bottom;
+}
+
+.a-link-block #rom-1::before {
+  content: "";
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  background-image: url("../assets/lugar/standard.jpg");
+  background-size: cover;
+  background-position: bottom;
+}
+
+.a-link-block #rom-2::before {
+  content: "";
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  background-image: url("../assets/lugar/family.jpg");
+  background-size: cover;
+  background-position: bottom;
+}
+
+.a-link-block #rom-3::before {
+  content: "";
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  background-image: url("../assets/lugar/deluxe.jpg");
+  background-size: cover;
+  background-position: bottom;
+}
+
+.a-link-block #rom-4::before {
+  content: "";
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  background-image: url("../assets/lugar/suite.jpg");
   background-size: cover;
   background-position: bottom;
 }
