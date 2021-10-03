@@ -296,9 +296,9 @@
                         <div class="col-12">
                             <div class="d-flex align-items-center border-bottom pb-2" id="voksen">
                                 <p class="m-0 fs-5 m-lg-0 flex-fill">Voksen</p>
-                                <i class="bi bi-dash btn btn-icon minus" onclick="minus('voksen', 1)"></i>
+                                <i class="bi bi-dash btn btn-icon minus" onclick="minusReisefolger('voksen', 1)"></i>
                                 <span class="mx-3 antall-voksen">1</span>
-                                <i class="bi bi-plus btn btn-icon pluss" onclick="pluss('voksen', 6)"></i>
+                                <i class="bi bi-plus btn btn-icon pluss" onclick="plussReisefolger('voksen', 6)"></i>
                             </div>
                         </div>
 
@@ -306,27 +306,27 @@
                             <div class="d-flex align-items-center border-bottom pb-2" id="barn">
                                 <p class="m-0 fs-5 m-lg-0 flex-fill">Barn</p>
                                 <small class="text-black-50 me-3">0 - 16 år</small>
-                                <i class="bi bi-dash btn btn-icon minus" onclick="minus('barn', 0)"></i>
+                                <i class="bi bi-dash btn btn-icon minus" onclick="minusReisefolger('barn', 0)"></i>
                                 <span class="mx-3 antall-barn">0</span>
-                                <i class="bi bi-plus btn btn-icon pluss" onclick="pluss('barn', 6)"></i>
+                                <i class="bi bi-plus btn btn-icon pluss" onclick="plussReisefolger('barn', 6)"></i>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <div class="d-flex align-items-center border-bottom pb-2" id="dyr">
                                 <p class="m-0 fs-5 m-lg-0 flex-fill">Kjæledyr</p>
-                                <i class="bi bi-dash btn btn-icon minus" onclick="minus('dyr', 0)"></i>
+                                <i class="bi bi-dash btn btn-icon minus" onclick="minusReisefolger('dyr', 0)"></i>
                                 <span class="mx-3 antall-dyr">0</span>
-                                <i class="bi bi-plus btn btn-icon pluss" onclick="pluss('dyr', 3)"></i>
+                                <i class="bi bi-plus btn btn-icon pluss" onclick="plussReisefolger('dyr', 3)"></i>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <div class="d-flex align-items-center border-bottom pb-2" id="sykkel">
                                 <p class="m-0 fs-5 m-lg-0 flex-fill">Sykkel</p>
-                                <i class="bi bi-dash btn btn-icon minus" onclick="minus('sykkel', 0)"></i>
+                                <i class="bi bi-dash btn btn-icon minus" onclick="minusReisefolger('sykkel', 0)"></i>
                                 <span class="mx-3 antall-sykkel">0</span>
-                                <i class="bi bi-plus btn btn-icon pluss" onclick="pluss('sykkel', 6)"></i>
+                                <i class="bi bi-plus btn btn-icon pluss" onclick="plussReisefolger('sykkel', 6)"></i>
                             </div>
                         </div>
                     </div>
@@ -341,15 +341,41 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-4">
-                            <a href="index.html" id="1-pers-sete" class="text-decoration-none text-white a-link-block"
-                               data-bs-toggle="modal" data-bs-target="#rom-info-modal">
+                            <a href="index.html" class="text-decoration-none text-white a-link-block" id="air-seat"
+                               data-bs-toggle="modal" data-bs-target="#rom-info-modal" onclick="tildeleRomId(this.id)">
                                 <div class="p-3 d-flex flex-column mb-3 rom" id="sete-1">
                                     <p class="lead m-0 my-2">Air Seat</p>
                                     <small class="d-block fw-bold">1 Person</small>
                                 </div>
                             </a>
                         </div>
+                        <div class="col-lg-4">
+                            <a href="index.html" class="text-decoration-none text-white a-link-block" id="standard-rom"
+                               data-bs-toggle="modal" data-bs-target="#rom-info-modal" onfocus="tildeleRomId(this.id)">
+                                <div class="p-3 d-flex flex-column mb-3 rom" id="rom-1">
+                                    <p class="lead m-0 my-2">Standard Rom</p>
+                                    <small class="d-block fw-bold">1 Person</small>
+                                </div>
+                            </a>
+                        </div>
                     </div>
+                    <div class="row">
+                        <input type="hidden" aria-describedby="lugar-feil-melding" id="lugar-fm-placeholder">
+                        <div class="invalid-feedback d-none lugar-feil-melding"></div>
+                        <p class="fs-5 text-center text-md-start text-theme">Reservert Lugarer</p>
+                        <template id="lugar-template">
+                            <div class="col-lg-6 d-flex flex-md-row flex-column text-lg-start text-center">
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light">
+                                        <small><span class="antall"></span> x <span class="tittel"></span></small>
+                                        <button class="btn btn-theme-secondary rom-fjern-btn"
+                                                onclick="fjernLugar(this)">Fjern</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="row" id="valgt-lugar-template-tray"></div>
                 </div>
 
                 <div id="trinn-4" class="d-none">
@@ -520,7 +546,10 @@
                                             <p class="fs-5 m-0 text-center text-md-start text-theme">Lugar</p>
                                         </div>
                                         <div class="col-lg-12 d-flex flex-md-row flex-column text-lg-start text-center">
-                                            <small>Lugar navn</small>
+                                            <div id="lugar-tekst-template-tray"></div>
+                                            <template id="valgt-lugar-tekst-template">
+                                                <small class="me-2"></small>
+                                            </template>
                                         </div>
                                     </div>
                                 </div>
@@ -674,15 +703,15 @@
                         </div>
                         <div class="col-lg-6 order-lg-2 order-1 bg-light">
                             <p class="px-3 py-2 m-0 fs-5">Ordresammendrag</p>
-                            <div class="d-flex flex-lg-row flex-column justify-content-between py-2 px-3">
+                            <div class="d-flex flex-xl-row flex-column justify-content-between py-2 px-3">
                                 <p class="fs-6 m-0 text-theme">Betalingsreferanse:</p>
                                 <p class="fs-6 m-0">MKI736</p>
                             </div>
-                            <div class="d-flex flex-lg-row flex-column justify-content-between py-2 px-3">
+                            <div class="d-flex flex-xl-row flex-column justify-content-between py-2 px-3">
                                 <p class="fs-6 m-0 text-theme">Bekrivelse:</p>
                                 <p class="fs-6 m-0">Norway Cruise Booking Order</p>
                             </div>
-                            <div class="d-flex flex-lg-row flex-column justify-content-between py-2 px-3">
+                            <div class="d-flex flex-xl-row flex-column justify-content-between py-2 px-3">
                                 <p class="fs-6 m-0 text-theme">TotalPris:</p>
                                 <p class="fs-6 m-0"><span class="totalpris">5400</span> kr</p>
                             </div>
@@ -765,25 +794,24 @@
                     <div class="col-lg-6">
                         <div class="row g-3">
                             <div class="col-lg-12">
-                                <h2 class="fw-light modal-title text-theme" id="rom-tittel">
-                                    Title</h2>
+                                <h2 class="rom-tittel fw-light modal-title text-theme">Title</h2>
                             </div>
                             <div class="col-lg-6">
-                                <img id="rom-bilde" src="assets/cover.png" alt="single room image"
-                                     class="img-fluid">
+                                <img src="assets/cover.png" class="rom-bilde img-fluid" alt="img">
                             </div>
                             <div class="col-lg-6">
                                 <div class="row">
                                     <div class="col-12">
-                                        <p id="rom-beskrivelse" class="m-0">Beskrivelse</p>
+                                        <p class="rom-beskrivelse m-0">Beskrivelse</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row justify-content-lg-end justify-content-start">
                             <div class="col-lg-6">
-                                <p id="rom-pris" class="m-0 fs-5 text-theme text-lg-end text-start">
-                                    +500 kr</p>
+                                <p class="m-0 fs-5 text-theme text-lg-end text-start">
+                                    +<span class="rom-pris">500</span> kr
+                                </p>
                             </div>
                         </div>
 
@@ -796,11 +824,15 @@
                                         <p class="m-0 fs-5 m-lg-0 flex-fill">Hvor mange vil du reservere?</p>
                                     </div>
                                     <div class="col-lg-6 d-lg-flex d-block align-items-center justify-content-lg-end">
-                                        <small class="text-black-50 me-3">Reservere opp til 30 seter</small>
-                                        <div class="d-flex align-items-center mt-lg-0 mt-3">
-                                            <i class="bi bi-dash btn btn-icon minus" onclick="minus('air-seat', 0)"></i>
-                                            <span class="mx-3 antall-air-seat">1</span>
-                                            <i class="bi bi-plus btn btn-icon pluss" onclick="pluss('air-seat', 30)"></i>
+                                        <p class="text-black-50 m-0 me-3 fs-6">
+                                            Reservere opp til 
+                                            <span class="rom-max-reservasjon">30</span>
+                                            <span class="rom-span"> seter</span>
+                                        </p>
+                                        <div class="d-flex align-items-center mt-lg-0 mt-3 rom-btns">
+                                            <i class="bi bi-dash btn btn-icon minus" onclick="minusLugar()"></i>
+                                            <span class="mx-3 rom-antall-reservasjon">1</span>
+                                            <i class="bi bi-plus btn btn-icon pluss" onclick="plussLugar()"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -810,7 +842,7 @@
                                     <span class="text-theme fw-bold">
                                          <i class="bi bi-people-fill me-2"></i>Personer
                                     </span>
-                                    <span id="rom-kapasitet">2</span>
+                                    <span class="rom-kapasitet">2</span>
                                 </p>
                             </div>
                             <div class="col-lg-6">
@@ -818,7 +850,7 @@
                                     <span class="text-theme fw-bold">
                                         <i class="bi bi-grid me-2"></i>Vindu
                                     </span>
-                                    <span id="rom-vindu">Ja</span>
+                                    <span class="rom-vindu">Ja</span>
                                 </p>
                             </div>
                         </div>
@@ -833,11 +865,14 @@
                                 data-bs-dismiss="modal" aria-label="Close">Lukk</button>
                     </div>
                     <div class="col-lg-3">
-                        <input type="hidden" id="valgt-rom">
-                        <button type="button" class="btn btn-theme w-100" id="velg-rom-btn">Velg</button>
+                        <input type="hidden" id="valgt-lugar">
+                        <button type="button" class="btn btn-theme w-100"
+                                data-bs-dismiss="modal" aria-label="Close"
+                                id="velg-rom-btn" onclick="validerLugar()">Velg</button>
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </div>

@@ -13,25 +13,20 @@ let reiseTypeInput = $("#reise-type");
 let fraDatoInput = $("#fra-dato");
 let tilDatoInput = $("#til-dato");
 
-// Feil meldinger
-
-let ruteInputFeilMelding = $("#rute-feil-melding");
-let reiseTypeFeilMelding = $("#reise-type-feil-melding");
-let fraDatoFeilMelding = $("#fra-dato-feil-melding");
-let tilDatoFeilMelding = $("#til-dato-feil-melding");
+// Valideringsfunksjoner for trinn 1: Rute
 
 function validerRute(){
-    // Sjekket rute
-    let checkedRute = $("input[name=ruter]:checked").val()
-    
+    let checkedRute = $("input[name=ruter]:checked").val();
+    let ruteInputFeilMelding = $("#rute-feil-melding");
+
     if (checkedRute === undefined || checkedRute === "") {
         $("#rute-input-placeholder").addClass('is-invalid');
         ruteInputFeilMelding.removeClass('d-none');
         return false;
     } else {
         // Slik at navn til steder kan aksesseres
-        valgtRute['ruteFra'] = $('#' + checkedRute + '-col .rute-fra').text();
-        valgtRute['ruteTil'] = $('#' + checkedRute + '-col .rute-til').text();
+        rute['ruteFra'] = $('#' + checkedRute + '-col .rute-fra').text();
+        rute['ruteTil'] = $('#' + checkedRute + '-col .rute-til').text();
         $("#rute-input-placeholder").removeClass('is-invalid');
         ruteInputFeilMelding.addClass('d-none');
         aktiverInput(reiseTypeInput);
@@ -40,25 +35,26 @@ function validerRute(){
 }
 
 function validerReiseType(){
-    let reiseType = reiseTypeInput.val();
+    let reiseTypeFeilMelding = $("#reise-type-feil-melding");
+    let type = reiseTypeInput.val();
     let ok = true;
 
-    if (reiseType === "") {
+    if (type === "") {
         reiseTypeInput.addClass('is-invalid');
         reiseTypeFeilMelding.removeClass('d-none');
         ok = false;
-    } else if(reiseType === "en-vei"){
+    } else if(type === "en-vei"){
         reiseTypeInput.removeClass('is-invalid');
         reiseTypeFeilMelding.addClass('d-none');
         $("#til-dato-col").addClass('d-none');
-        valgtReiseType = 'enVei';
+        reiseType = 'enVei';
         aktiverInput(fraDatoInput);
         $('.retur-element').addClass('d-none');
     } else {
         reiseTypeInput.removeClass('is-invalid');
         reiseTypeFeilMelding.addClass('d-none');
         $("#til-dato-col").removeClass('d-none');
-        valgtReiseType = 'turRetur';
+        reiseType = 'turRetur';
         aktiverInput(fraDatoInput);
         $('.retur-element').removeClass('d-none');
     }
@@ -66,6 +62,7 @@ function validerReiseType(){
 }
 
 function validerFraDato(){
+    let fraDatoFeilMelding = $("#fra-dato-feil-melding");
     let idag = moment(new Date());
     let fra = moment(new Date(fraDatoInput.datepicker('getDate')));
     let ok = false;
@@ -76,7 +73,7 @@ function validerFraDato(){
         } else if(fra.isBefore(idag)){
             visDatoFeilMelding(fraDatoInput, fraDatoFeilMelding, "Ugyldig avreise dato.");
         } else {
-            valgtAvreiseDato = fra.format('DD/MM/YYYY');
+            avreiseDato = fra.format('DD/MM/YYYY');
             fjernDatoFeilMelding(fraDatoInput, fraDatoFeilMelding);
             aktiverInput(tilDatoInput);
             ok = true;
@@ -87,6 +84,7 @@ function validerFraDato(){
 
 function validerTilDato(){
     if(reiseTypeInput.val() === "en-vei") return true;
+    let tilDatoFeilMelding = $("#til-dato-feil-melding");
     let fra = moment(new Date(fraDatoInput.datepicker('getDate')));
     let til = moment(new Date(tilDatoInput.datepicker('getDate')));
     let ok = false;
@@ -97,7 +95,7 @@ function validerTilDato(){
         } else if(til.isBefore(fra)){
             visDatoFeilMelding(tilDatoInput, tilDatoFeilMelding, "Ugyldig retur dato.");
         } else {
-            valgtReturDato = til.format('DD/MM/YYYY'); 
+            returDato = til.format('DD/MM/YYYY'); 
             fjernDatoFeilMelding(tilDatoInput, tilDatoFeilMelding);
             ok = true;
         }
@@ -132,9 +130,9 @@ function formatterDato(id) {
     return  datoVerdi.format('DD/MM/YYYY');
 }
 
-// Validerer antall reisefølger
+// Valideringsfunksjoner for trinn 2: Antall Reisefølger
 
-function pluss(type, max) {
+function plussReisefolger(type, max) {
     let plussBtn = $("#" + type + " .pluss");
     let minusBtn = $("#" + type + " .minus");
     let label = $(".antall-" + type);
@@ -150,7 +148,7 @@ function pluss(type, max) {
     }
 }
 
-function minus(type, min) {
+function minusReisefolger(type, min) {
     let plussBtn = $("#" + type + " .pluss");
     let minusBtn = $("#" + type + " .minus");
     let label = $(".antall-" + type);
@@ -166,7 +164,80 @@ function minus(type, min) {
     }
 }
 
-// Legger måltid objekter til en liste
+// Valideringsfunksjoner for trinn 3: Lugarer
+
+function validerLugar(){
+    let lugar = $('#valgt-lugar').val();
+    let romAntallReservasjon = $('#' + lugar + '-antall-reservasjon').text();
+    
+    if(Number(romAntallReservasjon > 0)) {
+        skjulLugarFeilMelding();
+        lageLugarObjekt(lugar);
+        visValgteLugarer();
+        return true;
+    } else {
+        visLugarFeilMelding();
+        return false;
+    }
+}
+
+// Lager lugar objekt
+function lageLugarObjekt(lugar){
+    let romAntallReservasjon = $('#' + lugar + '-antall-reservasjon').text();
+    let romPris = $('#' + lugar + '-pris').text();
+    let totalPris = Number(romAntallReservasjon) * Number(romPris);
+    let objekt = {'type': lugar, 'antall': Number(romAntallReservasjon), 'totalPris': totalPris};
+    
+    // Hvis lugar er allerede i arrayet, fjern den og legg den ny lugar: unngår duplikater
+    lugarer.forEach(function (item, index) {
+        if(item.type === lugar) lugarer.splice(index, 1);
+    });
+    lugarer.push(objekt);
+}
+
+// Viser valgte lugarer på klient siden
+function visValgteLugarer(){
+    let lugarTemplate = document.getElementById('lugar-template');
+    let parent = $('#valgt-lugar-template-tray');
+    parent.empty();
+
+    for(let i = 0; i < lugarer.length; i++) {
+        let clone = lugarTemplate.content.cloneNode(true);
+        clone.querySelector('.antall').innerText = lugarer[i].antall;
+        clone.querySelector('.tittel').innerText = lugarer[i].type;
+        clone.querySelector('.rom-fjern-btn').name = lugarer[i].type;
+        parent.append(clone);
+    }
+}
+
+// Fjerner lugar fra arrayet og på klient siden
+function fjernLugar(button){
+    let toRemove = button.name;
+    lugarer.forEach(function (item, index) {
+        if(item.type === toRemove) {
+            lugarer.splice(index, 1);
+            visValgteLugarer();
+        }
+    });
+}
+
+function visLugarFeilMelding(){
+    let lugarFmPlaceholder = $("#lugar-fm-placeholder");
+    let lugarFeilMelding = $(".lugar-feil-melding");
+    lugarFmPlaceholder.addClass('is-invalid');
+    lugarFeilMelding.text('Velg minst èn lugar.');
+    lugarFeilMelding.removeClass('d-none');
+}
+
+function skjulLugarFeilMelding(){
+    let lugarFmPlaceholder = $("#lugar-fm-placeholder");
+    let lugarFeilMelding = $(".lugar-feil-melding");
+    lugarFmPlaceholder.removeClass('is-invalid');
+    lugarFeilMelding.addClass('d-none');
+}
+
+// Valideringsfunksjon for trinn 4: Måltider
+
 function leggTilValgtMaaltid(){
     $(".maaltid-row").on('click', function () {
         let inputId = '#' + $('#' + this.id + ' input').attr('id')
@@ -178,13 +249,13 @@ function leggTilValgtMaaltid(){
         $(input).attr("checked", !$(input).attr("checked"));
 
         if($(input).is(':checked')) {
-            valgtMaaltid.push({'id': inputId, 'navn': maaltidNavn, 'pris': maaltidPris});
+            maaltider.push({'id': inputId, 'navn': maaltidNavn, 'pris': maaltidPris});
             $(inputId + "-ikon").removeClass('d-none');
             $(inputId + '-info').addClass('on');
         } else {
             // Fjern det fra valgt måltid array hvis unchecked
-            valgtMaaltid.forEach(function (item, index) {
-                if(item.id === inputId) valgtMaaltid.splice(index, 1);
+            maaltider.forEach(function (item, index) {
+                if(item.id === inputId) maaltider.splice(index, 1);
             });
             $(inputId + "-ikon").addClass('d-none');
             $(inputId + '-info').removeClass('on');
@@ -192,7 +263,7 @@ function leggTilValgtMaaltid(){
     });
 }
 
-// Validerer passasjer inputs
+// Valideringsfunksjoner for trinn 5: Passasjerer form
 
 function validerFornavn(id){
     let input = $('#' + id);
@@ -277,8 +348,9 @@ function lagePassasjerObjekt(fornavnListe, etternavnListe, datoListe){
     }
 }
 
-// Validerer trinn
+// Validerer de forskjellige trinnene
 
+// Trinn 1: Rute
 function validerTrinn1(){
     let ok = validerRute() && validerReiseType() && validerFraDato() && validerTilDato();
     if(ok) {
@@ -287,28 +359,30 @@ function validerTrinn1(){
     }
 }
 
+// Trinn 2: Antall Reisefølger
 function validerTrinn2() {
-    antallVoksen = Number($(".antall-voksen").text());
-    antallBarn = Number($(".antall-barn").text());
-    antallDyr = Number($(".antall-dyr").text());
-    antallSykler = Number($(".antall-sykkel").text());
-    
-    // antall passasjer form er avhengig på antall passasjerer
-    renderPassasjerInputsTemplate(antallVoksen, antallBarn);
     merkerFerdig('#neste-trinn');
     skjulOgVisTrinn('#trinn-2','#trinn-3','#trinn-2-btns','#trinn-3-btns');
 }
 
+// Trinn 3: Lugar
 function validerTrinn3() {
-    merkerFerdig('#trinn-3');
-    skjulOgVisTrinn('#trinn-3','#trinn-4','#trinn-3-btns','#trinn-4-btns');
+    if(lugarer.length > 0) {
+        merkerFerdig('#trinn-3');
+        skjulOgVisTrinn('#trinn-3','#trinn-4','#trinn-3-btns','#trinn-4-btns');
+        skjulLugarFeilMelding();
+    } else {
+        visLugarFeilMelding();
+    }
 }
 
+// Trinn 4: Måltider
 function validerTrinn4() {
     merkerFerdig('#trinn-4');
     skjulOgVisTrinn('#trinn-4','#trinn-5','#trinn-4-btns','#trinn-5-btns');
 }
 
+// Trinn 5: Passasjerform
 function validerTrinn5() {
     let fornavnListe = $('input[name=fornavn]');
     let etternavnListe = $('input[name=etternavn]');
@@ -320,11 +394,13 @@ function validerTrinn5() {
     }
 }
 
+// Trinn 6: Se over bestillingen
 function validerTrinn6() {
     merkerFerdig('#trinn-6');
     skjulOgVisTrinn('#trinn-6','#trinn-7','#trinn-6-btns','#trinn-7-btns');
 }
 
+// Trinn 7: Betal
 function validerTrinn7() {
     merkerFerdig('#trinn-7');
 }

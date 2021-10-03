@@ -11,8 +11,8 @@ $(document).ready(function () {
     $.datepicker.setDefaults($.datepicker.regional['no']); // endrer dato språk
     enableRuteDatePicker();
     deaktiverInputs(reiseTypeInput ,fraDatoInput, tilDatoInput);
-    leggTilValgtMaaltid();
     merkerValgtRute();
+    leggTilValgtMaaltid();
 });
 
 // Noen input felter må først velges før de andre
@@ -110,6 +110,102 @@ function merkerValgtRute() {
     });
 }
 
+function plussLugar() {
+    let lugar = $("#valgt-lugar").val();
+    let btnWrapper = $('#' + lugar + '-btns');
+    let plussBtn = $("#" + btnWrapper.id + " .pluss");
+    let minusBtn = $("#" + btnWrapper.id + " .minus");
+
+    let label = $("#" + lugar + "-antall-reservasjon");
+    let value = Number(label.text());
+    let maxValue = Number($('#' + lugar + '-max-reservasjon').text());
+    
+    if(value < maxValue) {
+        value++;
+        label.text(value);
+        plussBtn.removeClass('disabled');
+        minusBtn.removeClass('disabled');
+    } else {
+        plussBtn.addClass('disabled');
+    }
+}
+
+function minusLugar() {
+    let lugar = $("#valgt-lugar").val();
+    let btnWrapper = $('#' + lugar + '-btns');
+    let plussBtn = $("#" + btnWrapper.id + " .pluss");
+    let minusBtn = $("#" + btnWrapper.id + " .minus");
+    
+    let label = $("#" + lugar + "-antall-reservasjon");
+    let value = Number(label.text());
+
+    if(value > 0) {
+        value--;
+        label.text(value);
+        plussBtn.removeClass('disabled');
+        minusBtn.removeClass('disabled');
+    } else {
+        minusBtn.addClass('disabled');
+    }
+}
+
+// Setter id på valgt rom for separat tildeling av verdier
+function tildeleRomId(id){
+    // assign ids
+    $("#valgt-lugar").val(id);
+    $(".rom-btns").attr('id', id + '-btns');
+    $(".rom-tittel").attr('id', id + '-tittel');
+    $(".rom-beskrivelse").attr('id', id + '-beskrivelse');
+    $(".rom-pris").attr('id', id + '-pris');
+    $(".rom-kapasitet").attr('id', id + '-kapasitet');
+    $(".rom-max-reservasjon").attr('id', id + '-max-reservasjon');
+    $(".rom-antall-reservasjon").attr('id', id + '-antall-reservasjon');
+    $(".rom-bilde").attr('id', id + '-bilde');
+    $(".rom-vindu").attr('id', id + '-vindu');
+    $(".rom-span").attr('id', id + '-span');
+    generereRomDetaljer(id);
+}
+
+// Genererer rom info fordi alle romene deler kun en modal
+function generereRomDetaljer(id) {
+    let romTittel = $('#'+ id + '-tittel');
+    let romBeskrivelse = $('#'+ id + '-beskrivelse');
+    let romPris = $('#'+ id + '-pris');
+    let romKapasitet = $('#'+ id + '-kapasitet');
+    let romMaxReservasjon = $('#'+ id + '-max-reservasjon');
+    let romAntallReservasjon = $('#'+ id + '-antall-reservasjon');
+    let romBilde = $('#'+ id + '-bilde');
+    let romVindu = $('#'+ id + '-vindu');
+    let romSpan = $('#'+ id + '-span');
+    
+    switch (id) {
+        case 'air-seat':
+            romTittel.text('Air Seat');
+            romPris.text('299');
+            romKapasitet.text('1');
+            romMaxReservasjon.text('30');
+            romAntallReservasjon.text('0');
+            romBilde.attr('src', 'assets/cover.png');
+            romVindu.text('Ja');
+            romSpan.text('seter');
+            romBeskrivelse.text("De komfortable liggestolene er vårt billigste alternativ, og du finner " +
+                "de på dekk 10.");
+            break;
+        case 'standard-rom':
+            romTittel.text('Standard Rom');
+            romPris.text('1200');
+            romKapasitet.text('1');
+            romMaxReservasjon.text('5');
+            romAntallReservasjon.text('0');
+            romBilde.attr('src', 'assets/cover.png');
+            romVindu.text('Ja');
+            romSpan.text('rom');
+            romBeskrivelse.text("Komfortabel lugar for 1 person. Lugarene er 8,5 m² og er utstyrt med seng og " +
+                "sovesofa, TV, bad med dusj og WC. Lugarene ligger på dekk 8 og 9");
+            break;
+    }
+}
+
 // Oppdater UI verdier basert på valgt verdier på de forskjellige trinnene
 
 function oppdaterUIForRute(){
@@ -118,8 +214,8 @@ function oppdaterUIForRute(){
     let fraDatoTekst = $('.fra-dato-tekst');
     let tilDatoTekst = $('.til-dato-tekst');
     
-    fraStedTekst.text(valgtRute.ruteFra);
-    tilStedTekst.text(valgtRute.ruteTil);
+    fraStedTekst.text(rute.ruteFra);
+    tilStedTekst.text(rute.ruteTil);
     fraDatoTekst.text($('#fra-dato').val());
     tilDatoTekst.text($('#til-dato').val())
 }
@@ -136,15 +232,27 @@ function oppdaterUIForReisefolger(){
     antallSykkelTekst.text(antallSykler);
 }
 
+function oppdaterUIForLugarer(){
+    let lugarTekstTemplate = document.getElementById('valgt-lugar-tekst-template');
+    let parent = $("#lugar-tekst-template-tray");
+    parent.empty();
+    for(let i = 0; i < lugarer.length; i++) {
+        let clone = lugarTekstTemplate.content.cloneNode(true);
+        let textElement = clone.querySelector('small');
+        textElement.textContent = lugarer[i].antall + ' x ' + lugarer[i].type + ',';
+        parent.append(clone);
+    }
+}
+
 function oppdaterUIForMaaltid(){
     let maaltidTekstTemplate = document.getElementById('valgt-maaltid-tekst-template');
     let parent = $('#maaltid-tekst-template-tray');
-    if(valgtMaaltid.length > 0) {
+    if(maaltider.length > 0) {
         parent.empty();
-        for(let i = 0; i < valgtMaaltid.length; i++) {
+        for(let i = 0; i < maaltider.length; i++) {
             let clone = maaltidTekstTemplate.content.cloneNode(true);
             let textElement = clone.querySelector('small');
-            textElement.textContent = valgtMaaltid[i].navn + ', ';
+            textElement.textContent = maaltider[i].navn + ', ';
             parent.append(clone);
         }
     } else {
@@ -167,14 +275,15 @@ function oppdaterUIForPassasjerer(){
     }
 }
 
-// template renders
-
 // form hvor alle passasjerer må gi navnet og fødselsdato
-function renderPassasjerInputsTemplate(antallVoksen, antallBarn){
+function oppdaterUIForPassasjerForm(){
     let passasjerFormTemplate = document.getElementById('template-passasjer-form');
     let parent = $('#passasjerer-form-template-tray');
-    let antallPassasjerer = antallVoksen + antallBarn;
     parent.empty();
+    
+    let antallVoksen = Number($('.antall-voksen').text());
+    let antallBarn = Number($('.antall-barn').text());
+    let antallPassasjerer = antallVoksen + antallBarn;
     
     for(let i = 0; i < antallPassasjerer; i++) {
         let clone = passasjerFormTemplate.content.cloneNode(true);

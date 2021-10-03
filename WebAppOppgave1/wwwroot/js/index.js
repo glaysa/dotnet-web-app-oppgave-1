@@ -7,10 +7,10 @@
 
 // Trinn 1: Rute
 
-let valgtRute = {}; // aksessere rutene med ruteFra og ruteTil keys
-let valgtReiseType = ""; // kun 2 verdier: enVei og turRetur
-let valgtAvreiseDato = ""; // string: DD/MM/YYYY
-let valgtReturDato = ""; // string: DD/MM/YYYY
+let rute = {}; // aksessere rutene med ruteFra og ruteTil keys
+let reiseType = ""; // kun 2 verdier: enVei og turRetur
+let avreiseDato = ""; // string: DD/MM/YYYY
+let returDato = ""; // string: DD/MM/YYYY
 
 // Trinn 2: Antall reisefølger
 
@@ -19,8 +19,11 @@ let antallBarn = 0;
 let antallDyr = 0;
 let antallSykler = 0;
 
+// Trinn 3: Lugarer
+let lugarer = []; // array av lugar objekter: har type, antall og totalPris keys
+
 // Trinn 4: Måltid
-let valgtMaaltid = [] // array av måltid objekter: har navn og pris keys
+let maaltider = [] // array av måltid objekter: har navn og pris keys
 
 // Trinn 5: Passasjerer
 let passasjerer = []; // array av passasjer objekter: har fornavn, etternavn og fodselsdato keys
@@ -33,17 +36,17 @@ function lagreRute(){
 function lagreAntallPassasjerer(){
     validerTrinn2();
     oppdaterUIForReisefolger();
+    oppdaterUIForPassasjerForm();
 }
 
 function lagreLugar(){
     validerTrinn3();
-    // post metode: skal implementeres i oppgave 2 hvis det kreves
+    oppdaterUIForLugarer();
 }
 
 function lagreMaaltider(){
     validerTrinn4();
     oppdaterUIForMaaltid();
-    // post metode: skal implementeres i oppgave 2 hvis det kreves
 }
 
 function lagrePassasjerInfo(){
@@ -57,17 +60,18 @@ function bekreft(){
 
 function lagreBestilling(){
     validerTrinn7()
-    location.href = 'kvittering.html';
+    //location.href = 'kvittering.html';
 
-    console.log('Rute fra:', valgtRute.ruteFra);
-    console.log('Rute til:', valgtRute.ruteTil);
-    console.log('Reisetype:', valgtReiseType);
-    console.log('Avreise dato:', valgtAvreiseDato);
-    console.log('Retur dato:', valgtReturDato);
+    console.log('Rute fra:', rute.ruteFra);
+    console.log('Rute til:', rute.ruteTil);
+    console.log('Reisetype:', reiseType);
+    console.log('Avreise dato:', avreiseDato);
+    console.log('Retur dato:', returDato);
     console.log('voksen:', antallVoksen);
     console.log('Barn:', antallBarn);
     console.log('Kjæledyr:', antallDyr);
     console.log('Sykkel:', antallSykler);
-    console.log('Måltid:', valgtMaaltid);
+    console.log('Lugar:', lugarer);
+    console.log('Måltid:', maaltider);
     console.log('Passasjerer:', passasjerer);
 }
