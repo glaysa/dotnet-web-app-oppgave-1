@@ -343,6 +343,10 @@ function validerTrinn1(){
 
 // Trinn 2: Antall Reisefølger
 function validerTrinn2() {
+    antallVoksen = Number($('.antall-voksen').text());
+    antallBarn = Number($('.antall-barn').text());
+    antallDyr = Number($('.antall-dyr').text());
+    antallSykler = Number($('.antall-sykkel').text());
     merkerFerdig('#neste-trinn');
     skjulOgVisTrinn('#trinn-2','#trinn-3','#trinn-2-btns','#trinn-3-btns');
 }
