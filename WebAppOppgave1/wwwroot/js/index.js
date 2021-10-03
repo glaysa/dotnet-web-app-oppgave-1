@@ -28,6 +28,9 @@ let maaltider = [] // array av måltid objekter: har navn og pris keys
 // Trinn 5: Passasjerer
 let passasjerer = []; // array av passasjer objekter: har fornavn, etternavn og fodselsdato keys
 
+// Trinn 7: Kundeinformasjon og betalingsdetaljer
+let kunde = {};
+
 function lagreRute(){
     validerTrinn1();
     oppdaterUIForRute();
@@ -74,4 +77,5 @@ function lagreBestilling(){
     console.log('Lugar:', lugarer);
     console.log('Måltid:', maaltider);
     console.log('Passasjerer:', passasjerer);
+    console.log('Kunde:', kunde);
 }

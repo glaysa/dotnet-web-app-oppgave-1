@@ -265,42 +265,6 @@ function leggTilValgtMaaltid(){
 
 // Valideringsfunksjoner for trinn 5: Passasjerer form
 
-function validerFornavn(id){
-    let input = $('#' + id);
-    
-    if(input.val() === '' || input.val() === undefined) {
-        visPassasjerInputFeilMelding(id, 'Fornavn er tomt.');
-        return false;
-    } else {
-        skjulPassasjerInputFeilMelding(id);
-        return true;
-    }
-}
-
-function validerEtternavn(id){
-    let input = $('#' + id);
-
-    if(input.val() === '' || input.val() === undefined) {
-        visPassasjerInputFeilMelding(id, 'Etternavn er tomt.');
-        return false;
-    } else {
-        skjulPassasjerInputFeilMelding(id);
-        return true;
-    }
-}
-
-function validerFodselsDato(id){
-    let input = $('#' + id);
-
-    if(input.val() === '' || input.val() === undefined) {
-        visPassasjerInputFeilMelding(id, 'Fødselsdato er tomt.');
-        return false;
-    } else {
-        skjulPassasjerInputFeilMelding(id);
-        return true;
-    }
-}
-
 function validerPassajerForm(fornavnListe, etternavnListe, fodselsDatoListe) {
     let valid = false;
     for(let i = 0; i < fornavnListe.length; i++){
@@ -319,21 +283,6 @@ function validerPassajerForm(fornavnListe, etternavnListe, fodselsDatoListe) {
     return valid;
 }
 
-function visPassasjerInputFeilMelding(id, melding) {
-    let input = $('#' + id);
-    let feilMelding = $('#' + id + '-feil-melding');
-    input.addClass('is-invalid');
-    feilMelding.removeClass('d-none');
-    feilMelding.text(melding);
-}
-
-function skjulPassasjerInputFeilMelding(id){
-    let input = $('#' + id);
-    let feilMelding = $('#' + id + '-feil-melding');
-    input.removeClass('is-invalid');
-    feilMelding.addClass('d-none');
-}
-
 function lagePassasjerObjekt(fornavnListe, etternavnListe, datoListe){
     // Tæmmer arrayet når bruker går tilbake og endrer antall passasjerer
     passasjerer.length = 0;
@@ -346,6 +295,39 @@ function lagePassasjerObjekt(fornavnListe, etternavnListe, datoListe){
         let objekt = {'fornavn': fornavn, 'etternavn':etternavn, 'fodselsDato': formattedDate };
         passasjerer.push(objekt);
     }
+}
+
+// Valideringsfunksjon for trinn 7: Betal
+
+function validerKundeInfo(){
+    let fornavnId = $("#kunde-fornavn").attr('id');
+    let etternavnId = $("#kunde-etternavn").attr('id');
+    let tlfId = $("#kunde-tlf").attr('id');
+    let epostId = $("#kunde-epost").attr('id');
+    let adresseId = $("#kunde-adresse").attr('id');
+    let postnrId = $("#kunde-postnr").attr('id');
+    let poststedId = $("#kunde-poststed").attr('id');
+    let kortnrId = $("#kunde-kortnr").attr('id');
+    let kortnavnId = $("#kunde-kortnavn").attr('id');
+    let kortUtlopsDatoId = $("#kunde-kortutlopsdato").attr('id');
+    let kortSikkerhetsKodeId = $("#kunde-kort-sikkerhets-kode").attr('id');
+    
+    let ok = validerFornavn(fornavnId) && validerEtternavn(etternavnId) && validerTlf(tlfId) && validerEpost(epostId)
+        && validerAdresse(adresseId) && validerPostnr(postnrId) && validerPoststed(poststedId) 
+        && validerKortnr(kortnrId) && validerKortnavn(kortnavnId) && validerKortUtlopsDato(kortUtlopsDatoId)
+        && validerKortSikkerhetsKode(kortSikkerhetsKodeId);
+    
+    if(ok) {
+        kunde['fornavn'] = $("#kunde-fornavn").val();
+        kunde['etternavn'] = $("#kunde-etternavn").val();
+        kunde['tlf'] = $("#kunde-tlf").val();
+        kunde['epost'] = $("#kunde-epost").val();
+        kunde['adresse'] = $("#kunde-adresse").val();
+        kunde['postnr'] = $("#kunde-postnr").val();
+        kunde['poststed'] = $("#kunde-poststed").val();
+        return true;
+    }
+    return false;
 }
 
 // Validerer de forskjellige trinnene
@@ -402,5 +384,168 @@ function validerTrinn6() {
 
 // Trinn 7: Betal
 function validerTrinn7() {
-    merkerFerdig('#trinn-7');
+    if(validerKundeInfo()) {
+        merkerFerdig('#trinn-7') 
+    }
+}
+
+// Felles input validering /////////////////////////////////////////////////////////////////////////////////////////////
+
+function validerFornavn(id){
+    let input = $('#' + id);
+
+    if(input.val() === '' || input.val() === undefined) {
+        visInputFeilMelding(id, 'Fornavn er tomt.');
+        return false;
+    } else {
+        skjulInputFeilMelding(id);
+        return true;
+    }
+}
+
+function validerEtternavn(id){
+    let input = $('#' + id);
+
+    if(input.val() === '' || input.val() === undefined) {
+        visInputFeilMelding(id, 'Etternavn er tomt.');
+        return false;
+    } else {
+        skjulInputFeilMelding(id);
+        return true;
+    }
+}
+
+function validerFodselsDato(id){
+    let input = $('#' + id);
+
+    if(input.val() === '' || input.val() === undefined) {
+        visInputFeilMelding(id, 'Fødselsdato er tomt.');
+        return false;
+    } else {
+        skjulInputFeilMelding(id);
+        return true;
+    }
+}
+
+function validerTlf(id){
+    let input = $('#' + id);
+
+    if(input.val() === '' || input.val() === undefined) {
+        visInputFeilMelding(id, 'Telefonnummer er tomt.');
+        return false;
+    } else {
+        skjulInputFeilMelding(id);
+        return true;
+    }
+}
+
+function validerEpost(id){
+    let input = $('#' + id);
+
+    if(input.val() === '' || input.val() === undefined) {
+        visInputFeilMelding(id, 'E-post er tomt.');
+        return false;
+    } else {
+        skjulInputFeilMelding(id);
+        return true;
+    }
+}
+
+function validerAdresse(id){
+    let input = $('#' + id);
+
+    if(input.val() === '' || input.val() === undefined) {
+        visInputFeilMelding(id, 'Adressen er tomt.');
+        return false;
+    } else {
+        skjulInputFeilMelding(id);
+        return true;
+    }
+}
+
+function validerPostnr(id){
+    let input = $('#' + id);
+
+    if(input.val() === '' || input.val() === undefined) {
+        visInputFeilMelding(id, 'Postnummer er tomt.');
+        return false;
+    } else {
+        skjulInputFeilMelding(id);
+        return true;
+    }
+}
+
+function validerPoststed(id){
+    let input = $('#' + id);
+
+    if(input.val() === '' || input.val() === undefined) {
+        visInputFeilMelding(id, 'Poststed er tomt.');
+        return false;
+    } else {
+        skjulInputFeilMelding(id);
+        return true;
+    }
+}
+
+function validerKortnr(id){
+    let input = $('#' + id);
+
+    if(input.val() === '' || input.val() === undefined) {
+        visInputFeilMelding(id, 'Kortnummer er tomt.');
+        return false;
+    } else {
+        skjulInputFeilMelding(id);
+        return true;
+    }
+}
+
+function validerKortnavn(id){
+    let input = $('#' + id);
+
+    if(input.val() === '' || input.val() === undefined) {
+        visInputFeilMelding(id, 'Kortnavn er tomt.');
+        return false;
+    } else {
+        skjulInputFeilMelding(id);
+        return true;
+    }
+}
+
+function validerKortUtlopsDato(id){
+    let input = $('#' + id);
+
+    if(input.val() === '' || input.val() === undefined) {
+        visInputFeilMelding(id, 'Utløpsdato er tomt.');
+        return false;
+    } else {
+        skjulInputFeilMelding(id);
+        return true;
+    }
+}
+
+function validerKortSikkerhetsKode(id){
+    let input = $('#' + id);
+
+    if(input.val() === '' || input.val() === undefined) {
+        visInputFeilMelding(id, 'Sikkerhetskoden er tomt.');
+        return false;
+    } else {
+        skjulInputFeilMelding(id);
+        return true;
+    }
+}
+
+function visInputFeilMelding(id, melding) {
+    let input = $('#' + id);
+    let feilMelding = $('#' + id + '-feil-melding');
+    input.addClass('is-invalid');
+    feilMelding.removeClass('d-none');
+    feilMelding.text(melding);
+}
+
+function skjulInputFeilMelding(id){
+    let input = $('#' + id);
+    let feilMelding = $('#' + id + '-feil-melding');
+    input.removeClass('is-invalid');
+    feilMelding.addClass('d-none');
 }

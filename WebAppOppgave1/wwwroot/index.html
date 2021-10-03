@@ -594,64 +594,64 @@
                     <div class="row mb-3 g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" placeholder="_"
-                                       oninput="validerFornavn(this.id)">
+                                <input type="text" class="form-control" placeholder="_" id="kunde-fornavn"
+                                       oninput="validerFornavn(this.id)" aria-describedby="kunde-fornavn-feil-melding">
                                 <label>Fornavn</label>
-                                <div class="invalid-feedback d-none fornavn-feil-melding"></div>
+                                <div class="invalid-feedback d-none" id="kunde-fornavn-feil-melding"></div>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" placeholder="_"
-                                       oninput="validerEtternavn(this.id)">
+                                <input type="text" class="form-control" placeholder="_" id="kunde-etternavn"
+                                       oninput="validerEtternavn(this.id)" aria-describedby="kunde-etternavn-feil-melding">
                                 <label>Etternavn</label>
-                                <div class="invalid-feedback d-none etternavn-feil-melding"></div>
+                                <div class="invalid-feedback d-none" id="kunde-etternavn-feil-melding"></div>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="number" class="form-control" placeholder="_"
-                                       oninput="validerEtternavn(this.id)">
+                                <input type="number" class="form-control" placeholder="_" id="kunde-tlf"
+                                       oninput="validerTlf(this.id)" aria-describedby="kunde-tlf-feil-melding">
                                 <label>Telefonnummer</label>
-                                <div class="invalid-feedback d-none tlf-feil-melding"></div>
+                                <div class="invalid-feedback d-none" id="kunde-tlf-feil-melding"></div>
                             </div>
                         </div>
                         
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" placeholder="_"
-                                       oninput="validerEtternavn(this.id)">
+                                <input type="email" class="form-control" placeholder="_" id="kunde-epost"
+                                       oninput="validerEpost(this.id)" aria-describedby="kunde-epost-feil-melding">
                                 <label>E-post</label>
-                                <div class="invalid-feedback d-none epost-feil-melding"></div>
+                                <div class="invalid-feedback d-none" id="kunde-epost-feil-melding"></div>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control" placeholder="_"
-                                       oninput="validerEtternavn(this.id)">
+                                <input type="text" class="form-control" placeholder="_" id="kunde-adresse"
+                                       oninput="validerAdresse(this.id)" aria-describedby="kunde-adresse-feil-melding">
                                 <label>Adresse</label>
-                                <div class="invalid-feedback d-none epost-feil-melding"></div>
+                                <div class="invalid-feedback d-none" id="kunde-adresse-feil-melding"></div>
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-floating">
-                                <input type="number" class="form-control" placeholder="_"
-                                       oninput="validerEtternavn(this.id)">
+                                <input type="number" class="form-control" placeholder="_" id="kunde-postnr"
+                                       oninput="validerPostnr(this.id)" aria-describedby="kunde-postnr-feil-melding">
                                 <label>Postnummer</label>
-                                <div class="invalid-feedback d-none epost-feil-melding"></div>
+                                <div class="invalid-feedback d-none" id="kunde-postnr-feil-melding"></div>
                             </div>
                         </div>
 
                         <div class="col-md-8">
                             <div class="form-floating">
-                                <input type="text" class="form-control" placeholder="_"
-                                       oninput="validerEtternavn(this.id)">
+                                <input type="text" class="form-control" placeholder="_" id="kunde-poststed"
+                                       oninput="validerPoststed(this.id)" aria-describedby="kunde-poststed-feil-melding">
                                 <label>Poststed</label>
-                                <div class="invalid-feedback d-none epost-feil-melding"></div>
+                                <div class="invalid-feedback d-none" id="kunde-poststed-feil-melding"></div>
                             </div>
                         </div>
                     </div>
@@ -666,37 +666,37 @@
                             <div class="row g-3">
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="number" class="form-control" placeholder="_"
-                                               oninput="validerEtternavn(this.id)">
+                                        <input type="number" class="form-control" placeholder="_" id="kunde-kortnr"
+                                               oninput="validerKortnr(this.id)" aria-describedby="kunde-kortnr-feil-melding">
                                         <label>Kortnummer</label>
-                                        <div class="invalid-feedback d-none tlf-feil-melding"></div>
+                                        <div class="invalid-feedback d-none" id="kunde-kortnr-feil-melding"></div>
                                     </div>
                                 </div>
 
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" placeholder="_"
-                                               oninput="validerEtternavn(this.id)">
+                                        <input type="email" class="form-control" placeholder="_" id="kunde-kortnavn"
+                                               oninput="validerKortnavn(this.id)" aria-describedby="kunde-kortnavn-feil-melding">
                                         <label>Kortinnehavers navn</label>
-                                        <div class="invalid-feedback d-none epost-feil-melding"></div>
+                                        <div class="invalid-feedback d-none" id="kunde-kortnavn-feil-melding"></div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" placeholder="_"
-                                               oninput="validerEtternavn(this.id)">
+                                        <input type="email" class="form-control" placeholder="_" id="kunde-kortutlopsdato"
+                                               oninput="validerKortUtlopsDato(this.id)" aria-describedby="kunde-kortutlopsdato-feil-melding">
                                         <label>Utløpsdato</label>
-                                        <div class="invalid-feedback d-none epost-feil-melding"></div>
+                                        <div class="invalid-feedback d-none" id="kunde-kortutlopsdato-feil-melding"></div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" placeholder="_"
-                                               oninput="validerEtternavn(this.id)">
+                                        <input type="email" class="form-control" placeholder="_" id="kunde-kort-sikkerhets-kode"
+                                               oninput="validerKortSikkerhetsKode(this.id)" aria-describedby="kunde-kort-sikkerhets-kode-feil-melding">
                                         <label>Sikkerhets kode</label>
-                                        <div class="invalid-feedback d-none epost-feil-melding"></div>
+                                        <div class="invalid-feedback d-none" id="kunde-kort-sikkerhets-kode-feil-melding"></div>
                                     </div>
                                 </div>
                             </div>
