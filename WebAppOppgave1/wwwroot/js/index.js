@@ -66,16 +66,32 @@ function bekreft(){
 
 function lagreBestilling(){
     validerTrinn7()
-    
-    let billett = {
-        'rute': rute.ruteFra + '/' + rute.ruteTil,
-        'type': reiseType,
-        'utreise': avreiseDato,
-        'ankomst': returDato,
-        'pris': rute.rutePris,
-        'antallSykler': antallSykler,
-        'kjaeledyr': antallDyr
+
+    let bestilling = {
+        Kunde: {
+            fornavn: kunde.fornavn,
+            etternavn: kunde.etternavn,
+            tlfnr: kunde.tlf,
+            epost: kunde.epost,
+            postnummer: {
+                postnr: kunde.postnr,
+                poststed: kunde.poststed
+            }
+        },
+        Billett: {
+            rute: {
+                tur: rute.ruteFra + '-' + rute.ruteTil,
+                retur: rute.ruteTil + '-' + rute.ruteFra,
+                pris: rute.rutePris
+            },
+            type: reiseType,
+            utreiseDato: avreiseDato,
+            ankomstDato: returDato,
+            antallSykler: antallSykler,
+            kjaeledyr: antallDyr,
+            passasjerer: passasjerer,
+        },
+        Lugarer: lugarer,
+        Meals: maaltider
     }
-    
-    console.log(billett);
 }
