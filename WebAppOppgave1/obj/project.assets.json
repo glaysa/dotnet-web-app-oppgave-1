@@ -6184,19 +6184,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Glaysa\\.nuget\\packages\\": {}
+    "C:\\Users\\nimab\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Glaysa\\RiderProjects\\WebAppOppgave1\\WebAppOppgave1\\WebAppOppgave1.csproj",
+      "projectUniqueName": "C:\\Users\\nimab\\Desktop\\Desktop\\OsloMet\\5.semester\\ITPE3200\\web-app-oppgave-1\\WebAppOppgave1\\WebAppOppgave1.csproj",
       "projectName": "WebAppOppgave1",
-      "projectPath": "C:\\Users\\Glaysa\\RiderProjects\\WebAppOppgave1\\WebAppOppgave1\\WebAppOppgave1.csproj",
-      "packagesPath": "C:\\Users\\Glaysa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Glaysa\\RiderProjects\\WebAppOppgave1\\WebAppOppgave1\\obj\\",
+      "projectPath": "C:\\Users\\nimab\\Desktop\\Desktop\\OsloMet\\5.semester\\ITPE3200\\web-app-oppgave-1\\WebAppOppgave1\\WebAppOppgave1.csproj",
+      "packagesPath": "C:\\Users\\nimab\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nimab\\Desktop\\Desktop\\OsloMet\\5.semester\\ITPE3200\\web-app-oppgave-1\\WebAppOppgave1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Glaysa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nimab\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

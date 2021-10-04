@@ -63,18 +63,19 @@ namespace WebAppOppgave1.Models
                 var Bestilling1 = new Bestilling()
                 {
                     Kunde = Kunde,
-                    Billetter = Billetter,
-                    Lugars = Lugars,
-                    Meals = Meals,
                 };
+
+                Bestilling1.Billetter = Billetter;
+                Bestilling1.Lugars = Lugars;
+                Bestilling1.Meals = Meals;
                 
                 Kunde.Bestillinger = new List<Bestilling>
                 {
                     Bestilling1
                 };
 
-                context.Bestilling.Add(Bestilling1);
-                context.Kunde.Add(Kunde);
+                //context.Kunde.Add(Kunde);
+                context.Bestillinger.Add(Bestilling1);
                 context.SaveChanges();
             }
 
