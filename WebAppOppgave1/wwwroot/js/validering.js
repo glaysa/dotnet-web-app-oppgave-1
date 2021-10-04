@@ -16,18 +16,18 @@ let tilDatoInput = $("#til-dato");
 // Valideringsfunksjoner for trinn 1: Rute
 
 function validerRute(){
-    let checkedRute = $("input[name=ruter]:checked");
-    let checkedRutePris = checkedRute.attr('data-pris');
+    let checkedRute = $("input[name=ruter]:checked").val();
+    let checkedRutePris = $('#' + checkedRute + '-pris').text();
     let ruteInputFeilMelding = $("#rute-feil-melding");
     
-    if (checkedRute.val() === undefined || checkedRute.val() === "") {
+    if (checkedRute === undefined || checkedRute === "") {
         $("#rute-input-placeholder").addClass('is-invalid');
         ruteInputFeilMelding.removeClass('d-none');
         return false;
     } else {
         // Slik at navn til steder kan aksesseres
-        rute['ruteFra'] = $('#' + checkedRute.val() + '-col .rute-fra').text();
-        rute['ruteTil'] = $('#' + checkedRute.val() + '-col .rute-til').text();
+        rute['ruteFra'] = $('#' + checkedRute + '-col .rute-fra').text();
+        rute['ruteTil'] = $('#' + checkedRute + '-col .rute-til').text();
         rute['rutePris'] = Number(checkedRutePris);
         $("#rute-input-placeholder").removeClass('is-invalid');
         ruteInputFeilMelding.addClass('d-none');
