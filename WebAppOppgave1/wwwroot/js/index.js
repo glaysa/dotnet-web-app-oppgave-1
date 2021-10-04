@@ -20,15 +20,18 @@ let antallSykler = 0;
 
 // Trinn 3: Lugarer
 let lugarer = []; // array av lugar objekter: har type, antall og totalPris keys
+let lugarTotalPris = 0;
 
 // Trinn 4: Måltid
 let maaltider = [] // array av måltid objekter: har navn og pris keys
+let maaltidTotalPris = 0;
 
 // Trinn 5: Passasjerer
 let passasjerer = []; // array av passasjer objekter: har fornavn, etternavn og fodselsdato keys
 
-// Trinn 7: Kundeinformasjon og betalingsdetaljer
+// Trinn 7: Kundeinformasjon
 let kunde = {};
+let bestillingTotalPris = 0;
 
 function lagreRute(){
     validerTrinn1();
@@ -58,6 +61,7 @@ function lagrePassasjerInfo(){
 
 function bekreft(){
     validerTrinn6()
+    $('.bestilling-totalpris-tekst').text(bestillingTotalPris);
 }
 
 function lagreBestilling(){

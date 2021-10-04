@@ -188,7 +188,7 @@ function lageLugarObjekt(lugar){
     let romAntallReservasjon = $('#' + lugar + '-antall-reservasjon').text();
     let romPris = $('#' + lugar + '-pris').text();
     let totalPris = Number(romAntallReservasjon) * Number(romPris);
-    let objekt = {'type': lugar, 'antall': Number(romAntallReservasjon), 'totalPris': totalPris};
+    let objekt = {'type': lugar, 'antall': Number(romAntallReservasjon), 'pris': totalPris};
     
     // Hvis lugar er allerede i arrayet, fjern den og legg den ny lugar: unngår duplikater
     lugarer.forEach(function (item, index) {
@@ -378,6 +378,7 @@ function validerTrinn5() {
 
 // Trinn 6: Se over bestillingen
 function validerTrinn6() {
+    bestillingTotalPris = rute.rutePris + maaltidTotalPris + lugarTotalPris;
     merkerFerdig('#trinn-6');
     skjulOgVisTrinn('#trinn-6','#trinn-7','#trinn-6-btns','#trinn-7-btns');
 }

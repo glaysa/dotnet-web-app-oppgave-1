@@ -254,11 +254,13 @@ function oppdaterUIForRute(){
     let tilStedTekst = $('.til-sted-tekst');
     let fraDatoTekst = $('.fra-dato-tekst');
     let tilDatoTekst = $('.til-dato-tekst');
+    let rutePrisTekst = $('.rute-pris-tekst');
     
     fraStedTekst.text(rute.ruteFra);
     tilStedTekst.text(rute.ruteTil);
     fraDatoTekst.text($('#fra-dato').val());
-    tilDatoTekst.text($('#til-dato').val())
+    tilDatoTekst.text($('#til-dato').val());
+    rutePrisTekst.text(rute.rutePris);
 }
 
 function oppdaterUIForReisefolger(){
@@ -276,24 +278,31 @@ function oppdaterUIForReisefolger(){
 function oppdaterUIForLugarer(){
     let lugarTekstTemplate = document.getElementById('valgt-lugar-tekst-template');
     let parent = $("#lugar-tekst-template-tray");
+    lugarTotalPris = 0;
     parent.empty();
+    
     for(let i = 0; i < lugarer.length; i++) {
         let clone = lugarTekstTemplate.content.cloneNode(true);
         let textElement = clone.querySelector('small');
         textElement.textContent = lugarer[i].antall + ' x ' + lugarer[i].type + ',';
+        lugarTotalPris += lugarer[i].pris;
         parent.append(clone);
     }
+    $('.lugar-totalpris-tekst').text(lugarTotalPris);
 }
 
 function oppdaterUIForMaaltid(){
     let maaltidTekstTemplate = document.getElementById('valgt-maaltid-tekst-template');
     let parent = $('#maaltid-tekst-template-tray');
+    maaltidTotalPris = 0;
+    
     if(maaltider.length > 0) {
         parent.empty();
         for(let i = 0; i < maaltider.length; i++) {
             let clone = maaltidTekstTemplate.content.cloneNode(true);
             let textElement = clone.querySelector('small');
             textElement.textContent = maaltider[i].navn + ', ';
+            maaltidTotalPris += maaltider[i].pris;
             parent.append(clone);
         }
     } else {
@@ -302,6 +311,9 @@ function oppdaterUIForMaaltid(){
         textElement.textContent = 'Ingen';
         parent.append(clone);
     }
+    let totalPris = antallVoksen * maaltidTotalPris;
+    $('.maaltid-totalpris-tekst').text('Voksen ('+ maaltidTotalPris +' kr) x '+ antallVoksen + ' = ' + totalPris);
+    maaltidTotalPris = totalPris;
 }
 
 function oppdaterUIForPassasjerer(){
