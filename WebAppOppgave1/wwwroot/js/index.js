@@ -6,7 +6,7 @@
 ////////////////////////////////////////////////////////////////////
 
 // Trinn 1: Rute
-let rute = {}; // aksessere rutene med ruteFra og ruteTil keys
+let rute = {}; // aksessere rutene med ruteFra, ruteTil og rutePris keys
 let reiseType = ""; // kun 2 verdier: enVei og turRetur
 let avreiseDato = ""; // string: DD/MM/YYYY
 let returDato = ""; // string: DD/MM/YYYY
@@ -62,18 +62,16 @@ function bekreft(){
 
 function lagreBestilling(){
     validerTrinn7()
-
-    console.log('Rute fra:', rute.ruteFra);
-    console.log('Rute til:', rute.ruteTil);
-    console.log('Reisetype:', reiseType);
-    console.log('Avreise dato:', avreiseDato);
-    console.log('Retur dato:', returDato);
-    console.log('voksen:', antallVoksen);
-    console.log('Barn:', antallBarn);
-    console.log('Kjæledyr:', antallDyr);
-    console.log('Sykkel:', antallSykler);
-    console.log('Lugar:', lugarer);
-    console.log('Måltid:', maaltider);
-    console.log('Passasjerer:', passasjerer);
-    console.log('Kunde:', kunde);
+    
+    let billett = {
+        'rute': rute.ruteFra + '/' + rute.ruteTil,
+        'type': reiseType,
+        'utreise': avreiseDato,
+        'ankomst': returDato,
+        'pris': rute.rutePris,
+        'antallSykler': antallSykler,
+        'kjaeledyr': antallDyr
+    }
+    
+    console.log(billett);
 }
