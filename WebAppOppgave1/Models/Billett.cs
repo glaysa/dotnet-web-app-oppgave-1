@@ -10,11 +10,10 @@ namespace WebAppOppgave1.Models
     {
         [Key]
         public int BillettID { get; set; }
-        public string Rute { get; set; }
+        public virtual Rute Rute { get; set; }
         public string Type { get; set; }
         public DateTime Utreise { get; set; }
         public DateTime Ankomst{ get; set; }
-        public double Pris { get; set; }
         public int AntallSykler { get; set; }
         public int Kjæledyr { get; set; }
         public virtual Passasjer Passasjer { get; set; }

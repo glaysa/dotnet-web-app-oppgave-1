@@ -14,24 +14,6 @@ namespace WebAppOppgave1.Models
         public virtual List<Billett> Billetter { get; set; }
         public virtual List<Lugar> Lugars { get; set; }
         public virtual List<Meal> Meals { get; set; }
-        public double TotalPris { get; set;  }
-
-        public void SetTotalPris()
-        {
-            double total = 0;
-            foreach (Billett b in Billetter)
-            {
-                total += b.Pris;
-            }
-            foreach (Lugar l in Lugars)
-            {
-                total += l.Pris;
-            }
-            foreach (Meal m in Meals)
-            {
-                total += m.Pris;
-            }
-            this.TotalPris = total; 
-        }
+        public double TotalPris { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace WebAppOppgave1.Models
         public virtual DbSet<Kunde> Kunder { get; set; }
         public virtual DbSet<Bestilling> Bestillinger { get; set; }
         public virtual DbSet<Billett> Billetter { get; set; }
+        public virtual DbSet<Rute> Ruter { get; set; }
         public virtual DbSet<Passasjer> Passasjerer { get; set; }
         public virtual DbSet<Meal> Meals { get; set; }
         public virtual DbSet<Lugar> Lugarer { get; set; }

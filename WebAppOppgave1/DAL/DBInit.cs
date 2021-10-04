@@ -18,15 +18,22 @@ namespace WebAppOppgave1.Models
 
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
+
                 var Passasjer = new Passasjer() { Fornavn="Nima", Etternavn="Abdollahi",Fodselsdato=new DateTime(1998,5,25)};                 
                 var Utreise = new DateTime(2021, 10, 15, 14, 30, 0);
                 var Ankomst = new DateTime(2021, 10, 17, 13, 30, 0);
+                var Rute = new Rute()
+                {
+                    Tur="Oslo_Kiel",
+                    Retur=null,
+                    Pris=990.0
+                };
+
                 var Billett_1 = new Billett(){
-                    Rute="Oslo-Keil/Keli-Oslo",
+                    Rute=Rute,
                     Type="Tur-retur",
                     Utreise=Utreise,
                     Ankomst=Ankomst,
-                    Pris=990,
                     AntallSykler=0,
                     Kjæledyr=0,
                     Passasjer=Passasjer
