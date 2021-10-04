@@ -307,15 +307,9 @@ function validerKundeInfo(){
     let adresseId = $("#kunde-adresse").attr('id');
     let postnrId = $("#kunde-postnr").attr('id');
     let poststedId = $("#kunde-poststed").attr('id');
-    let kortnrId = $("#kunde-kortnr").attr('id');
-    let kortnavnId = $("#kunde-kortnavn").attr('id');
-    let kortUtlopsDatoId = $("#kunde-kortutlopsdato").attr('id');
-    let kortSikkerhetsKodeId = $("#kunde-kort-sikkerhets-kode").attr('id');
     
     let ok = validerFornavn(fornavnId) && validerEtternavn(etternavnId) && validerTlf(tlfId) && validerEpost(epostId)
-        && validerAdresse(adresseId) && validerPostnr(postnrId) && validerPoststed(poststedId) 
-        && validerKortnr(kortnrId) && validerKortnavn(kortnavnId) && validerKortUtlopsDato(kortUtlopsDatoId)
-        && validerKortSikkerhetsKode(kortSikkerhetsKodeId);
+        && validerAdresse(adresseId) && validerPostnr(postnrId) && validerPoststed(poststedId);
     
     if(ok) {
         kunde['fornavn'] = $("#kunde-fornavn").val();
@@ -484,54 +478,6 @@ function validerPoststed(id){
 
     if(input.val() === '' || input.val() === undefined) {
         visInputFeilMelding(id, 'Poststed er tomt.');
-        return false;
-    } else {
-        skjulInputFeilMelding(id);
-        return true;
-    }
-}
-
-function validerKortnr(id){
-    let input = $('#' + id);
-
-    if(input.val() === '' || input.val() === undefined) {
-        visInputFeilMelding(id, 'Kortnummer er tomt.');
-        return false;
-    } else {
-        skjulInputFeilMelding(id);
-        return true;
-    }
-}
-
-function validerKortnavn(id){
-    let input = $('#' + id);
-
-    if(input.val() === '' || input.val() === undefined) {
-        visInputFeilMelding(id, 'Kortnavn er tomt.');
-        return false;
-    } else {
-        skjulInputFeilMelding(id);
-        return true;
-    }
-}
-
-function validerKortUtlopsDato(id){
-    let input = $('#' + id);
-
-    if(input.val() === '' || input.val() === undefined) {
-        visInputFeilMelding(id, 'Utløpsdato er tomt.');
-        return false;
-    } else {
-        skjulInputFeilMelding(id);
-        return true;
-    }
-}
-
-function validerKortSikkerhetsKode(id){
-    let input = $('#' + id);
-
-    if(input.val() === '' || input.val() === undefined) {
-        visInputFeilMelding(id, 'Sikkerhetskoden er tomt.');
         return false;
     } else {
         skjulInputFeilMelding(id);
