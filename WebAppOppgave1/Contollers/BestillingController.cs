@@ -15,7 +15,7 @@ namespace WebAppOppgave1.Contollers
             _db = db;
         }
 
-        public async Task<bool> LagreBestilling(Bestilling innBestilling)
+        public async Task<bool> Lagre(Bestilling innBestilling)
         {
             return await _db.LagreBestilling(innBestilling);
         }

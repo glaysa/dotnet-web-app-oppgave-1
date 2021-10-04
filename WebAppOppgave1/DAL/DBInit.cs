@@ -39,6 +39,8 @@ namespace WebAppOppgave1.Models
                     Passasjer=Passasjer
                 };
 
+                Rute.Billett = Billett_1;
+
                 var Lugar = new Lugar() { LugarNummer = 6620, Type = "3-bed", Pris = 500.0 };
                 var Meal = new Meal() { MealsNummer = 1, Maaltid = "Frokost", Pris = 299.0 };
 

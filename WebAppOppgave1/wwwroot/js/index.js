@@ -68,7 +68,7 @@ function lagreBestilling(){
     validerTrinn7()
 
     let bestilling = {
-        Kunde: {
+        kunde: {
             fornavn: kunde.fornavn,
             etternavn: kunde.etternavn,
             tlfnr: kunde.tlf,
@@ -78,20 +78,29 @@ function lagreBestilling(){
                 poststed: kunde.poststed
             }
         },
-        Billett: {
-            rute: {
-                tur: rute.ruteFra + '-' + rute.ruteTil,
-                retur: rute.ruteTil + '-' + rute.ruteFra,
-                pris: rute.rutePris
+        billetter: [
+            {
+                rute: {
+                    tur: rute.ruteFra + '-' + rute.ruteTil,
+                    retur: rute.ruteTil + '-' + rute.ruteFra,
+                    pris: rute.rutePris
+                },
+                type: reiseType,
+                utreiseDato: avreiseDato,
+                ankomstDato: returDato,
+                antallSykler: antallSykler,
+                kjaeledyr: antallDyr,
+                passasjer: passasjerer, //det skal være en passasjer per billet.
             },
-            type: reiseType,
-            utreiseDato: avreiseDato,
-            ankomstDato: returDato,
-            antallSykler: antallSykler,
-            kjaeledyr: antallDyr,
-            passasjerer: passasjerer,
-        },
+        ],
         Lugarer: lugarer,
         Meals: maaltider
     }
+
+    const url = "Bestilling/Lagre";
+    $.post(url, bestilling, (saved) => {
+        console.log(bestilling);
+        console.log(saved);
+    });
+
 }
