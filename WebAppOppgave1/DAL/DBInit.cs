@@ -22,15 +22,15 @@ namespace WebAppOppgave1.Models
                 var Passasjer = new Passasjer() { Fornavn="Nima", Etternavn="Abdollahi",Fodselsdato=new DateTime(1998,5,25)};                 
                 var Utreise = new DateTime(2021, 10, 15, 14, 30, 0);
                 var Ankomst = new DateTime(2021, 10, 17, 13, 30, 0);
-                var Rute = new Rute()
-                {
-                    Tur="Oslo_Kiel",
-                    Retur=null,
-                    Pris=990.0
-                };
+               
 
                 var Billett_1 = new Billett(){
-                    Rute=Rute,
+                    Tur = new Rute()
+                    {
+                        Tur = "Oslo_Kiel",
+                        Pris = 990.0
+                    },
+                    Retur = new Rute() { Tur="",Pris=0.0},
                     Type="Tur-retur",
                     Utreise=Utreise,
                     Ankomst=Ankomst,
@@ -38,8 +38,6 @@ namespace WebAppOppgave1.Models
                     Kjæledyr=0,
                     Passasjer=Passasjer
                 };
-
-                Rute.Billett = Billett_1;
 
                 var Lugar = new Lugar() { LugarNummer = 6620, Type = "3-bed", Pris = 500.0 };
                 var Meal = new Meal() { MealsNummer = 1, Maaltid = "Frokost", Pris = 299.0 };

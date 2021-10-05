@@ -12,8 +12,7 @@ namespace WebAppOppgave1.Models
         [Key]
         public int RuteID { get; set; }
         public string Tur { get; set; }
-        public string Retur { get; set; }
         public double Pris { get; set; }
-        public virtual Billett Billett { get; set; }
+        //public virtual Billett Billett { get; set; }
     }
 }

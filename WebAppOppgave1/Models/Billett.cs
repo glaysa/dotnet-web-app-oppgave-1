@@ -18,8 +18,8 @@ namespace WebAppOppgave1.Models
         public int Kjæledyr { get; set; }
         public virtual Passasjer Passasjer { get; set; }
         public virtual Bestilling Bestilling { get; set; }
-        [ForeignKey("Rute")]
-        [NotMapped]
-        public virtual Rute Rute { get; set; }
+        public virtual Rute Tur { get; set; }
+        public virtual Rute Retur { get; set; }
+
     }
 }

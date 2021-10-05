@@ -65,15 +65,18 @@ function bekreft(){
 }
 
 function lagreBestilling(){
-    validerTrinn7()
+    validerTrinn7();
     
     let billetter = [];
     passasjerer.forEach(function (item) {
         let billett = {
-           rute: {
+           tur: {
                tur: rute.ruteFra + '-' + rute.ruteTil,
-               retur: rute.ruteTil + '-' + rute.ruteFra,
                pris: rute.rutePris
+           },
+           retur: {
+                tur: rute.ruteTil + '-' + rute.ruteFra,
+                pris: rute.rutePris
            },
            type: reiseType,
            utreiseDato: avreiseDato,
@@ -87,19 +90,19 @@ function lagreBestilling(){
 
     let bestilling = {
         kunde: {
-            fornavn: kunde.fornavn,
-            etternavn: kunde.etternavn,
-            tlfnr: kunde.tlf,
-            epost: kunde.epost,
-            postnummer: {
-                postnr: kunde.postnr,
-                poststed: kunde.poststed
+            Fornavn: kunde.fornavn,
+            Etternavn: kunde.etternavn,
+            Tlfnr: kunde.tlf,
+            Epost: kunde.epost,
+            Postnummer: {
+                Postnr: kunde.postnr,
+                Poststed: kunde.poststed
             }
         },
-        billetter: billetter,
+        Billetter: billetter,
         Lugarer: lugarer,
         Meals: maaltider
-    }
+    };
 
     const url = "Bestilling/Lagre";
     $.post(url, bestilling, (saved) => {
