@@ -66,6 +66,24 @@ function bekreft(){
 
 function lagreBestilling(){
     validerTrinn7()
+    
+    let billetter = [];
+    passasjerer.forEach(function (item) {
+        let billett = {
+           rute: {
+               tur: rute.ruteFra + '-' + rute.ruteTil,
+               retur: rute.ruteTil + '-' + rute.ruteFra,
+               pris: rute.rutePris
+           },
+           type: reiseType,
+           utreiseDato: avreiseDato,
+           ankomstDato: returDato,
+           antallSykler: antallSykler,
+           kjaeledyr: antallDyr,
+           passasjer: item,
+        };
+        billetter.push(billett);
+    });
 
     let bestilling = {
         kunde: {
@@ -78,21 +96,7 @@ function lagreBestilling(){
                 poststed: kunde.poststed
             }
         },
-        billetter: [
-            {
-                rute: {
-                    tur: rute.ruteFra + '-' + rute.ruteTil,
-                    retur: rute.ruteTil + '-' + rute.ruteFra,
-                    pris: rute.rutePris
-                },
-                type: reiseType,
-                utreiseDato: avreiseDato,
-                ankomstDato: returDato,
-                antallSykler: antallSykler,
-                kjaeledyr: antallDyr,
-                passasjer: passasjerer, //det skal være en passasjer per billet.
-            },
-        ],
+        billetter: billetter,
         Lugarer: lugarer,
         Meals: maaltider
     }
