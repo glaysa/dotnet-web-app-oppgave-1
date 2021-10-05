@@ -50,8 +50,9 @@ namespace WebAppOppgave1.DAL.BestillingServices
                     TotalPris = innBestilling.TotalPris
                 };*/
 
-                var Bestilling = innBestilling;
-                _db.Bestillinger.Add(Bestilling);
+                //var Bestilling = innBestilling;
+                
+                _db.Bestillinger.Add(innBestilling);
                 await _db.SaveChangesAsync();
                 return true;
             }

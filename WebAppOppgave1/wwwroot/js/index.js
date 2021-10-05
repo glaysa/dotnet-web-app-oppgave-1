@@ -66,42 +66,63 @@ function bekreft(){
 
 function lagreBestilling(){
     validerTrinn7();
+    let Billetter = [];
+    let Meals = [];
+    let Lugarer = [];
+    let Passasjer = [];
+
+    // Reformatter slik at de har samme attributtene som i db tabellen.
     
-    let billetter = [];
     passasjerer.forEach(function (item) {
+       let person = {Fornavn: item.fornavn, Etternavn: item.etternavn, Fodselsdato: item.fodselsDato };
+       Passasjer.push(person);
+    });
+
+    maaltider.forEach(function (item) {
+        let meal = { Maaltid: item.navn, Pris: item.pris };
+        Meals.push(meal);
+    });
+
+    lugarer.forEach(function (item) {
+        let lugar = { Type: item.type, Pris: item.pris };
+        Lugarer.push(lugar);
+    });
+
+    Passasjer.forEach(function (item) {
         let billett = {
-           tur: {
-               tur: rute.ruteFra + '-' + rute.ruteTil,
-               pris: rute.rutePris
-           },
-           retur: {
+            Type: reiseType,
+            Utreise: avreiseDato,
+            Ankomst: returDato,
+            AntallSykler: antallSykler,
+            Kjæledyr: antallDyr,
+            Passasjer: item,
+            Tur: {
+                tur: rute.ruteFra + '-' + rute.ruteTil,
+                pris: rute.rutePris
+            },
+            Retur: {
                 tur: rute.ruteTil + '-' + rute.ruteFra,
                 pris: rute.rutePris
-           },
-           type: reiseType,
-           utreiseDato: avreiseDato,
-           ankomstDato: returDato,
-           antallSykler: antallSykler,
-           kjaeledyr: antallDyr,
-           passasjer: item,
+            },
         };
-        billetter.push(billett);
+        Billetter.push(billett);
     });
 
     let bestilling = {
-        kunde: {
+        Kunde: {
             Fornavn: kunde.fornavn,
             Etternavn: kunde.etternavn,
-            Tlfnr: kunde.tlf,
+            Tlfnummer: kunde.tlf,
             Epost: kunde.epost,
+            Adresse: kunde.adresse,
             Postnummer: {
                 Postnr: kunde.postnr,
                 Poststed: kunde.poststed
             }
         },
-        Billetter: billetter,
-        Lugarer: lugarer,
-        Meals: maaltider
+        Billetter: Billetter,
+        Lugars: Lugarer,
+        Meals: Meals
     };
 
     const url = "Bestilling/Lagre";

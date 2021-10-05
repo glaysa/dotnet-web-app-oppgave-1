@@ -49,14 +49,15 @@ function validerReiseType(){
         reiseTypeInput.removeClass('is-invalid');
         reiseTypeFeilMelding.addClass('d-none');
         $("#til-dato-col").addClass('d-none');
-        reiseType = 'enVei';
+        reiseType = 'En-vei';
+        returDato = null;
         aktiverInput(fraDatoInput);
         $('.retur-element').addClass('d-none');
     } else {
         reiseTypeInput.removeClass('is-invalid');
         reiseTypeFeilMelding.addClass('d-none');
         $("#til-dato-col").removeClass('d-none');
-        reiseType = 'turRetur';
+        reiseType = 'Tur-retur';
         aktiverInput(fraDatoInput);
         $('.retur-element').removeClass('d-none');
     }
@@ -75,7 +76,7 @@ function validerFraDato(){
         } else if(fra.isBefore(idag)){
             visDatoFeilMelding(fraDatoInput, fraDatoFeilMelding, "Ugyldig avreise dato.");
         } else {
-            avreiseDato = fra.format('DD/MM/YYYY');
+            avreiseDato = fra.format('YYYY/MM/DD');
             fjernDatoFeilMelding(fraDatoInput, fraDatoFeilMelding);
             aktiverInput(tilDatoInput);
             ok = true;
@@ -97,7 +98,7 @@ function validerTilDato(){
         } else if(til.isBefore(fra)){
             visDatoFeilMelding(tilDatoInput, tilDatoFeilMelding, "Ugyldig retur dato.");
         } else {
-            returDato = til.format('DD/MM/YYYY'); 
+            returDato = til.format('YYYY/MM/DD'); 
             fjernDatoFeilMelding(tilDatoInput, tilDatoFeilMelding);
             ok = true;
         }
@@ -129,7 +130,7 @@ function fjernDatoFeilMelding(datoInput, feilMeldingBox){
 function formatterDato(id) {
     let datoInput = $("#" + id);
     let datoVerdi = moment(new Date(datoInput.datepicker('getDate')));
-    return  datoVerdi.format('DD/MM/YYYY');
+    return  datoVerdi.format('YYYY/MM/DD');
 }
 
 // Valideringsfunksjoner for trinn 2: Antall Reisefølger
