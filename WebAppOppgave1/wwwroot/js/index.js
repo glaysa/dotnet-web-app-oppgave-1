@@ -90,7 +90,7 @@ function lagreBestilling(){
 
     Passasjer.forEach(function (item) {
         let tur = {
-            tur: rute.ruteFra + "-" + ruteTil,
+            tur: rute.ruteFra + "-" + rute.ruteTil,
                 pris: rute.pris
         };
 
@@ -102,7 +102,7 @@ function lagreBestilling(){
         if (reiseType !== "En-vei") {
             retur = {
                 tur: rute.ruteTil + "-" + rute.ruteFra,
-                pris: rute.pris
+                pris: rute.Pris
             };
         }
 
