@@ -51,8 +51,9 @@ namespace WebAppOppgave1.DAL.BestillingServices
                 };*/
 
                 //var Bestilling = innBestilling;
-                
+                Console.Write(innBestilling.ToString());
                 _db.Bestillinger.Add(innBestilling);
+                
                 await _db.SaveChangesAsync();
                 return true;
             }

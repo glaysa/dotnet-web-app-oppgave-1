@@ -89,6 +89,23 @@ function lagreBestilling(){
     });
 
     Passasjer.forEach(function (item) {
+        let tur = {
+            tur: rute.ruteFra + "-" + ruteTil,
+                pris: rute.pris
+        };
+
+        let retur = {
+            tur: null,
+            pris: 0.0
+        };
+
+        if (reiseType !== "En-vei") {
+            retur = {
+                tur: rute.ruteTil + "-" + rute.ruteFra,
+                pris: rute.pris
+            };
+        }
+
         let billett = {
             Type: reiseType,
             Utreise: avreiseDato,
@@ -96,14 +113,8 @@ function lagreBestilling(){
             AntallSykler: antallSykler,
             Kjæledyr: antallDyr,
             Passasjer: item,
-            Tur: {
-                tur: rute.ruteFra + '-' + rute.ruteTil,
-                pris: rute.rutePris
-            },
-            Retur: {
-                tur: rute.ruteTil + '-' + rute.ruteFra,
-                pris: rute.rutePris
-            },
+            Tur: tur,
+            Retur: retur
         };
         Billetter.push(billett);
     });

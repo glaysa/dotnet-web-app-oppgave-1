@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace WebAppOppgave1.Models
 {
     public class DBInit
-    {
+    {  
         public static void Initialize(IApplicationBuilder app)
         {
             using (var serviceScope = app.ApplicationServices.CreateScope())
@@ -27,11 +27,11 @@ namespace WebAppOppgave1.Models
                 var Billett_1 = new Billett(){
                     Tur = new Rute()
                     {
-                        Tur = "Oslo_Kiel",
+                        Tur = "Oslo-Kiel",
                         Pris = 990.0
                     },
-                    Retur = new Rute() { Tur="",Pris=0.0},
-                    Type="Tur-retur",
+                    Retur = new Rute(),
+                    Type="En-vei",
                     Utreise=Utreise,
                     Ankomst=Ankomst,
                     AntallSykler=0,
