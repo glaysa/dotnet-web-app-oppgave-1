@@ -7,7 +7,7 @@
 
 // Trinn 1: Rute
 let rute = {}; // aksessere rutene med ruteFra, ruteTil og rutePris keys
-let reiseType = ""; // kun 2 verdier: enVei og turRetur
+let reiseType = ""; // kun 2 verdier: En-vei og Tur-retur
 let avreiseDato = ""; // string: DD/MM/YYYY
 let returDato = ""; // string: DD/MM/YYYY
 
@@ -94,18 +94,6 @@ function lagreBestilling(){
                 pris: rute.pris
         };
 
-        let retur = {
-            tur: null,
-            pris: 0.0
-        };
-
-        if (reiseType !== "En-vei") {
-            retur = {
-                tur: rute.ruteTil + "-" + rute.ruteFra,
-                pris: rute.Pris
-            };
-        }
-
         let billett = {
             Type: reiseType,
             Utreise: avreiseDato,
@@ -114,8 +102,14 @@ function lagreBestilling(){
             Kjæledyr: antallDyr,
             Passasjer: item,
             Tur: tur,
-            Retur: retur
         };
+        
+        if (reiseType !== "En-vei") {
+            billett['Retur'] = {
+                tur: rute.ruteTil + "-" + rute.ruteFra,
+                pris: rute.pris
+            };
+        }
         Billetter.push(billett);
     });
 

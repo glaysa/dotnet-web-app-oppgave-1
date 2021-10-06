@@ -260,7 +260,7 @@ function oppdaterUIForRute(){
     tilStedTekst.text(rute.ruteTil);
     fraDatoTekst.text($('#fra-dato').val());
     tilDatoTekst.text($('#til-dato').val());
-    rutePrisTekst.text(rute.rutePris);
+    rutePrisTekst.text(rute.pris);
 }
 
 function oppdaterUIForReisefolger(){

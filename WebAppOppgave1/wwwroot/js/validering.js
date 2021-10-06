@@ -28,7 +28,7 @@ function validerRute(){
         // Slik at navn til steder kan aksesseres
         rute['ruteFra'] = $('#' + checkedRute + '-col .rute-fra').text();
         rute['ruteTil'] = $('#' + checkedRute + '-col .rute-til').text();
-        rute['rutePris'] = Number(checkedRutePris);
+        rute['pris'] = Number(checkedRutePris);
         $("#rute-input-placeholder").removeClass('is-invalid');
         ruteInputFeilMelding.addClass('d-none');
         aktiverInput(reiseTypeInput);
@@ -50,7 +50,6 @@ function validerReiseType(){
         reiseTypeFeilMelding.addClass('d-none');
         $("#til-dato-col").addClass('d-none');
         reiseType = 'En-vei';
-        returDato = null;
         aktiverInput(fraDatoInput);
         $('.retur-element').addClass('d-none');
     } else {
@@ -379,7 +378,7 @@ function validerTrinn5() {
 
 // Trinn 6: Se over bestillingen
 function validerTrinn6() {
-    bestillingTotalPris = rute.rutePris + maaltidTotalPris + lugarTotalPris;
+    bestillingTotalPris = rute.pris + maaltidTotalPris + lugarTotalPris;
     merkerFerdig('#trinn-6');
     skjulOgVisTrinn('#trinn-6','#trinn-7','#trinn-6-btns','#trinn-7-btns');
 }
