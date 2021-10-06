@@ -127,7 +127,8 @@ function lagreBestilling(){
         },
         Billetter: Billetter,
         Lugars: Lugarer,
-        Meals: Meals
+        Meals: Meals,
+        TotalPris: bestillingTotalPris
     };
 
     const url = "Bestilling/Lagre";
