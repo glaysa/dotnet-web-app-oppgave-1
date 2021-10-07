@@ -1,8 +1,9 @@
-# web-app-oppgave-1
+# Webapplikasjoner (ITPE3200)
+### Studenter:
+- Ali Reza (s341823)
+- Nima Abdollahi (s341890)
+- Glaysa Fernandez (s344047)
 
-### ting vi mangler: 
-- [ ] regex validering av inputene (navn, etternavn, epost, tlfnr, adresse, poststed, postnr)
-- [ ] laste opp kvittering.html etter bestilling
-- [ ] kansje vi kan ha allerede lagrede ruter, måltider og lugarer i db.
-- [ ] har planner for qr-code (Tenker å generere den i backend og returene den til klient) HVIS TID
-
+### Kilder
+- Bildene og tekst er tatt fra fjordline.com/nb
+- Tagline er tatt fra apollo.no
