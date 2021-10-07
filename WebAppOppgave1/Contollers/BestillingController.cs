@@ -19,5 +19,10 @@ namespace WebAppOppgave1.Contollers
         {
             return await _db.LagreBestilling(innBestilling);
         }
+
+        public async Task<Bestilling> HentBestiling()
+        {
+            return await _db.HentBestilling();
+        }
     }
 }

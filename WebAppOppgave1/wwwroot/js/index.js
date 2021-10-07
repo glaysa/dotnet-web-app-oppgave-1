@@ -138,3 +138,80 @@ function lagreBestilling(){
     });
 
 }
+
+/* Not working
+document.getElementById("lagreBestilling")
+    .addEventListener("click",(event)=> {
+    validerTrinn7();
+    let Billetter = [];
+    let Meals = [];
+    let Lugarer = [];
+    let Passasjer = [];
+
+    // Reformatter slik at de har samme attributtene som i db tabellen.
+
+    passasjerer.forEach(function (item) {
+        let person = {Fornavn: item.fornavn, Etternavn: item.etternavn, Fodselsdato: item.fodselsDato };
+        Passasjer.push(person);
+    });
+
+    maaltider.forEach(function (item) {
+        let meal = { Maaltid: item.navn, Pris: item.pris };
+        Meals.push(meal);
+    });
+
+    lugarer.forEach(function (item) {
+        let lugar = { Type: item.type, Pris: item.pris };
+        Lugarer.push(lugar);
+    });
+
+    Passasjer.forEach(function (item) {
+        let tur = {
+            tur: rute.ruteFra + "-" + rute.ruteTil,
+            pris: rute.pris
+        };
+
+        let billett = {
+            Type: reiseType,
+            Utreise: avreiseDato,
+            Ankomst: returDato,
+            AntallSykler: antallSykler,
+            Kjæledyr: antallDyr,
+            Passasjer: item,
+            Tur: tur,
+        };
+
+        if (reiseType !== "En-vei") {
+            billett['Retur'] = {
+                tur: rute.ruteTil + "-" + rute.ruteFra,
+                pris: rute.pris
+            };
+        }
+        Billetter.push(billett);
+    });
+
+    let bestilling = {
+        Kunde: {
+            Fornavn: kunde.fornavn,
+            Etternavn: kunde.etternavn,
+            Tlfnummer: kunde.tlf,
+            Epost: kunde.epost,
+            Adresse: kunde.adresse,
+            Postnummer: {
+                Postnr: kunde.postnr,
+                Poststed: kunde.poststed
+            }
+        },
+        Billetter: Billetter,
+        Lugars: Lugarer,
+        Meals: Meals,
+        TotalPris: bestillingTotalPris
+    };
+
+    const url = "Bestilling/Lagre";
+    $.post(url, bestilling, (saved) => {
+        console.log(bestilling);
+        console.log(saved);
+    });
+});
+*/
