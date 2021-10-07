@@ -432,7 +432,7 @@ function validerTlf(id){
     let input = $('#' + id);
     const regex = /[0-9]{8}/;
     if(input.val() === '' || input.val() === undefined || !regex.test(input.val())) {
-        visInputFeilMelding(id, 'Telefonnummer er tomt, nummertelefon må bestå av 8 siffere.');
+        visInputFeilMelding(id, 'Telefonnummer er tomt. Den må bestå av 8 siffere.');
         return false;
     } else {
         skjulInputFeilMelding(id);
@@ -444,7 +444,7 @@ function validerEpost(id){
     let input = $('#' + id);
     const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if(input.val() === '' || input.val() === undefined || !regex.test(input.val())) {
-        visInputFeilMelding(id, 'E-post er tomt.');
+        visInputFeilMelding(id, 'E-post er tomt eller på feil format!.');
         return false;
     } else {
         skjulInputFeilMelding(id);
@@ -456,7 +456,7 @@ function validerAdresse(id){
     let input = $('#' + id);
     const regex = /[A-ZÅÆØa-zæøå0-9'\.\-\s]*/;
     if(input.val() === '' || input.val() === undefined || !regex.test(input.val())) {
-        visInputFeilMelding(id, 'Adressen er tomt eller på feil format!');
+        visInputFeilMelding(id, 'Adressen er tomt eller er på feil format!');
         return false;
     } else {
         skjulInputFeilMelding(id);
@@ -468,7 +468,7 @@ function validerPostnr(id){
     let input = $('#' + id);
     const regex = /[0-9]{4}/;
     if(input.val() === '' || input.val() === undefined || !regex.test(input.val())) {
-        visInputFeilMelding(id, 'Postnummer er tomt.');
+        visInputFeilMelding(id, 'Postnummer er tomt. Den må bestå av 4 siffere.');
         return false;
     } else {
         skjulInputFeilMelding(id);
@@ -480,7 +480,7 @@ function validerPoststed(id){
     let input = $('#' + id);
     const regex = /^[A-ZÅÆØa-zæåø]$/;
     if(input.val() === '' || input.val() === undefined || !regex.test(input.val())) {
-        visInputFeilMelding(id, 'Poststed er tomt.');
+        visInputFeilMelding(id, 'Poststed er tomt eller er på feil format.');
         return false;
     } else {
         skjulInputFeilMelding(id);
