@@ -135,8 +135,8 @@ function lagreBestilling(){
     $.post(url, bestilling, (saved) => {
         console.log(bestilling);
         console.log(saved);
+        location.href = '../kvittering.html';
     });
-
 }
 
 /* Not working
