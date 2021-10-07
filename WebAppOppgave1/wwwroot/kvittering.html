@@ -93,7 +93,7 @@
         <div class="row">
             <div class="col-lg-6 bg-white pb-3">
                 <div class="p-3 d-flex flex-sm-row flex-column text-center align-items-center">
-                    <img src="assets/qr.svg" alt="qr code" class="mx-auto border border-dark img-fluid" style="width: 225px">
+                    <img id="qr_image" src="" alt="qr code" class="mx-auto border border-dark img-fluid" style="width: 225px">
                     <div class="w-100 p-3 mt-3 m-lg-0 bg-white">
                         <p class="lead fw-bold">Norway Cruise AS</p>
                         <hr class="w-100 bg-theme">
@@ -123,5 +123,6 @@
 <script>
     $('#kvittering-dato').text(moment(new Date()).format('DD/MM/YYYY'));
 </script>
+<script src="js/qrcode.js"></script>
 </body>
 </html>
