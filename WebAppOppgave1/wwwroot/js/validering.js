@@ -394,9 +394,9 @@ function validerTrinn7() {
 
 function validerFornavn(id){
     let input = $('#' + id);
-
-    if(input.val() === '' || input.val() === undefined) {
-        visInputFeilMelding(id, 'Fornavn er tomt.');
+    const regex = /^[A-ZÆØÅ][a-zæøå]{2,20}$/;
+    if(input.val() === '' || input.val() === undefined || !regex.test(input.val())) {
+        visInputFeilMelding(id, 'Fornavn er tomt eller har feil format, begin med stor bokstav og fortsett med små bokstaver');
         return false;
     } else {
         skjulInputFeilMelding(id);
@@ -406,9 +406,9 @@ function validerFornavn(id){
 
 function validerEtternavn(id){
     let input = $('#' + id);
-
-    if(input.val() === '' || input.val() === undefined) {
-        visInputFeilMelding(id, 'Etternavn er tomt.');
+    const regex = /^[A-ZÆØÅ][a-zæøå]{2,20}$/;
+    if(input.val() === '' || input.val() === undefined || !regex.test(input.val())) {
+        visInputFeilMelding(id, 'Etternavn er tomt eller har feil format, begin med stor bokstav og fortsett med små bokstaver');
         return false;
     } else {
         skjulInputFeilMelding(id);
@@ -418,7 +418,7 @@ function validerEtternavn(id){
 
 function validerFodselsDato(id){
     let input = $('#' + id);
-
+    
     if(input.val() === '' || input.val() === undefined) {
         visInputFeilMelding(id, 'Fødselsdato er tomt.');
         return false;
@@ -430,9 +430,9 @@ function validerFodselsDato(id){
 
 function validerTlf(id){
     let input = $('#' + id);
-
-    if(input.val() === '' || input.val() === undefined) {
-        visInputFeilMelding(id, 'Telefonnummer er tomt.');
+    const regex = /[0-9]{8}/;
+    if(input.val() === '' || input.val() === undefined || !regex.test(input.val())) {
+        visInputFeilMelding(id, 'Telefonnummer er tomt, nummertelefon må bestå av 8 siffere.');
         return false;
     } else {
         skjulInputFeilMelding(id);
@@ -442,8 +442,8 @@ function validerTlf(id){
 
 function validerEpost(id){
     let input = $('#' + id);
-
-    if(input.val() === '' || input.val() === undefined) {
+    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(input.val() === '' || input.val() === undefined || !regex.test(input.val())) {
         visInputFeilMelding(id, 'E-post er tomt.');
         return false;
     } else {
@@ -454,9 +454,9 @@ function validerEpost(id){
 
 function validerAdresse(id){
     let input = $('#' + id);
-
-    if(input.val() === '' || input.val() === undefined) {
-        visInputFeilMelding(id, 'Adressen er tomt.');
+    const regex = /[A-ZÅÆØa-zæøå0-9'\.\-\s]*/;
+    if(input.val() === '' || input.val() === undefined || !regex.test(input.val())) {
+        visInputFeilMelding(id, 'Adressen er tomt eller på feil format!');
         return false;
     } else {
         skjulInputFeilMelding(id);
@@ -466,8 +466,8 @@ function validerAdresse(id){
 
 function validerPostnr(id){
     let input = $('#' + id);
-
-    if(input.val() === '' || input.val() === undefined) {
+    const regex = /[0-9]{4}/;
+    if(input.val() === '' || input.val() === undefined || !regex.test(input.val())) {
         visInputFeilMelding(id, 'Postnummer er tomt.');
         return false;
     } else {
@@ -478,8 +478,8 @@ function validerPostnr(id){
 
 function validerPoststed(id){
     let input = $('#' + id);
-
-    if(input.val() === '' || input.val() === undefined) {
+    const regex = /^[A-ZÅÆØa-zæåø]$/;
+    if(input.val() === '' || input.val() === undefined || !regex.test(input.val())) {
         visInputFeilMelding(id, 'Poststed er tomt.');
         return false;
     } else {
