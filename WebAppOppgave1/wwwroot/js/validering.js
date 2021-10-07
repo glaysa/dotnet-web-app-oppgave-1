@@ -478,7 +478,7 @@ function validerPostnr(id){
 
 function validerPoststed(id){
     let input = $('#' + id);
-    const regex = /^[A-ZÅÆØa-zæåø]$/;
+    const regex = /^[A-ZÅÆØ][a-zæåø]*$/;
     if(input.val() === '' || input.val() === undefined || !regex.test(input.val())) {
         visInputFeilMelding(id, 'Poststed er tomt eller er på feil format.');
         return false;

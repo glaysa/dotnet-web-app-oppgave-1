@@ -9,6 +9,5 @@ namespace WebAppOppgave1.DAL.BestillingServices
     public interface IBestillingRepository
     {
         Task<bool> LagreBestilling(Bestilling innBestilling);
-        Task<Bestilling> HentBestilling();
     }
 }

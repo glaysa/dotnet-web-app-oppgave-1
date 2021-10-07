@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using WebAppOppgave1.DAL.BestillingServices;
 using WebAppOppgave1.Models;
@@ -17,12 +18,8 @@ namespace WebAppOppgave1.Contollers
 
         public async Task<bool> Lagre(Bestilling innBestilling)
         {
-            return await _db.LagreBestilling(innBestilling);
-        }
-
-        public async Task<Bestilling> HentBestiling()
-        {
-            return await _db.HentBestilling();
+            bool saved = await _db.LagreBestilling(innBestilling);
+            return saved;
         }
     }
 }

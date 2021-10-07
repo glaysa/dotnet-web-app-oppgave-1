@@ -13,13 +13,6 @@ namespace WebAppOppgave1.DAL.BestillingServices
         {
             _db = db;
         }
-
-        public async Task<Bestilling> HentBestilling() //ikke impelmentert på klient enda.
-        {
-            var bestillinger = _db.Bestillinger.ToList();
-            bestillinger.ElementAt(bestillinger.Count - 1);
-            return bestillinger.ElementAt(bestillinger.Count - 1);
-        }
         public async Task<bool> LagreBestilling(Bestilling innBestilling)
         {
             try
