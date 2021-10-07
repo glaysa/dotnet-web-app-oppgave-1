@@ -36,7 +36,7 @@ namespace WebAppOppgave1
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //DBInit.Initialize(app);
+                //DbInit.Initialize(app);
             }
             //app.UseHttpsRedirection();
             app.UseRouting();

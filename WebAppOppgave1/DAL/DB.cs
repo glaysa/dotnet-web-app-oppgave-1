@@ -19,7 +19,7 @@ namespace WebAppOppgave1.Models
         public virtual DbSet<Passasjer> Passasjerer { get; set; }
         public virtual DbSet<Meal> Meals { get; set; }
         public virtual DbSet<Lugar> Lugarer { get; set; }
-        public virtual DbSet<Postnummer> Postnummer { get; set; }
+        public virtual DbSet<Postnummer> Poststeder { get; set; }
         public virtual DbSet<Rute> Ruter { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

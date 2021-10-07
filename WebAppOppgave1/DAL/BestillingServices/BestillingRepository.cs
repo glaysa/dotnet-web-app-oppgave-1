@@ -17,18 +17,33 @@ namespace WebAppOppgave1.DAL.BestillingServices
         {
             try
             {
-                /*var NyKunde = new Kunde();
-                NyKunde.Fornavn = innBestilling.Kunde.Fornavn;
-                NyKunde.Tlfnummer = innBestilling.Kunde.Etternavn;
-                NyKunde.Tlfnummer = innBestilling.Kunde.Tlfnummer;
-                NyKunde.Epost = innBestilling.Kunde.Epost;
-                NyKunde.Postnummer = innBestilling.Kunde.Postnummer;
-                //TODO: sjekk om postnummer aksisterer i db.
-
-                var NyeBilletter = new List<Billett>();
-                foreach (Billett billett in innBestilling.Billetter)
+                var nyKunde = new Kunde();
+                nyKunde.Fornavn = innBestilling.Kunde.Fornavn;
+                nyKunde.Etternavn = innBestilling.Kunde.Etternavn;
+                nyKunde.Tlfnummer = innBestilling.Kunde.Tlfnummer;
+                nyKunde.Adresse = innBestilling.Kunde.Adresse;
+                nyKunde.Epost = innBestilling.Kunde.Epost;
+                //nyKunde.Postnummer = innBestilling.Kunde.Postnummer; //midlertidig
+                
+                var sjekketPostnr = await _db.Poststeder.FindAsync(innBestilling.Kunde.Postnummer.Postnr);
+                if (sjekketPostnr == null)
                 {
-                    NyeBilletter.Add(new Billett()
+                    var nyPoststedRecord = new Postnummer()
+                    {
+                        Postnr = innBestilling.Kunde.Postnummer.Postnr,
+                        Poststed = innBestilling.Kunde.Postnummer.Poststed
+                    };
+                    nyKunde.Postnummer = nyPoststedRecord;
+                }
+                else
+                {
+                    nyKunde.Postnummer = sjekketPostnr;
+                }
+                
+                var nyeBilletter = new List<Billett>();
+                innBestilling.Billetter.ForEach(billett =>
+                {
+                    nyeBilletter.Add(new Billett()
                     {
                         Type = billett.Type,
                         Tur = billett.Tur,
@@ -37,24 +52,23 @@ namespace WebAppOppgave1.DAL.BestillingServices
                         Ankomst = billett.Ankomst,
                         Passasjer = billett.Passasjer
                     });
-                }
-                var Lugarer = innBestilling.Lugars;
-                var Meals = innBestilling.Meals;
-
-                var Bestilling = new Bestilling()
-                {
-                    Kunde = NyKunde,
-                    Billetter = NyeBilletter,
-                    Lugars = Lugarer,
-                    Meals = Meals,
-                    TotalPris = innBestilling.TotalPris
-                };*/
-
-                //var Bestilling = innBestilling;
-                Console.Write(innBestilling.ToString());
-                _db.Bestillinger.Add(innBestilling);
+                });
                 
+                var lugarer = innBestilling.Lugars;
+                var meals = innBestilling.Meals;
+
+                var bestilling = new Bestilling()
+                {
+                    Kunde = nyKunde,
+                    Billetter = nyeBilletter,
+                    Lugars = lugarer,
+                    Meals = meals,
+                    TotalPris = innBestilling.TotalPris
+                };
+                
+                _db.Bestillinger.Add(bestilling);
                 await _db.SaveChangesAsync();
+                
                 return true;
             }
             catch
