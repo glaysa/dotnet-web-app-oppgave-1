@@ -10,6 +10,6 @@ Vår database er bygget opp på denne måten:
 1- Databasen er ikke på 3.Normalform det er noen mange til mange relasjoner som må forenkles.
 
 ### Kilder
-- forelesningsvideor fra Canvas
+- forelesningsvidoer fra Canvas
 - Bildene og tekst er tatt fra fjordline.com/nb
 - Tagline er tatt fra apollo.no
